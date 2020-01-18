@@ -1,0 +1,29 @@
+# Site navigation links
+
+- title: Design Patterns
+  url: /design_patterns/
+
+- title: Algorithm
+  url: /algorithm/
+
+- title: Python
+  url: /python/
+
+- title: MongoDB
+  url: /mongodb/
+
+- title: Redis
+  url: /redis/
+
+- title: Docker
+  url: /docker/
+
+- title: Projects
+  url: /projects/
+
+- title: Seminar
+  url: /seminar/
+
+- title: Etc
+  url: /etc/
+
