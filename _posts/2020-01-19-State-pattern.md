@@ -33,10 +33,8 @@ sourcemaking 이미지 참고
 > 아래와 같이 주식회사 왕 뽑기를 개발해 달라는 요청이 왔습니다.  o 는 상태를 의미하고, → 는 다른 상태로 넘어가기 위한 행동입니다.
 
 ![10/Untitled%201.png](/assets/img/design_pattern/state/Untitled%201.png)
-
 Head first design patterns 이미지 
 
-### 
 
 ## 2-2. 상태 기계의 기초
 
@@ -44,25 +42,23 @@ Head first design patterns 이미지
 
 1. **4개의 상태**: 동전 있음, 동전 없음, 알맹이 매진, 알맹이 판매 
 2. 현재 상태를 저장하기 위한 인스턴스 변수를 만들고 각 상태의 값을 정의 
-{% highlight java %}
-    public class GumballMachine {
-        // 1. 각 상태를 정의 
-        final static int SOLD_OUT = 0;     // 알맹이 매진 
-        final static int NO_QUARTER = 1;   // 동전 없음 
-        final static int HAS_QUARTER = 2;  // 동전 있음
-        final static int SOLD = 3;         // 알맹이 판매 
-    
-        int state = SOLD_OUT;              // 현재 상태 저장 
-{% endhighlight %}
+    {% highlight java %}
+        public class GumballMachine {
+            // 1. 각 상태를 정의 
+            final static int SOLD_OUT = 0;     // 알맹이 매진 
+            final static int NO_QUARTER = 1;   // 동전 없음 
+            final static int HAS_QUARTER = 2;  // 동전 있음
+            final static int SOLD = 3;         // 알맹이 판매 
+        
+            int state = SOLD_OUT;              // 현재 상태 저장 
+    {% endhighlight %}
+
 3. 이 시스템에서 있을 수 있는 모든 행동을 모아 본다. 
-
-- 동전 투입, 동전 반환, 손잡이 돌림, 알맹이 내보냄
-- insertQuarter, ejectQuarter, turnCrank, dispense
-
+     - 동전 투입, 동전 반환, 손잡이 돌림, 알맹이 내보냄
+     - insertQuarter, ejectQuarter, turnCrank, dispense
 4. 각 행동을 구현할 때, 조건문을 써서 상태별로 어떤 작업을 할지 결정합니다. 
 
 ### 상태 기계 기초를 바탕으로 코드 작성
-
 - GumballMachine 클래스 정의
 {% highlight java %}
     public class GumballMachine {
@@ -189,7 +185,6 @@ Head first design patterns 이미지
 > 10분의 1의 확률로 공짜 알맹이를 받도록 변경해 달라고 합니다.( 총 2개 알맹이가 나오도록)  다이어그램은 아래와 같습니다.
 
 ![10/Untitled%202.png](/assets/img/design_pattern/state/Untitled%202.png)
-
 Head first design patterns 이미지 
 
 ### 만약 현재 코드에 상태를 한 개 더 추가한다면...?
