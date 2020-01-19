@@ -7,7 +7,6 @@ tags: [State, State Pattern, 스테이트 패턴, design pattern]
 comments: true
 design_patterns: true
 ---
-
 # 👀 학습 목표
 
 - 스테이트 패턴을 이해한다.
@@ -181,14 +180,12 @@ Head first design patterns 이미지
     }
 {% endhighlight %}
 ## 2-3. 변경 요청이 들어 왔어요.
-
 > 10분의 1의 확률로 공짜 알맹이를 받도록 변경해 달라고 합니다.( 총 2개 알맹이가 나오도록)  다이어그램은 아래와 같습니다.
 
 ![10/Untitled%202.png](/assets/img/design_pattern/state/Untitled%202.png)
 Head first design patterns 이미지 
 
 ### 만약 현재 코드에 상태를 한 개 더 추가한다면...?
-
 - 모든 메소드에 해당 상태에 대한 조건문을 추가해야 합니다. 이런 식으로 개발하면 기존 코드에 없던 새로운 버그가 생길 수도 있습니다.
 
 ## 2-4. 새로운 디자인으로 적용하기
@@ -568,4 +565,4 @@ Head first design patterns 이미지
 
 # 소스 코드
 
-- [https://github.com/JUNGEEYOU/Iterator](https://github.com/JUNGEEYOU/StatePattern)
+- [https://github.com/JUNGEEYOU/StatePattern](https://github.com/JUNGEEYOU/StatePattern)
