@@ -75,6 +75,7 @@ T 아카데미 강의 자료 사진 첨부
     $ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 {% endhighlight %}
 - run OPTIONS 
+
 |  옵션  |  설명 | 
 |----------|----------|
 | -d | detached mode 흔히 말하는 백그라운드 모드  |
@@ -87,7 +88,6 @@ T 아카데미 강의 자료 사진 첨부
 | —link | 컨테이너 연결 [컨테이너 명:별칭]  |
 {:.inner-borders}
 
-[run 옵션](https://www.notion.so/34c3ecc219634cdf877ca97019cf574a)
 
 ## 3-2. docker 사용 예시
 
@@ -173,6 +173,7 @@ T 아카데미 강의 자료 사진 첨부
     $  docker ps [OPTIONS]
 {% endhighlight %}
 - OPTIONS
+
 |  Name, shorthand  |  Description | 
 |----------|----------|
 | --all , -a | 모든 컨테이너를 보여준다. (컨테이너가 실행중이지 않는 것이라도, stop된 컨테이너도 보여줌 )   |
@@ -185,6 +186,7 @@ T 아카데미 강의 자료 사진 첨부
     $ docker rm [OPTIONS] CONTAINER [CONTAINER...]
 {% endhighlight %}
 - OPTIONS
+
 |  Name, shorthand  |  Description | 
 |----------|----------|
 | --force , -f | 실행중인 컨테이너를 강제로 제거한다.  (uses SIGKILL)  |
@@ -230,6 +232,7 @@ T 아카데미 강의 자료 사진 첨부
     $ docker logs [OPTIONS] CONTAINER
 {% endhighlight %}
 - OPTIONS
+
 |  Name, shorthand  |  Description | 
 |----------|----------|
 | --follow , -f | 실시간 로그 생성   |
