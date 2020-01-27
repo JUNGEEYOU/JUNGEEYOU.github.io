@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "docker에 대해 알아보자."
+title: "docker에 대해 알아보자.(docker 기본 개념)"
 date: 2020-01-25
 excerpt: ""
 tags: [docker , docker 기본 개념 ]
