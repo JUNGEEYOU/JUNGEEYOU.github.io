@@ -4,7 +4,7 @@ bio:                "JUNGEEYOU'S Development"
 description:        "안녕하세요~ 유정이 입니다:)"
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/char.png'
+logo:               'assets/img/my.jpeg'
 background:         'assets/img/back2.jpeg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
