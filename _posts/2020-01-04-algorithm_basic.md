@@ -6,8 +6,7 @@ excerpt: ""
 tags: [algorithm, 이진 탐색 알고리즘, 빅오 표기법, 외판원 문제, 알고리즘]
 comments: true
 algorithm: true
-image:
-    path: /assets/img/algorithm/1/Untitled%202.png
+image: /assets/img/algorithm/1/Untitled%202.png
 ---
 
 # 👀 목차
