@@ -60,7 +60,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 이미지에는 OS가 포함되어 이미지 용량이 큼
     - 결과적으로 가상머신 이미지로 배포하기에 어려움이 존재
 
-![docker/Untitled%201.png](/assets/img/docker/basic_1/Untitled%201.png){: width="80%" height="auto"}
+![docker/Untitled%201.png](/assets/img/docker/basic_1/Untitled%201.png){: width="80%" height="80%"}
 
 ### 🔹  도커 컨테이너
 
