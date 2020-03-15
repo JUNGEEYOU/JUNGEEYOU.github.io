@@ -121,7 +121,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > 도커에서 사용하는 기본 단위는 이미지와 컨테이너 입니다. 이는 도커의 핵심 개념입니다.
 
-![docker/Untitled%205.png](/assets/img/docker/basic_1/Untitled%205.png)
+![docker/Untitled%205.png](/assets/img/docker/basic_1/Untitled%205.png){: width="80%" height="80%"}
 
 ### 🔹  도커 이미지
 
