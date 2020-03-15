@@ -5,7 +5,6 @@ date: 2020-01-26
 excerpt: ""
 tags: [docker , docker 다운로드 , docker 명령어 정리 ]
 comments: true
-docker: true
 ---
 
 # 👀 목차
