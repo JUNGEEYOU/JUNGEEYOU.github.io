@@ -71,7 +71,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - Host OS와 컨테이너의 차이만 패키징하여 저장( Host OS와 컨터이너 간 공유)
     - 결과적으로 vm과 다르게 배포하기에 수월
 
-![docker/Untitled%202.png](/assets/img/docker/basic_1/Untitled%202.png)
+![docker/Untitled%202.png](/assets/img/docker/basic_1/Untitled%202.png){: width="60%" height="60%"}
 
 <br/>
 
@@ -99,7 +99,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - 아래의 그림과 같이 모든 기능이 하나의 프로그램에서 구동되는 방식입니다.
 - <span style="background-color: #e6e6ff; font-clolr: #000000">서비스가 복잡&거대 해질 수록 확장하기 어렵다는 단점이 </span> 있습니다.
 
-![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png)
+![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png){: width="60%" height="60%"}
 
 <br/>
 
@@ -110,7 +110,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - <span style="background-color: #e6e6ff; font-clolr: #000000"> 컨테이너는 쉽게 생성이 가능하며, 각 컨테이너가 독립된 환경을 제공</span>합니다. 따라서 마이크로 구조에서 가장 많이 사용됩니다.
     - 아래 그림을 서비스한다고 해 봅시다.  DB 컨테이너와 웹 서버 컨테이너로 분리할 수 있습니다. 웹 서버에 부하 발생 시, 컨테이너를 늘려 확장이 가능합니다. 또한, 웹과 DB를 컨테이너로 독립된 형태로 구성할 수 있습니다.
 
-![docker/Untitled%204.png](/assets/img/docker/basic_1/Untitled%204.png)
+![docker/Untitled%204.png](/assets/img/docker/basic_1/Untitled%204.png){: width="60%" height="60%"}
 
 
 <br/>
