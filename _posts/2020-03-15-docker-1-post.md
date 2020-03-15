@@ -44,7 +44,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 - 도커란 리눅스 컨테이너를 기반으로 합니다. 이는 특정한 프로그램의 <span style="background-color: #e6e6ff; font-clolr: #000000">배포 및 관리를 단순하게 해주는 유용한 오픈소스 </span> 프로젝트 입니다.
 - 도커는 가상머신의 개념과 유사하지만, 차이점이 존재합니다.
-    - 도커와 유사한 가상머신과 비교하며 도커에 대해 알아봅시다.
+    - <span style="background-color: #e6e6ff; font-clolr: #000000">도커와 유사한 가상머신과 비교하며 </span> 도커에 대해 알아봅시다.
     
 <br/>
 
@@ -88,6 +88,9 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 도커를 사용하여 운영환경에 배포하려고 하면, 해당 컨테이너를 도커 이미지 라는 일종의 패키지로 만들어 운영 서버에 전달하기만 하면 됩니다. 따라서 운영 서버에 새롭게 패키지나 각종 라이브러리 설치 등으로 인한 의존성을 걱정할 필요가 없습니다.
     - 이것이 가능한 이유는 이전에 설명한 가상머신의 이미지와 달리 이미지 크기가 작기 때문입니다. 또한, 중복되는 레이어는 재사용하여 배포 속도가 빨라집니다.
 
+
+<br/>
+
 ## 📌 독립성과 확장성이 높아진다.
 
 > 해당 내용을 설명하기 전에 모놀리스 구조와 마이크로 서비스 구조를 이해하고, 왜 도커를 사용하는지 알아봅시다.
@@ -95,7 +98,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ### 🔹  모놀리스 구조
 
 - 아래의 그림과 같이 모든 기능이 하나의 프로그램에서 구동되는 방식입니다.
-- 서비스가 복잡&거대 해질 수록 확장하기 어렵다는 단점이 있습니다.
+- <span style="background-color: #e6e6ff; font-clolr: #000000">서비스가 복잡&거대 해질 수록 확장하기 어렵다는 단점이 </span> 있습니다.
 
 ![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png)
 
@@ -105,7 +108,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 - 아래의 그림과 같이 여러 모듈이 독립된 형태입니다.
 - 독립되기 때문에 **각 기능은 언어에 종속되지 않고, 변화에 빠른 대처가 가능**합니다.
-- 컨테이너는 쉽게 생성이 가능하며, 각 컨테이너가 독립된 환경을 제공합니다. 따라서 마이크로 구조에서 가장 많이 사용됩니다.
+- <span style="background-color: #e6e6ff; font-clolr: #000000"> 컨테이너는 쉽게 생성이 가능하며, 각 컨테이너가 독립된 환경을 제공</span>합니다. 따라서 마이크로 구조에서 가장 많이 사용됩니다.
     - 아래 그림을 서비스한다고 해 봅시다.  DB 컨테이너와 웹 서버 컨테이너로 분리할 수 있습니다. 웹 서버에 부하 발생 시, 컨테이너를 늘려 확장이 가능합니다. 또한, 웹과 DB를 컨테이너로 독립된 형태로 구성할 수 있습니다.
 
 ![docker/Untitled%204.png](/assets/img/docker/basic_1/Untitled%204.png)
@@ -132,7 +135,9 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 수정과 추가되는 부분은 레이어를 추가하는 방식입니다.
 - **커스터마이징 가능**
     - 이미지는 커스터마이징이 가능하며, 그러기 위해서는 Dockerfile를 작성하면 됩니다.
-    - 작성한 이미지는 docker hub([https://hub.docker.com](https://hub.docker.com/))에 등록하거나 docker register를 만들어 저장할 수 있습니다.
+    - 작성한 이미지는 [docker hub](https://hub.docker.com/)에 등록하거나 docker register를 만들어 저장할 수 있습니다.
+    
+<br/>
 
 ### 🔹  도커 컨테이너
 
@@ -152,8 +157,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 아래 그림과 같이 도커의 구조는 두 가지가 존재합니다. **클라이언트와 서버** 입니다. 
 
 ![docker/Untitled%206.png](/assets/img/docker/basic_1/Untitled%206.png)
-
-[https://docs.docker.com/engine/docker-overview/](https://docs.docker.com/engine/docker-overview/) Docker architecture 참조 
+[도커 문](https://docs.docker.com/engine/docker-overview/) Docker architecture 참조 
 
 ### 🔹 Daemon
 
@@ -179,7 +183,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 # 마무리
 
-> 이번 시간에는 도커의 기본 개념에 대해서 알아봤습니다. 아래 공부하기 좋은 사이트도 같이 보시면 좋을 것 같습니다. 다음 시간에는 docker를 실제로 사용해 봅시다. 🤗
+> 이번 시간에는 도커의 기본 개념에 대해서 알아봤습니다. 아래 공부하기 좋은 사이트도 같이 보시면 좋을 것 같습니다. 다음 시간에는 docker를 실제로 사용해 보겠습니다. 🤗
 
 ### 📌 docker 공부하기 좋은 사이트 리스트
 
