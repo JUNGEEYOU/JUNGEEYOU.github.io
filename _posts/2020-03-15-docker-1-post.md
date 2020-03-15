@@ -82,7 +82,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ## 📌 개발과 배포가 편리해 진다.
 
 - **기존 배포 방식**
-    - 운영 환경에 배포를 하려면, 해당 os 및 버전에 맞춰 개발 환경을 세팅 해야합니다. os가 조금이라도 달라지면, 세팅 방식이 바뀌게 됩니다. 이런 점에서 개발 세팅과 배포는 너무 어려움이 많아집니다.
+    - <span style="background-color: #e6e6ff; font-clolr: #000000">운영 환경에 배포를 하려면, 해당 os 및 버전에 맞춰 개발 환경을 세팅</span> 해야합니다. os가 조금이라도 달라지면, 세팅 방식이 바뀌게 됩니다. 이런 점에서 개발 세팅과 배포는 너무 어려움이 많아집니다.
 - **도커를 사용하게 되면?**
     - 도커를 사용하여 <span style="background-color: #e6e6ff; font-clolr: #000000">운영환경에 배포하려고 하면, 해당 컨테이너를 도커 이미지를 만들어 운영 서버에 전달</span>하기만 하면 됩니다. 따라서 운영 서버에 새롭게 패키지나 각종 라이브러리 설치 등으로 인한 의존성을 걱정할 필요가 없습니다.
     - 이것이 가능한 이유는 이전에 설명한 가상머신의 이미지와 달리 이미지 크기가 작기 때문입니다. 또한, 중복되는 레이어는 재사용하여 배포 속도가 빨라집니다.
@@ -99,7 +99,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - 아래의 그림과 같이 모든 기능이 하나의 프로그램에서 구동되는 방식입니다.
 - <span style="background-color: #e6e6ff; font-clolr: #000000">서비스가 복잡&거대 해질 수록 확장하기 어렵다는 단점이 </span> 있습니다.
 
-![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png){: width="60%" height="60%"}
+![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png){: width="50%" height="50%"}
 
 <br/>
 
@@ -153,7 +153,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 # 5. Docker architecture
 
-아래 그림과 같이 도커의 구조는 두 가지가 존재합니다. **클라이언트와 서버** 입니다. 
+아래 그림과 같이 도커의 구조는 두 가지가 존재합니다. <span style="background-color: #e6e6ff; font-clolr: #000000">클라이언트와 서버</span> 입니다. 
 
 ![docker/Untitled%206.png](/assets/img/docker/basic_1/Untitled%206.png)
 [도커 문서](https://docs.docker.com/engine/docker-overview/) Docker architecture 참조 
@@ -168,7 +168,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔹 Registry
 
- 도커 이미지를 저장하는 곳이다. 기본적으로 Docker Hub에  퍼블릭 레지스트리로 생성할 수 있으며,  프라이빗 레지스트리도 생성할 수 있습니다. 
+ 도커 이미지를 저장하는 곳이다. 기본적으로 Docker Hub에  퍼블릭 레지스트리로 생성할 수 있으며, 프라이빗 레지스트리도 생성할 수 있습니다. 
 
 ### 🔹 Docker 객체
 
