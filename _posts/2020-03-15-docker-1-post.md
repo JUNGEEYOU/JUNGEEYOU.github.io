@@ -37,7 +37,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ![docker/Untitled.png](/assets/img/docker/basic_1/Untitled.png)
 
-- 도커란 리눅스 컨테이너를 기반으로 합니다. 이는  특정한 프로그램의 <span style="background-color: #A2AAE0">배포 및 관리를 단순하게 해주는 유용한 오픈소스<span> 프로젝트 입니다.
+- 도커란 리눅스 컨테이너를 기반으로 합니다. 이는 특정한 프로그램의 <span style="background-color: #A2AAE0";opacity: 0.5>배포 및 관리를 단순하게 해주는 유용한 오픈소스 </span> 프로젝트 입니다.
 - 도커는 가상머신의 개념과 유사하지만, 차이점이 존재합니다.
     - 도커와 유사한 가상머신과 비교하며 도커에 대해 알아봅시다.
 
