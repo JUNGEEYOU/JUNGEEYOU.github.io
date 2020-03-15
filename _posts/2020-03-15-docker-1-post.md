@@ -61,7 +61,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 이미지에는 OS가 포함되어 이미지 용량이 큼
     - 결과적으로 가상머신 이미지로 배포하기에 어려움이 존재
 
-![docker/Untitled%201.png](/assets/img/docker/basic_1/Untitled%201.png)
+![docker/Untitled%201.png](/assets/img/docker/basic_1/Untitled%201.png){: width="80%" height="auto"}
 
 ### 🔹  도커 컨테이너
 
@@ -126,7 +126,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔹  도커 이미지
 
-> 이미지는 위와 같이  1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성된 이미지가 존재한다. 1) 베이스 이미지는 Ubuntu, centos, nginx, mongodb 등이 존재합니다. 이는 상위 이미지를 가지고 있지 않습니다.  2)  도커파일로 생성하는 이미지는 커스터마이징을 하기 위해 사용됩니다. 예를 들어 우분투 + nginx 이미지를 만들고 싶을 때 사용됩니다.
+> 이미지는 위와 같이  1) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성된 이미지가 존재한다. 1) 베이스 이미지는 Ubuntu, centos, nginx, mongodb 등이 존재합니다. 이는 상위 이미지를 가지고 있지 않습니다.  2) 도커파일로 생성하는 이미지는 커스터마이징을 하기 위해 사용됩니다. 예를 들어 우분투 + nginx 이미지를 만들고 싶을 때 사용됩니다.
 
 - **도커 컨테이너를 실행하기 위해 필요한 설정 템플릿**
     - 이미지는 도커 컨테이너를 생성하기 위해 필요합니다.
@@ -157,7 +157,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 아래 그림과 같이 도커의 구조는 두 가지가 존재합니다. **클라이언트와 서버** 입니다. 
 
 ![docker/Untitled%206.png](/assets/img/docker/basic_1/Untitled%206.png)
-[도커 문](https://docs.docker.com/engine/docker-overview/) Docker architecture 참조 
+[도커 문서](https://docs.docker.com/engine/docker-overview/) Docker architecture 참조 
 
 ### 🔹 Daemon
 
