@@ -28,6 +28,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 도커의 핵심 개념으로 이미지와 컨테이너가 무엇인지 알아 봅시다.
 5. **도커 아키택처** 
     - 도커 전체적인 아키텍처를 살펴 봅시다.
+  
+<br/>
 
 ---
 
@@ -40,6 +42,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - 도커란 리눅스 컨테이너를 기반으로 합니다. 이는 특정한 프로그램의 <span style="background-color: #A0A0E2;opacity: 0.8">배포 및 관리를 단순하게 해주는 유용한 오픈소스 </span> 프로젝트 입니다.
 - 도커는 가상머신의 개념과 유사하지만, 차이점이 존재합니다.
     - 도커와 유사한 가상머신과 비교하며 도커에 대해 알아봅시다.
+    
+<br/>
 
 ---
 
@@ -67,6 +71,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ![docker/Untitled%202.png](/assets/img/docker/basic_1/Untitled%202.png)
 
+<br/>
+
 ---
 
 # 3. 도커를 사용하는 이유
@@ -90,7 +96,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ![docker/Untitled%203.png](/assets/img/docker/basic_1/Untitled%203.png)
 
-모놀리스 구조 
+<br/>
 
 ### 🔹 마이크로서비스 구조
 
@@ -101,7 +107,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ![docker/Untitled%204.png](/assets/img/docker/basic_1/Untitled%204.png)
 
-마이크로서비스 구조 
+
+<br/>
 
 ---
 
@@ -133,6 +140,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - **데이터 영구적 보관 x**
     - 컨테이너가 데이터를 영구적으로 보관하지 않으므로 컨테이너를 삭제하면 안에 있는 데이터와 상태들까지도 삭제된다. 이 때 volume을 사용하면 컨테이너를 삭제하더라도 데이터 또는 상태를 보존할 수 있다.
 
+<br/>
+
 ---
 
 # 5. Docker architecture
@@ -159,6 +168,9 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 - **Images** : 컨테이너를 생성하기 위한 **read-only** 템플릿이며, 기존 이미지를 커스터마이징하여 새로운 이미지를 만들 수도 있습니다.
 - **Containers**: Image를 실행(run)한 것이며, 컨테이너는 다른 컨테이너와 호스트 컴퓨터로부터 독립적이다.
+
+
+<br/>
 
 ---
 
