@@ -6,7 +6,7 @@ excerpt: ""
 tags: [docker , docker 기본 개념 ]
 comments: true
 docker : true 
-feature: /assets/img/docker/basic_1/Moby-logo.png
+feature: /assets/img/docker/basic_1/whale.jpeg
 image: /assets/img/docker/basic_1/Moby-logo.png
 ---
 
