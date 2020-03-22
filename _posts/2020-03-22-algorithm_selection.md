@@ -6,8 +6,8 @@ excerpt: ""
 tags: [algorithm, 선택 정렬 알고리즘, 배열, 리스트]
 comments: true
 algorithm: true
-image: /assets/img/algorithm/2/back.png
-feature: /assets/img/algorithm/2/back.png
+image: /assets/img/algorithm/2/back.jpg
+feature: /assets/img/algorithm/2/back.jpg
 
 ---
 
@@ -29,7 +29,8 @@ feature: /assets/img/algorithm/2/back.png
 
 > 여러 개의 항목을 저장해야할 때, 어떤 것을 사용할지 두 가지 장단점을 생각하고 결정하자!
 
- 배열 vs 연결 리스트 
+ - 배열 vs 연결 리스트 
+ 
  |  |  배열 | 연결 리스트 | 
  |----------|----------|----------|
  | 특징 | 1. 데이터들이 서로 이웃하게 메모리를 사용해야만 한다.                                         
@@ -52,9 +53,6 @@ feature: /assets/img/algorithm/2/back.png
 
 > 가수 별로 내가 몇 곡을 들었는지 기록되어 있다고 해 봅시다. 이때 이 목록을 가장 많이 들을 것 부터 가장 적게 들은 순서로 정렬을 하여 내가 가장 좋아하는 가수의 순위를 알고 싶다면 어떻게 해야할까요? 이때 선택 정렬을 사용하여 봅시다.
 
-![2/Untitled.png](/assets/img/algorithm/2/Untitled.png)
-
-가수 별 들은 횟수 리스트 
 
 ## 🔹 선택 정렬이란?
 
