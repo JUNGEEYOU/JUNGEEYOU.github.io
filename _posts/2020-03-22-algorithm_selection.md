@@ -53,7 +53,7 @@ feature: /assets/img/algorithm/2/back.jpg
 
 아래의 예제를 살펴 보자. 오름차순 정렬이며, 화살표는 비교한다는 의미이다. 
 
-![2/Untitled%201.png](/assets/img/algorithm/2/Untitled%201.png =550x)
+![2/Untitled%201.png](/assets/img/algorithm/2/Untitled%201.png)
 
 ### 순서도
 
