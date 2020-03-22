@@ -2,11 +2,12 @@
 layout: post
 title: "1. 알고리즘 소개(algorithm)"
 date: 2020-01-04
-excerpt: ""
+excerpt: "알고리즘 기본 소개"
 tags: [algorithm, 이진 탐색 알고리즘, 빅오 표기법, 외판원 문제, 알고리즘]
 comments: true
 algorithm: true
-image: /assets/img/algorithm/1/1.png
+image: /assets/img/algorithm/1/back.jpg
+feature: /assets/img/algorithm/1/back.jpg
 ---
 
 # 👀 목차
@@ -17,8 +18,8 @@ image: /assets/img/algorithm/1/1.png
 
 # 1. 들어가는 글
 ### 알고리즘에서 배울 것
-- 여러 가지 **알고리즘들의 차이점**을 이해해야한다. 이해하지 못한다면, 미리 구현한 알고리즘은 필요가 없습니다.
-- 여러 가지 알고리즘 장단점을 배우게 된다. **이때 단순히 다른 자료구조를 사용하는 것만으로도 성능이 크게 달라질 수 있다.**
+- 여러 가지 <span style="background-color: #e6e6ff; font-clolr: #000000">알고리즘들의 차이점</span>을 이해해야한다. 이해하지 못한다면, 미리 구현한 알고리즘은 필요가 없습니다.
+- 여러 가지 알고리즘 장단점을 배우게 된다. <span style="background-color: #e6e6ff; font-clolr: #000000">이때 단순히 다른 자료구조를 사용하는 것만으로도 성능이 크게 달라질 수 있다.</span>
 
 # 2. 이진 탐색
  - 단순 탐색 vs 이진 탐색 
@@ -59,7 +60,7 @@ image: /assets/img/algorithm/1/1.png
 > 우리는 다른 사람들이 만든 알고리즘을 사용할 것이다. 이때 어떤 알고리즘이 빠른지 알아야 하는데 이때 사용하는 것이 빅오 표기법이다.
 
 ### 빅오 표기법 규칙
-1 . 알고리즘 속도는 시간이 아니라 **연산 횟수가 어떻게 증가하는지** 로 나타낸다. 
+1 . 알고리즘 속도는 시간이 아니라 <span style="background-color: #e6e6ff; font-clolr: #000000">연산 횟수가 어떻게 증가하는지</span> 로 나타낸다. 
 - **이유?** 속도로 할 경우, 이진 탐색의 경우는 리스트가 많아지면 더 속도 비율이 빨라지는데 이를 표현할 수 없다.
 2 . 빅오표기법은 최악의 경우만 나타낸다.
 - 단순 탐색으로 한번에 추측했어도 여전히 O(n) 이다.
