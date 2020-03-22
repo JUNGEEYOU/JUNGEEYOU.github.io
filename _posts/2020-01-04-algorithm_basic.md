@@ -33,7 +33,7 @@ image: /assets/img/algorithm/1/1.png
 
 ![1/Untitled.png](/assets/img/algorithm/1/1.png) 
 ### 이진 탐색 함수 코드
-{% highlight java %}
+{% highlight python %}
     def binary_search(list, item):
         """
         이진 탐색 함수
