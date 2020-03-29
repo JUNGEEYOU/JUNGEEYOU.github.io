@@ -358,7 +358,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 
 ### 🔸  Dockerfile 작성 시, 주의점
 
-1. **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
+- **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
     - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
     - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
     {% highlight shell %}
@@ -381,7 +381,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
     {% endhighlight %}
 
 
-2. **RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
+- **RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
     - 위에서 말했듯이 Dockerfile 한 줄은 한 이미지 레이어라고 하였습니다. 따라서 RUN 명령어는 한 줄로 묶는 것이 가능하다면 묶는 것이 좋습니다.
 
 <br/>
@@ -391,8 +391,6 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 # 4. docker hub
 
 > 이번엔 내가 만든 이미지를 docker Hub에 올려보자. <span style="background-color: #e6e6ff; font-clolr: #000000"> docker Hub는 다른 사용자들과 도커 이미지를 공유하는 저장소입니다.</span> 
-
-- **참고 사이트** : [https://docs.docker.com/docker-hub/](https://docs.docker.com/docker-hub/)
 
 ## 🔹 Docker hub 실습해 보기
 
@@ -457,6 +455,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 
 ![Untitled/Untitled%206.png](/assets/img/docker/basic_3/Untitled%206.png)
 
+<br/>
 **6. 이전 이미지를 지우고, hub에 올린 이미지를 다운받아 보자.**
 
 - **docker rmi** :  이미지를 삭제
