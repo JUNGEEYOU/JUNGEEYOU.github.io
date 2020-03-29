@@ -56,10 +56,10 @@ excerpt: "docker 이미지 만들기"
 
 ### 🔸  commit  명령어
 
-- 참고 : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
-
+- **참고** : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
+{% highlight bash %}
 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
-
+{% endhighlight %}
 ### 🔸 OPTIONS
 
 [OPTIONS](https://www.notion.so/3dff716338fd446cb946325acd1f17c3)
@@ -77,13 +77,13 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 
 1. **docker run** 
     - 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
-
+{% highlight bash %}
     $ docker run -it --name commit_test centos bash
-
+{% endhighlight %}
 **2. telnet 를 설치하기** 
 
 - 아래 명령어로 cenots 컨테이너에서 telnet를 설치합니다.
-
+{% highlight bash %}
     [root@ade9f1da26d3 /]# **yum install -y telnet**
     
     Failed to set locale, defaulting to C.UTF-8
@@ -99,28 +99,28 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
     
     [root@ade9f1da26d3 /]# **telnet**
     telnet>
-
+{% endhighlight %}
 **3. 새 터미널에서 diff 명령어로 변경된 파일 확인하기**
 
 - 확인해 보면 telnet이 추가된 것을 확인할 수 있다.
-
+{% highlight bash %}
     *(new terminal)*
     $ docker diff commit_test
     
     A /usr/bin/telnet
-
+{% endhighlight %}
 **4. 해당 컨테이너 내리기** 
-
+{% highlight bash %}
     $ docker rm -f commit_test
-
+{% endhighlight %}
 **5. 같은 이미지를 다시 실행 시켜  위에서 설치한  telnet 명령어가 되는지 확인**
 
 - 아래와 같이 저장이 안된 모습을 확인할 수 있다.
-
+{% highlight bash %}
     $ docker run -it --name commit_test centos bash
     [root@82aa81723f45 /]# telnet
     bash: telnet: command not found
-
+{% endhighlight %}
 ### 🔸  commit 명령어 후, 이미지 확인하기
 
 > 위와 같이 컨테이너에서 telnet를 설치해 보고, commit 를 진행하면 어떤 점이 다른지 확인해 봅시다.
@@ -128,11 +128,11 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
  **1. docker run** 
 
 - 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
-
+{% highlight bash %}
     $ docker run -it --name commit_test centos bash
-
+{% endhighlight %}
 **2. telnet 를 설치하기** 
-
+{% highlight bash %}
     [root@82aa81723f45 /]# yum install -y telnet
     Failed to set locale, defaulting to C.UTF-8
     CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
@@ -147,13 +147,13 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
     
     [root@82aa81723f45 /]# telnet
     telnet>
-
+{% endhighlight %}
 **3. 새 터미널에서 commit 진행** 
 
 - **-m 옵션:**  변경된 로그를 입력해 줍니다. ("install telnet")
 - **컨테이너 명**: commit_test
 - **원하는 이미지 명 & tag** : centos_telnet:01
-
+{% highlight bash %}
     *(new terminal)*
     $ **docker commit -m "install telnet" commit_test centos_telnet:01**
     sha256:257fc79abba712f2dbb4e35c1816321dd854989bfedbb07ed94e614b4a59fa89
@@ -166,14 +166,15 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     centos_telnet       01                  257fc79abba7        6 seconds ago       274MB
     centos              latest              470671670cac        2 months ago        237MB
-
+{% endhighlight %}
 **4. commit 으로 생성한 이미지 실행하여 telnet 동작 확인** 
 
 - commit 명령어로 telnet이 설치된 이미지가 생성된 것을 확인할 수 있다.
-
+{% highlight bash %}
     $ docker run -it --name commit_test2 centos_telnet:01 bash
     [root@863ac3be5d1c /]# telnet
     telnet>
+{% endhighlight %}
 
 ---
 
@@ -194,7 +195,7 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 
 1. **app.py** 
 - '/' 경로로 접근 시, hello_world() 라는 함수 실행합니다.
-
+{% highlight python %}
     from flask import Flask
     app = Flask(__name__)
     
@@ -205,18 +206,18 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
     
     if __name__ == '__main__':
         app.run(debug=True, host='0.0.0.0')
-
+{% endhighlight %}
 **2. requirements.txt**
 
 - Flask 라는 라이브러리 설치가 필요하여 버전과 함께 설치할 라이브러리를 명시해준 파일입니다.
-
+{% highlight text %}
     Flask==0.10.1
-
+{% endhighlight %}
 **3.  Dockerfile**
 
 - 패키지, 소스코드 등을 기록해둔 파일입니다. 위에서 말했듯이 이를 build하면 커스터마이징된 이미지가 생성됩니다.
 - RUN과 같은 명령어 의미에 대해서 파악 해봅니다.
-
+{% highlight bash %}
     # FROM: 베이스 이미지를 지정 (여기서는 ubuntu 16.04 버전 사용) 
     FROM ubuntu:16.04
     
@@ -245,7 +246,7 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
     # CMD: 컨테이너 시작 시 실행되는 명령어로 위 ENTRYPOINT 명령어 뒤 인자로 실행하게 된다. 
     # 결국 python app.py 명령어 실행 
     CMD [ "app.py" ]
-
+{% endhighlight %}
 ### 🔸 Dockerfile 명령어
 
 - 참고: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
@@ -259,7 +260,7 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 docker build [OPTIONS] 도커파일경로 
 
 [OPTIONS](https://www.notion.so/7cb97f0705414131815ec7d967060a77)
-
+{% highlight bash %}
     # Dockerfile 위치에서 build 명령어 실행 
     **$ docker build -t myflask:0.1 .**
     
@@ -268,13 +269,13 @@ docker build [OPTIONS] 도커파일경로
     **$ docker images** 
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
     myflask                0.1                 bfac980a3b49        6 seconds ago       421MB
-
+{% endhighlight %}
 **5. docker run** 
 
 - 커스터마이징된 이미지를 실행시켜 컨테이너 결과를 확인해 봅니다.
-
+{% highlight bash %}
     $ docker run --name flask -d -p 5000:5000 myflask:0.1
-
+{% endhighlight %}
 6. 결과 확인 
 
 - [localhost:5000](http://localhost:5000) 에 접속해자.
@@ -296,7 +297,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 > 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
 
 - Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용하는 것을 알 수 있습니다.
-
+{% highlight bash %}
     # 1. Dockerfile를 복사한다. 
     **$ cp Dockerfile Dockerfile_2**
     
@@ -319,11 +320,11 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
      ---> f0aec51b1467
     
     ------- 생략 ------- 
-
+{% endhighlight %}
 그러나 항상 캐시 기능이 필요한 것은 아닙니다. 예를 들어 git clone 과 같은 명령어를 사용할 때 캐시가 적용되면 소스가 변경될 때 변경되지 않습니다. 따라서 --no-cache 옵션을 사용하면 됩니다. 
-
+{% highlight bash %}
     $ docker build --no-cache -t myflask:0.2 . 
-
+{% endhighlight %}
 ### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
 
 > 멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
@@ -333,7 +334,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 1. **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
     - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
     - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
-
+{% highlight bash %}
         # **1. .dockerignore 파일에 불필요한 이미지를 작성합니다.** 
         **$ vi .dockerignore** 
         Dockerfile
@@ -350,7 +351,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
         # 4. Dockerfile 파일만 없는 것을 확인할 수 있다. 
         root@3a1fa88e605b:/app# ls
         Dockerfile_2  app.py  requirements.txt
-
+{% endhighlight %}
 2. **RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
     - 위에서 말했듯이 Dockerfile 한 줄은 한 이미지 레이어라고 하였습니다. 따라서 RUN 명령어는 한 줄로 묶는 것이 가능하다면 묶는 것이 좋습니다.
 
@@ -370,14 +371,14 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 **2.  docker 로그인하기** 
 
 - 방법 1. 터미널에서 docker login 명령어로 로그인 하기
-
+{% highlight bash %}
     **$ sudo docker login**
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: EOF
     Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
     **Username: [내 hub ID]
     Password:** 
     Login Succeeded
-
+{% endhighlight %}
 - 방법 2. UI에서 로그인하기 (mac 환경)
     - 아래 이미지 순서로 빨간 테두리 부분을 클릭하여 로그인해 봅니다.
 
@@ -394,7 +395,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 - 이미지는 자신 계정 이름과 일치해야 Hub에 push가 가능합니다.
 
 docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
-
+{% highlight bash %}
     **$ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest** 
     
     Password:
@@ -402,11 +403,11 @@ docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
     **$ docker images**
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
     **junge2/centos_telnet**   latest              257fc79abba7        24 hours ago        274MB
-
+{% endhighlight %}
 **4. docker hub에 push**
 
 docker push [허브_아이디]/이미지명:[태그]
-
+{% highlight bash %}
     **$ docker push junge2/centos_telnet:latest**
     
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: open /Users/jungee/.docker/config.json: permission denied
@@ -414,7 +415,7 @@ docker push [허브_아이디]/이미지명:[태그]
     648f89c4f2c4: Pushed 
     0683de282177: Mounted from library/centos 
     latest: digest: sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a size: 741
-
+{% endhighlight %}
 **5. 사이트 docker hub에 들어가 확인해보자.** 
 
 - [https://hub.docker.com/repositories](https://hub.docker.com/repositories)
@@ -427,7 +428,7 @@ docker push [허브_아이디]/이미지명:[태그]
 - **docker rmi** :  이미지를 삭제
 - **docker pull [자신의 docker hub ID]/이미지:버전** : 자신이 올린 이미지를 다운 받습니다.
 - **docker images:** 이미지 리스트 확인
-
+{% highlight bash %}
     **$ sudo docker rmi junge2/centos_telnet**
     Untagged: junge2/centos_telnet:latest
     Untagged: junge2/centos_telnet@sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
@@ -441,7 +442,7 @@ docker push [허브_아이디]/이미지명:[태그]
     **$ docker images**
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
     junge2/centos_telnet   latest              257fc79abba7        24 hours ago        274MB
-
+{% endhighlight %}
 ---
 
 # 마무리
