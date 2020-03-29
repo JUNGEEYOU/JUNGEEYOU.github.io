@@ -38,7 +38,7 @@ excerpt: "docker 이미지 만들기"
     - 베이스 이미지를 pull 하여 이미지를 얻을 수 있습니다.
 2. **Dockerfile를 만들어 이미지 커스터마이징 하기** 
     - Dockerfile는 컨테이너에 필요한 패키지, 소스코드 등을 기록해둔 파일로 빌드를 하면 도커 이미지가 생성됩니다.
-    - 장기적인 시점에서 본다면, 아래 commit 방식보단 Dockerfile 작성이 저 좋습니다. 이유는 이미지 생성 방법 기록 + 배포 측면에서 더 유리합니다.
+    - 장기적인 시점에서 본다면, 아래 commit 방식보단 Dockerfile 작성이 저 좋습니다. 이유는 <span style="background-color: #e6e6ff; font-clolr: #000000"> 이미지 생성 방법 기록 + 배포 측면</span>에서 더 유리합니다.
 3. **commit를 이용해서 이미지 생성하기** 
     - docker commit 명령어를 이용하면 컨테이너에서 설치 및 작업한 내용이 저장되는 방식입니다.
 
@@ -50,7 +50,7 @@ excerpt: "docker 이미지 만들기"
 
 ## 🔹 commit  명령어 설명
 
-> 아래 실습은 아래와 같이 진행하려고 합니다. 이 방법은 우선 기본 이미지를 실행 시킨 후, 컨테이너 안에서 원하는 패키지나 소스코드 등 작업(아래에서는 telnet를 설치) 을 진행합니다. 그 후, commit 명령어로 원하는 작업이 추가된 새로운 이미지를 얻습니다.
+> 아래 실습은 아래와 같이 진행하려고 합니다. 이 방법은 우선 기본 이미지를 실행 시킨 후, 컨테이너 안에서 원하는 패키지나 소스코드 등 작업(아래에서는 telnet를 설치) 을 진행합니다. 그 후, <span style="background-color: #e6e6ff; font-clolr: #000000"> commit 명령어로 원하는 작업이 추가된 새로운 이미지를 얻습니다. </span> 
 
 ![Untitled/Untitled.png](/assets/img/docker/basic_3/Untitled.png)
 
@@ -184,7 +184,7 @@ excerpt: "docker 이미지 만들기"
 
 ## 🔹 기본 설명
 
-> 이전에 설명했던 부분으로 1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성됩니다.
+> 이전에 설명했던 부분으로 1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 <span style="background-color: #e6e6ff; font-clolr: #000000"> 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성</span> 됩니다.
 
 ![Untitled/Untitled%201.png](/assets/img/docker/basic_3/Untitled%201.png)
 
@@ -304,7 +304,7 @@ excerpt: "docker 이미지 만들기"
 
 > docker build 명령어 사용 시 빌드되는 과정을 알아봅시다.
 
-Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도커파일 명령어가 실행될 때 새로운 컨테이너가 생성되며, 이를 이미지로 커밋하게 됩니다.  따라서 Dockerfile 작성 시, 줄 수을 최소화하는 것이 중요합니다. 
+Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <span style="background-color: #e6e6ff; font-clolr: #000000">도커파일 명령어가 실행될 때 새로운 컨테이너가 생성되며, 이를 이미지로 커밋하게 됩니다.</span> 따라서 Dockerfile 작성 시, 줄 수을 최소화하는 것이 중요합니다. 
 
 ![Untitled/Untitled%203.png](/assets/img/docker/basic_3/Untitled%203.png)
 
@@ -312,7 +312,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 
 > 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
 
-- Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용하는 것을 알 수 있습니다.
+- <span style="background-color: #e6e6ff; font-clolr: #000000"> Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용 </span>하는 것을 알 수 있습니다.
 {% highlight bash %}
     # 1. Dockerfile를 복사한다. 
     $ cp Dockerfile Dockerfile_2
@@ -337,7 +337,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
     
     ------- 생략 ------- 
 {% endhighlight %}
-그러나 항상 캐시 기능이 필요한 것은 아닙니다. 예를 들어 git clone 과 같은 명령어를 사용할 때 캐시가 적용되면 소스가 변경될 때 변경되지 않습니다. 따라서 --no-cache 옵션을 사용하면 됩니다. 
+그러나 항상 캐시 기능이 필요한 것은 아닙니다. 예를 들어 git clone 과 같은 명령어를 사용할 때 캐시가 적용되면 소스가 변경될 때 변경되지 않습니다. 따라서 <span style="background-color: #e6e6ff; font-clolr: #000000">--no-cache </span> 옵션을 사용하면 됩니다. 
 {% highlight bash %}
     $ docker build --no-cache -t myflask:0.2 . 
 {% endhighlight %}
@@ -375,7 +375,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 
 # 4. docker hub
 
-> 이번엔 내가 만든 이미지를 docker Hub에 올려보자. docker Hub는 다른 사용자들과 도커 이미지를 공유하는 저장소입니다.
+> 이번엔 내가 만든 이미지를 docker Hub에 올려보자. <span style="background-color: #e6e6ff; font-clolr: #000000"> docker Hub는 다른 사용자들과 도커 이미지를 공유하는 저장소입니다.</span> 
 
 - 참고 사이트 : [https://docs.docker.com/docker-hub/](https://docs.docker.com/docker-hub/)
 
