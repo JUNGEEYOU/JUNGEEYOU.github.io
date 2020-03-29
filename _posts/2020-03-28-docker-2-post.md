@@ -75,9 +75,9 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ## 🔹 docker version
 
  설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
-
+{% highlight bash %}
     **$ docker version**
-
+{% endhighlight %}
 ## 🔹 docker version 결과
 
 > 이전에 설명한 Docker architecture 에서 도커의 구조는 **클라이언트-서버** 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
@@ -89,7 +89,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
      Go version:        go1.12.12
      Git commit:        633a0ea
      Built:             Wed Nov 13 07:22:34 2019
-     OS/Arch:           darwin/amd64
+   <span style="background-color: #e6e6ff; font-clolr: #000000">  OS/Arch:           darwin/amd64 </span>
      Experimental:      false
     
     Server: Docker Engine - Community
@@ -99,13 +99,12 @@ image: /assets/img/docker/basic_1/Moby-logo.png
       Go version:       go1.12.12
       Git commit:       633a0ea
       Built:            Wed Nov 13 07:29:19 2019
-      OS/Arch:          linux/amd64
+    <span style="background-color: #e6e6ff; font-clolr: #000000">  OS/Arch:          linux/amd64 </span>
       Experimental:     true
 {% endhighlight %}
 
 ![docker%20docker/Untitled.png](/assets/img/docker/basic_2/Untitled.png)
-
-docker Client-Server 구조 
+[도커 문서](https://docs.docker.com/engine/docker-overview/) 참조 - docker Client-Server 구조 
 
 - **client**:  현재 나의 컴퓨터. **OS/Arch** 를 보면 제 컴퓨터가 mac이라서 **darwin/amd64** 라고 확인할 수 있습니다.
 - **server**: 실제 컨테이너를 생성 및 실행하며 이미지를 관리합니다. Client가 명령어를 전달하면 Server가 명령어를 받아 실행합니다.
@@ -124,7 +123,7 @@ docker Client-Server 구조
 
  docker search [검색할 이미지명]
 
-### 예시
+### 🔸 예시
 
 {% highlight bash %}
     **$ docker search ubuntu**
@@ -147,9 +146,8 @@ docker Client-Server 구조
 [ ](https://www.notion.so/e4f8be1cd6a64b2584d4f7b5d9442516)
 
 ### 🔸 예시
-
 - ubuntu 라는 이미지 이름. 태그는 18.04 의 이미지를 다운로드 한다.
-- **저장소**: 도커 허브에 존재. [https://registry.hub.docker.com/_/ubuntu?tab=description](https://registry.hub.docker.com/_/ubuntu?tab=description) 에서 확인 가능
+- **저장소**: 도커 허브에 존재. [도커허브사이트](https://registry.hub.docker.com/_/ubuntu?tab=description) 에서 확인 가능
 {% highlight bash %}
     **$ docker pull ubuntu:18.04**
     18.04: Pulling from library/ubuntu
@@ -171,11 +169,11 @@ docker images
 ### 🔸 예시
 
 - 이전 예제에서 다운받은 이미지 리스트를 확인할 수 있다.
-
+{% highlight bash %}
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     ubuntu              18.04               72300a873c2c        2 weeks ago         64.2MB
-
+{% endhighlight %}
 ## 🔹 docker rmi
 
 > 이미지 제거하기
