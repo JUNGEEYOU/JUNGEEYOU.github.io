@@ -61,6 +61,7 @@ excerpt: "docker 이미지 만들기"
 💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]
 {% endhighlight %}
 ### 🔸 OPTIONS
+
  | 옵션 |  설명  | 
  |----------|----------|
  | -a, --author | 생성자 정보를 입력합니다.   |
@@ -246,6 +247,7 @@ excerpt: "docker 이미지 만들기"
 
 - 참고: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
 ### 🔸 OPTIONS
+
  | 명령어 |  설명  | 사용법  |
  |----------|----------|----------|
  | FROM| 베이스 이미지 지정/ 자신이 만든 이미지도 가능  |  FROM < 이미지 이름> |
