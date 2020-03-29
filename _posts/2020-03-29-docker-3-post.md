@@ -147,7 +147,6 @@ excerpt: "docker 이미지 만들기"
     telnet>
 {% endhighlight %}
 **3. 새 터미널에서 commit 진행** 
-
 - **-m 옵션:**  변경된 로그를 입력해 줍니다. ("install telnet")
 - **컨테이너 명**: commit_test
 - **원하는 이미지 명 & tag** : centos_telnet:01
@@ -173,7 +172,9 @@ excerpt: "docker 이미지 만들기"
     [root@863ac3be5d1c /]# telnet
     telnet>
 {% endhighlight %}
+
 <br/>
+
 ---
 
 # 3. DockerFile
@@ -186,7 +187,9 @@ excerpt: "docker 이미지 만들기"
 
 - **Dockerfile**: 컨테이너에 설치해야 하는 패키지, 추가해야하는 소스코드, 실행해야하는 명령어 등을 기록해 두는 파일
 - **Build**: Dockerfile를 읽어 이미지를 생성합니다.
+
 <br/>
+
 ## 🔹 실습 1. python-Flask
 
 > app.py, requirements.txt 는 python-flask를 실행하기 위한 파일입니다. 우선 해당 파일을 생성 후, Dockerfile를 만들어 봅시다.
@@ -245,7 +248,9 @@ excerpt: "docker 이미지 만들기"
     # 결국 python app.py 명령어 실행 
     CMD [ "app.py" ]
 {% endhighlight %}
+
 <br/>
+
 ### 🔸 Dockerfile 명령어
 
 - **참고**: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
@@ -266,7 +271,9 @@ excerpt: "docker 이미지 만들기"
  | ENV| 환경변수 지정    | ENV  <환경변수> <값> |
  | VOLUME | 호스트와 컨테이너 내부의 디렉토리를 설정하여 데이터를 공유.  도커 실행 시 , -v 명령어로 지정해야 볼륨이 생성됨.     | VOLUME  컨테이너_디렉토리  |
  {:.inner-borders}
+ 
 <br/>
+
 **4. docker build** 
 
 - 만든 Dockerfile를 build하여 이미지를 만들어 봅니다.
@@ -296,7 +303,9 @@ excerpt: "docker 이미지 만들기"
 - [localhost:5000](http://localhost:5000) 에 접속해자.
 
 ![Untitled/Untitled%202.png](/assets/img/docker/basic_3/Untitled%202.png)
+
 <br/>
+
 ## 🔹 Dockerfile build 자세히 살펴보기
 
 ### 🔸 빌드 과정 알아보기
@@ -306,7 +315,9 @@ excerpt: "docker 이미지 만들기"
 Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <span style="background-color: #e6e6ff; font-clolr: #000000">도커파일 명령어가 실행될 때 새로운 컨테이너가 생성되며, 이를 이미지로 커밋하게 됩니다.</span> 따라서 Dockerfile 작성 시, 줄 수을 최소화하는 것이 중요합니다. 
 
 ![Untitled/Untitled%203.png](/assets/img/docker/basic_3/Untitled%203.png)
+
 <br/>
+
 ### 🔸 캐시 이미지 빌드
 
 > 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
@@ -340,11 +351,14 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 {% highlight shell %}
     $ docker build --no-cache -t myflask:0.2 . 
 {% endhighlight %}
+
 <br/>
+
 ### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
  멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
 
 <br/>
+
 ### 🔸  Dockerfile 작성 시, 주의점
 
 1.**.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
@@ -368,10 +382,14 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
         root@3a1fa88e605b:/app# ls
         Dockerfile_2  app.py  requirements.txt
 {% endhighlight %}
+
 <br/>
+
 2.**RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
     - 위에서 말했듯이 Dockerfile 한 줄은 한 이미지 레이어라고 하였습니다. 따라서 RUN 명령어는 한 줄로 묶는 것이 가능하다면 묶는 것이 좋습니다.
+
 <br/>
+
 ---
 
 # 4. docker hub
