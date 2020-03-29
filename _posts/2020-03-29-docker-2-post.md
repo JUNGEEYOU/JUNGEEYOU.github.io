@@ -3,7 +3,7 @@ layout: post
 title: "docker를 사용해보자 (docker 기본 명령어 사용해보기)"
 date: 2020-03-15
 excerpt: ""
-tags: [docker , docker 기본 개념 ]
+tags: [docker , docker 기본 명령어 ]
 comments: true
 docker : true 
 feature: /assets/img/docker/basic_1/whale.jpeg
