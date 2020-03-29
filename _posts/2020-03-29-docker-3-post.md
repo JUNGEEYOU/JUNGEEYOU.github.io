@@ -337,8 +337,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
     $ docker build --no-cache -t myflask:0.2 . 
 {% endhighlight %}
 ### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
-
-> 멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
+ 멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
 
 ### 🔸  Dockerfile 작성 시, 주의점
 
