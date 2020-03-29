@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "docker를 사용해보자 (docker 기본 명령어 사용해보기)"
+title: "docker 이미지를 만들어보자"
 date: 2020-03-29
 excerpt: ""
-tags: [docker , docker 기본 명령어 ]
+tags: [docker , dockerfile, docker 이미지  ]
 comments: true
 docker : true 
 feature: /assets/img/docker/basic_1/whale.jpeg
@@ -12,7 +12,6 @@ excerpt: "도커 기본 명령어 정리  "
 ---
 
 
-# 도커 이미지 만들기
 
 > 이번 시간에는 docker 이미지를 커스터마이징하기 위해 Dockerfile로 이미지를 만들어 봅시다. 더 나아가 만든 도커 이미지를 hub에 올려 봅시다.
 
@@ -53,7 +52,7 @@ excerpt: "도커 기본 명령어 정리  "
 
 > 아래 실습은 아래와 같이 진행하려고 합니다. 이 방법은 우선 기본 이미지를 실행 시킨 후, 컨테이너 안에서 원하는 패키지나 소스코드 등 작업(아래에서는 telnet를 설치) 을 진행합니다. 그 후, commit 명령어로 원하는 작업이 추가된 새로운 이미지를 얻습니다.
 
-![Untitled/Untitled.png](Untitled/Untitled.png)
+![Untitled/Untitled.png](/assets/img/docker/basic_3/Untitled.png)
 
 ### 🔸  commit  명령어
 
@@ -184,7 +183,7 @@ docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 
 > 이전에 설명했던 부분으로 1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성됩니다.
 
-![Untitled/Untitled%201.png](Untitled/Untitled%201.png)
+![Untitled/Untitled%201.png](/assets/img/docker/basic_3/Untitled%201.png)
 
 - **Dockerfile**: 컨테이너에 설치해야 하는 패키지, 추가해야하는 소스코드, 실행해야하는 명령어 등을 기록해 두는 파일
 - **Build**: Dockerfile를 읽어 이미지를 생성합니다.
@@ -280,7 +279,7 @@ docker build [OPTIONS] 도커파일경로
 
 - [localhost:5000](http://localhost:5000) 에 접속해자.
 
-![Untitled/Untitled%202.png](Untitled/Untitled%202.png)
+![Untitled/Untitled%202.png](/assets/img/docker/basic_3/Untitled%202.png)
 
 ## 🔹 Dockerfile build 자세히 살펴보기
 
@@ -290,7 +289,7 @@ docker build [OPTIONS] 도커파일경로
 
 Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도커파일 명령어가 실행될 때 새로운 컨테이너가 생성되며, 이를 이미지로 커밋하게 됩니다.  따라서 Dockerfile 작성 시, 줄 수을 최소화하는 것이 중요합니다. 
 
-![Untitled/Untitled%203.png](Untitled/Untitled%203.png)
+![Untitled/Untitled%203.png](/assets/img/docker/basic_3/Untitled%203.png)
 
 ### 🔸 캐시 이미지 빌드
 
@@ -382,11 +381,11 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 - 방법 2. UI에서 로그인하기 (mac 환경)
     - 아래 이미지 순서로 빨간 테두리 부분을 클릭하여 로그인해 봅니다.
 
-![Untitled/Untitled%204.png](Untitled/Untitled%204.png)
+![Untitled/Untitled%204.png](/assets/img/docker/basic_3/Untitled%204.png)
 
 도커 로그인 진행 
 
-![Untitled/Untitled%205.png](Untitled/Untitled%205.png)
+![Untitled/Untitled%205.png](/assets/img/docker/basic_3/Untitled%205.png)
 
 자신의 도커 ID와 비밀번호를 입력
 
@@ -421,7 +420,7 @@ docker push [허브_아이디]/이미지명:[태그]
 - [https://hub.docker.com/repositories](https://hub.docker.com/repositories)
 - 아래 이미지와 같이 위에서 push한 이미지가 있음을 확인할 수 있습니다.
 
-![Untitled/Untitled%206.png](Untitled/Untitled%206.png)
+![Untitled/Untitled%206.png](/assets/img/docker/basic_3/Untitled%206.png)
 
 **6. 이전 이미지를 지우고, hub에 올린 이미지를 다운받아 보자.**
 
