@@ -394,7 +394,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 
 ## 🔹 Docker hub 실습해 보기
 
-1. **docker hub 가입하기** 
+**1. docker hub 가입하기** 
     - [https://hub.docker.com/signup](https://hub.docker.com/signup)
 
 **2.  docker 로그인하기** 
