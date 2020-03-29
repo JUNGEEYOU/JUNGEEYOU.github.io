@@ -412,12 +412,10 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
     - 아래 이미지 순서로 빨간 테두리 부분을 클릭하여 로그인해 봅니다.
 
 ![Untitled/Untitled%204.png](/assets/img/docker/basic_3/Untitled%204.png)
+<center>도커 로그인 진행 </center>
 
-도커 로그인 진행 
-
-![Untitled/Untitled%205.png](/assets/img/docker/basic_3/Untitled%205.png)
-
-자신의 도커 ID와 비밀번호를 입력
+![Untitled/Untitled%205.png](/assets/img/docker/basic_3/Untitled%205.png){: width="50%" height="50%"}
+<center>자신의 도커 ID와 비밀번호를 입력</center>
 
 **3.  이전에 build한 이미지를 계정에 맞게  tag 명령어로 새로 생성해 준다.** 
 
