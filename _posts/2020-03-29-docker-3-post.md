@@ -273,13 +273,19 @@ excerpt: "docker 이미지 만들기"
 <br/>
 
 **4. docker build** 
-
 - 만든 Dockerfile를 build하여 이미지를 만들어 봅니다.
 {% highlight shell %}
 💡  docker build [OPTIONS] 도커파일경로 
 {% endhighlight %}
 
-[OPTIONS](https://www.notion.so/7cb97f0705414131815ec7d967060a77)
+### 🔸 OPTIONS
+
+ | 옵션 |  설명  | 
+ |----------|----------|
+ | --tag , -t |  이미지 이름과 태그를 설정   |
+ | --no-cache |  빌드 시, 캐시 기능을 사용하지 않음     |
+ {:.inner-borders}
+ 
 {% highlight shell %}
     # Dockerfile 위치에서 build 명령어 실행 
     $ docker build -t myflask:0.1 .
