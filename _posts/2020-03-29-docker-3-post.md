@@ -58,7 +58,7 @@ excerpt: "docker 이미지 만들기"
 
 - **참고** : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
 {% highlight bash %}
-docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
+💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 {% endhighlight %}
 ### 🔸 OPTIONS
 
