@@ -64,9 +64,9 @@ excerpt: "docker 이미지 만들기"
 
  | 옵션 |  설명  | 
  |----------|----------|
- | -a, --author |  <span>&nbsp;</span> 생성자 정보를 입력합니다.   |
- | -m, --message |  변경 사항에 대한 메시지를 입력 합니다.    |
- | -p, --pause |  이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
+ |  <span>&nbsp;</span> -a, --author |  <span>&nbsp;</span> 생성자 정보를 입력합니다.   |
+ |  <span>&nbsp;</span> -m, --message |   <span>&nbsp;</span> 변경 사항에 대한 메시지를 입력 합니다.    |
+ |  <span>&nbsp;</span> -p, --pause |   <span>&nbsp;</span> 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
  {:.inner-borders}
  
 <br/>
