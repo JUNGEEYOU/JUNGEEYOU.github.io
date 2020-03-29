@@ -64,7 +64,7 @@ excerpt: "docker 이미지 만들기"
 
  | 옵션 |  설명  | 
  |----------|----------|
- | -a, --author |  생성자 정보를 입력합니다.   |
+ | -a, --author |  <span>&nbsp;</span> 생성자 정보를 입력합니다.   |
  | -m, --message |  변경 사항에 대한 메시지를 입력 합니다.    |
  | -p, --pause |  이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
  {:.inner-borders}
@@ -181,7 +181,7 @@ excerpt: "docker 이미지 만들기"
 
 ## 🔹 기본 설명
 
-> 이전에 설명했던 부분으로 1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 <span style="background-color: #e6e6ff; font-clolr: #000000"> 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성</span> 됩니다.
+> 이전에 설명했던 부분으로 1) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 <span style="background-color: #e6e6ff; font-clolr: #000000"> 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성</span> 됩니다.
 
 ![Untitled/Untitled%201.png](/assets/img/docker/basic_3/Untitled%201.png)
 
@@ -209,13 +209,11 @@ excerpt: "docker 이미지 만들기"
         app.run(debug=True, host='0.0.0.0')
 {% endhighlight %}
 **2. requirements.txt**
-
 - Flask 라는 라이브러리 설치가 필요하여 버전과 함께 설치할 라이브러리를 명시해준 파일입니다.
 {% highlight text %}
     Flask==0.10.1
 {% endhighlight %}
 **3.  Dockerfile**
-
 - 패키지, 소스코드 등을 기록해둔 파일입니다. 위에서 말했듯이 이를 build하면 커스터마이징된 이미지가 생성됩니다.
 - RUN과 같은 명령어 의미에 대해서 파악 해봅니다.
 {% highlight shell %}
