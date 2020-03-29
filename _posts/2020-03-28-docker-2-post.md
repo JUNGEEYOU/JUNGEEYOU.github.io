@@ -219,7 +219,7 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 ### 🔸  예시 1
 
 - ubuntu:18.04  컨테이너를 실행하는 예시로 해당 이미지가 없어서 다운로드(pull)한 뒤, 컨테이너를 실행한다.
-
+{% highlight bash %}
     **$ docker run ubuntu:18.04**
     Unable to find image 'ubuntu:18.04' locally
     18.04: Pulling from library/ubuntu
@@ -229,7 +229,7 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
     b6b53be908de: Pull complete 
     Digest: sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
     Status: Downloaded newer image for ubuntu:18.04
-
+{% endhighlight %}
 ## 🔸  예시 2
 
 - **- - name**: test라는 컨테이너 이름 설정
@@ -241,7 +241,7 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
     # 아래는 docker bash 들어간 것** 
     **root@de78d86be9c0:/# ls**
     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-
+{% endhighlight %}
 ## 🔹 docker ps
 
 > 컨테이너 목록 확인. 옵션 없이 사용하는 경우 실행중인 컨테이너만 출력.
@@ -412,6 +412,7 @@ docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
      -p 80 \
     wordpress
 {% endhighlight %}
+
 ### 🔸   볼륨 공유 확인하기
 
 - 내 컴퓨터 **호스트의 공유 디렉터리** 로 이동 후, 확인
@@ -454,6 +455,7 @@ docker history [OPTIONS] [이미지 명:tag]
 ### 🔸  예시
 
 > 베이스 이미지의 경우 아래와 같은 history 를 확인할 수 있다.
+
 {% highlight bash %}
     $ docker history ubuntu:16.04
     IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
@@ -463,6 +465,7 @@ docker history [OPTIONS] [이미지 명:tag]
     <missing>           4 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0B                  
     <missing>           4 weeks ago         /bin/sh -c #(nop) ADD file:1f70668251e2e58ce…   124MB
 {% endhighlight %}
+
 ## 🔹 docker cp
 
 > 컨테이너 안에 있는 파일을 꺼낼 수 있습니다.
@@ -472,12 +475,14 @@ docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
 ### 🔸  예시
 
 > 위에서 진행한 컨테이너의 hosts 파일을 가져와 봅시다.
+
 {% highlight bash %}
     $ docker cp wordpressdb:/etc/hosts ./
     
     $ ls
     hosts
 {% endhighlight %}
+
 ## 🔹 docker inspect
 
 > 이미지 또는  컨테이너의 세부 정보를 출력합니다.
@@ -511,7 +516,9 @@ docker inspect [이미지 또는 컨테이너 이름]
                 "FinishedAt": "0001-01-01T00:00:00Z"
             },
     ...
+    
 {% endhighlight %}
+
 ---
 
 # 마무리
