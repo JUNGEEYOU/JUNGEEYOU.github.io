@@ -58,15 +58,16 @@ excerpt: "docker 이미지 만들기"
 
 - **참고** : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
 {% highlight bash %}
-💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
+💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]
 {% endhighlight %}
 ### 🔸 OPTIONS
+
  | 옵션 |  설명  |
  |----------|----------|
  | -a, --author | 생성자 정보를 입력합니다.   |
  | m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
  | -p, --pause | 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
-{:.inner-borders}
+ {:.inner-borders}
 
 ## 🔹 실습하기  - telnet 설치된 이미지 만들기
 
