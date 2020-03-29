@@ -257,7 +257,7 @@ excerpt: "docker 이미지 만들기"
  | WORKDIR|  <span>&nbsp;</span> 작업 디렉토리 변경. 배시 셸 cd 명령어와 같은 기능  |  <span>&nbsp;</span> WORKDIR 작업디렉토리 |
  | EXPOSE|  <span>&nbsp;</span> 컨테이너로 실행 시 노출시킬 포트. 단순히 해당 포트를 사용한다는 것을 명시하는 것. 이를 사용해도 run 명령어(도커 실행)에서 -P 옵션도 필요   |  <span>&nbsp;</span> EXPOSE 포트 |
  | CMD |  <span>&nbsp;</span> 컨테이너가 시작될 때마다 실행할 명령어를 설정. Dockerfile에서 한 번만 사용 가능.     |  <span>&nbsp;</span> CMD /run.sh |
- | ENTRYPOINT|  <span>&nbsp;</span> 컨테이너가 시작될 때마다 실행할 명령어를 설정.  Dockerfile에서 한 번만 사용 가능. CMD와 다르게 컨테이너 실행 시, 명령어 입력을 하면 반드시 기본으로 실행하며 그 뒤 인자로 명령어가 실행됩니다.  |  <span>&nbsp;</span> ENTRYPOINT 명령어. ENTRYPOINT ["실행 파일", "매개 변수1", "매개 변수2"] |
+ | ENTRYPOINT|  <span>&nbsp;</span> 컨테이너가 시작될 때마다 실행할 명령어를 설정.  Dockerfile에서 한 번만 사용 가능. CMD와 다르게 컨테이너 실행 시, 명령어 입력을 하면 반드시 기본으로 실행하며 그 뒤 인자로 명령어가 실행됩니다.  | <span>&nbsp;</span>ENTRYPOINT 명령어. <br/> ENTRYPOINT ["실행 파일", "매개 변수1", "매개 변수2"] |
  | ENV|  <span>&nbsp;</span> 환경변수 지정    |  <span>&nbsp;</span> ENV  환경변수 값 |
  | VOLUME |  <span>&nbsp;</span> 호스트와 컨테이너 내부의 디렉토리를 설정하여 데이터를 공유.  도커 실행 시 , -v 명령어로 지정해야 볼륨이 생성됨.     |  <span>&nbsp;</span> VOLUME  컨테이너_디렉토리  |
  {:.inner-borders}
