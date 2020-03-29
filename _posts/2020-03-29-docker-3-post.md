@@ -319,7 +319,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 
 > 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
 
-- <span style="background-color: #e6e6ff; font-clolr: #000000"> Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용 </span>하는 것을 알 수 있습니다.
+- <span style="background-color: #e6e6ff; font-clolr: #000000"> Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용</span>하는 것을 알 수 있습니다.
 {% highlight shell %}
     # 1. Dockerfile를 복사한다. 
     $ cp Dockerfile Dockerfile_2
