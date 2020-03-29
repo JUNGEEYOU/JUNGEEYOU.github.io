@@ -57,16 +57,16 @@ excerpt: "docker 이미지 만들기"
 ### 🔸  commit  명령어
 
 - **참고** : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
-{% highlight bash %}
+{% highlight shell %}
 💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]
 {% endhighlight %}
 ### 🔸 OPTIONS
 
  | 옵션 |  설명  | 
  |----------|----------|
- | -a, --author | 생성자 정보를 입력합니다.   |
- | -m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
- | -p, --pause | 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
+ | -a, --author |  생성자 정보를 입력합니다.   |
+ | -m, --message |  변경 사항에 대한 메시지를 입력 합니다.    |
+ | -p, --pause |  이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
  {:.inner-borders}
 
 ## 🔹 실습하기  - telnet 설치된 이미지 만들기
@@ -86,7 +86,7 @@ excerpt: "docker 이미지 만들기"
 **2. telnet 를 설치하기** 
 
 - 아래 명령어로 cenots 컨테이너에서 telnet를 설치합니다.
-{% highlight bash %}
+{% highlight shell %}
     [root@ade9f1da26d3 /]# yum install -y telnet
     ------- 생략 -------                                                                                                                              
     
@@ -99,20 +99,20 @@ excerpt: "docker 이미지 만들기"
 **3. 새 터미널에서 diff 명령어로 변경된 파일 확인하기**
 
 - 확인해 보면 telnet이 추가된 것을 확인할 수 있다.
-{% highlight bash %}
+{% highlight shell %}
     (new terminal)
     $ docker diff commit_test
     
     A /usr/bin/telnet
 {% endhighlight %}
 **4. 해당 컨테이너 내리기** 
-{% highlight bash %}
+{% highlight shell %}
     $ docker rm -f commit_test
 {% endhighlight %}
 **5. 같은 이미지를 다시 실행 시켜  위에서 설치한  telnet 명령어가 되는지 확인**
 
 - 아래와 같이 저장이 안된 모습을 확인할 수 있다.
-{% highlight bash %}
+{% highlight shell %}
     $ docker run -it --name commit_test centos bash
     [root@82aa81723f45 /]# telnet
     bash: telnet: command not found
@@ -124,11 +124,11 @@ excerpt: "docker 이미지 만들기"
  **1. docker run** 
 
 - 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
-{% highlight bash %}
+{% highlight shell %}
     $ docker run -it --name commit_test centos bash
 {% endhighlight %}
 **2. telnet 를 설치하기** 
-{% highlight bash %}
+{% highlight shell %}
     [root@82aa81723f45 /]# yum install -y telnet
     Failed to set locale, defaulting to C.UTF-8
     CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
@@ -166,7 +166,7 @@ excerpt: "docker 이미지 만들기"
 **4. commit 으로 생성한 이미지 실행하여 telnet 동작 확인** 
 
 - commit 명령어로 telnet이 설치된 이미지가 생성된 것을 확인할 수 있다.
-{% highlight bash %}
+{% highlight shell %}
     $ docker run -it --name commit_test2 centos_telnet:01 bash
     [root@863ac3be5d1c /]# telnet
     telnet>
@@ -213,7 +213,7 @@ excerpt: "docker 이미지 만들기"
 
 - 패키지, 소스코드 등을 기록해둔 파일입니다. 위에서 말했듯이 이를 build하면 커스터마이징된 이미지가 생성됩니다.
 - RUN과 같은 명령어 의미에 대해서 파악 해봅니다.
-{% highlight bash %}
+{% highlight shell %}
     # FROM: 베이스 이미지를 지정 (여기서는 ubuntu 16.04 버전 사용) 
     FROM ubuntu:16.04
     
@@ -252,7 +252,7 @@ excerpt: "docker 이미지 만들기"
  |----------|----------|----------|
  | FROM| 베이스 이미지 지정/ 자신이 만든 이미지도 가능  |  FROM < 이미지 이름> |
  | MAINTAINER | 개발자 정보를 나타냄   | |
- | RUN| 명령어 실행. -y : 꼭 넣어주기  | RUN <명령어> 혹은  RUN ["실행가능한 파일", "명령 인자1", "명령 인자2" ...  ] |
+ | RUN| 명령어 실행. -y : 꼭 넣어주기  |  RUN <명령어> 혹은  RUN ["실행가능한 파일", "명령 인자1", "명령 인자2" ...  ] |
  | ADD| 파일을 이미지에 추가 . COPY 기능(로컬 파일을 이미지에 추가) + 외부 url 및 tar 파일 추가 가능    | ADD <추가할 파일> <도커 안에 파일이 추가될 경로> |
  | COPY | 파일을 이미지에 추가 . 로컬 파일 이미지에 추가     | COPY <추가할 파일> <도커 안에 파일이 추가될 경로> |
  | WORKDIR| 작업 디렉토리 변경. 배시 셸 cd 명령어와 같은 기능  | WORKDIR <작업디렉토리> |
@@ -266,12 +266,12 @@ excerpt: "docker 이미지 만들기"
 **4. docker build** 
 
 - 만든 Dockerfile를 build하여 이미지를 만들어 봅니다.
-{% highlight bash %}
+{% highlight shell %}
 💡  docker build [OPTIONS] 도커파일경로 
 {% endhighlight %}
 
 [OPTIONS](https://www.notion.so/7cb97f0705414131815ec7d967060a77)
-{% highlight bash %}
+{% highlight shell %}
     # Dockerfile 위치에서 build 명령어 실행 
     $ docker build -t myflask:0.1 .
     
@@ -284,7 +284,7 @@ excerpt: "docker 이미지 만들기"
 **5. docker run** 
 
 - 커스터마이징된 이미지를 실행시켜 컨테이너 결과를 확인해 봅니다.
-{% highlight bash %}
+{% highlight shell %}
     $ docker run --name flask -d -p 5000:5000 myflask:0.1
 {% endhighlight %}
 6. 결과 확인 
@@ -308,7 +308,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 > 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
 
 - <span style="background-color: #e6e6ff; font-clolr: #000000"> Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용 </span>하는 것을 알 수 있습니다.
-{% highlight bash %}
+{% highlight shell %}
     # 1. Dockerfile를 복사한다. 
     $ cp Dockerfile Dockerfile_2
     
@@ -382,7 +382,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 **2.  docker 로그인하기** 
 
 - 방법 1. 터미널에서 docker login 명령어로 로그인 하기
-{% highlight bash %}
+{% highlight shell %}
     $ sudo docker login
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: EOF
     Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
@@ -406,7 +406,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 - 이미지는 자신 계정 이름과 일치해야 Hub에 push가 가능합니다.
 
 docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
-{% highlight bash %}
+{% highlight shell %}
     $ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest
     Password:
     
@@ -418,7 +418,7 @@ docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
 **4. docker hub에 push**
 
 docker push [허브_아이디]/이미지명:[태그]
-{% highlight bash %}
+{% highlight shell %}
     $ docker push junge2/centos_telnet:latest
     
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: open /Users/jungee/.docker/config.json: permission denied
@@ -439,7 +439,7 @@ docker push [허브_아이디]/이미지명:[태그]
 - **docker rmi** :  이미지를 삭제
 - **docker pull [자신의 docker hub ID]/이미지:버전** : 자신이 올린 이미지를 다운 받습니다.
 - **docker images:** 이미지 리스트 확인
-{% highlight bash %}
+{% highlight shell %}
     $ sudo docker rmi junge2/centos_telnet
     Untagged: junge2/centos_telnet:latest
     Untagged: junge2/centos_telnet@sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
