@@ -272,10 +272,10 @@ excerpt: "docker 이미지 만들기"
 
 ### 🔸 OPTIONS
 
- | 옵션 |  설명  | 
+ | <span>&nbsp;</span> 옵션 |  <span>&nbsp;</span> 설명  | 
  |----------|----------|
- | --tag , -t |  이미지 이름과 태그를 설정   |
- | --no-cache |  빌드 시, 캐시 기능을 사용하지 않음     |
+ | <span>&nbsp;</span> --tag , -t |  <span>&nbsp;</span> 이미지 이름과 태그를 설정   |
+ | <span>&nbsp;</span> --no-cache |  <span>&nbsp;</span> 빌드 시, 캐시 기능을 사용하지 않음     |
  {:.inner-borders}
  
  <br/>
