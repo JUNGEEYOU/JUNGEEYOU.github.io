@@ -61,19 +61,18 @@ excerpt: "docker 이미지 만들기"
 💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 {% endhighlight %}
 ### 🔸 OPTIONS
-    | 옵션 |  설명  |
-    |----------|----------|
-    | -a, --author | 생성자 정보를 입력합니다.   |
-    | m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
-    | -p, --pause | 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
-    {:.inner-borders}
+ | 옵션 |  설명  |
+ |----------|----------|
+ | -a, --author | 생성자 정보를 입력합니다.   |
+ | m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
+ | -p, --pause | 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
+ {:.inner-borders}
 
 ## 🔹 실습하기  - telnet 설치된 이미지 만들기
 
 > commit 없이 진행한 것과 commit 명령어로 진행한 작업을 비교하고자 합니다.  아래 두 가지 작업 모두 실습해 봅시다.
 
-- **참고**
-    - **telnet 명령어**: 특정 포트(Port)가 접속 가능한지 확인 가능한 명령어 입니다.
+- **telnet 명령어**: 특정 포트(Port)가 접속 가능한지 확인 가능한 명령어 입니다.
 
 ### 🔸 commit 명령어 없이 이미지 확인하기
 
