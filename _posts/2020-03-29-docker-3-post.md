@@ -90,7 +90,6 @@ excerpt: "docker 이미지 만들기"
 {% highlight shell %}
     [root@ade9f1da26d3 /]# yum install -y telnet
     ------- 생략 -------                                                                                                                              
-    
     Complete!
     
     
@@ -132,14 +131,7 @@ excerpt: "docker 이미지 만들기"
 **2. telnet 를 설치하기** 
 {% highlight shell %}
     [root@82aa81723f45 /]# yum install -y telnet
-    Failed to set locale, defaulting to C.UTF-8
-    CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
-    CentOS-8 - Base                                                                                                              3.2 MB/s | 5.0 MB     00:01    
-    CentOS-8 - Extras                                                                                                            2.8 kB/s | 4.2 kB     00:01    
-    Dependencies resolved.
-    
-    ------- 생략 -------                                                                                                                              
-    
+    ------- 생략 -------                                                                                                                               
     Complete!
     
     
@@ -286,6 +278,7 @@ excerpt: "docker 이미지 만들기"
  | --no-cache |  빌드 시, 캐시 기능을 사용하지 않음     |
  {:.inner-borders}
  
+ <br/>
 {% highlight shell %}
     # Dockerfile 위치에서 build 명령어 실행 
     $ docker build -t myflask:0.1 .
@@ -359,37 +352,36 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 <br/>
 
 ### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
- 멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
+멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조 ([공식 사이트](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
 
 <br/>
 
 ### 🔸  Dockerfile 작성 시, 주의점
 
-1.**.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
+1. **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
     - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
     - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
-{% highlight shell %}
-        # 1. .dockerignore 파일에 불필요한 이미지를 작성합니다.
-        $ vi .dockerignore
-        Dockerfile
-        
-        # 2. 해당 이미지를 빌드 합니다. 
-        $ docker build -t  myflask:0.3  .
-        
-        # 3. 이미지를 실행한 후, 컨테이너에 들어 갑니다. 
-        $ docker run --name flask -d -p 5000:5000 myflask:0.3
-        3a1fa88e605b34357cf8601e04b5c1f1b8a13010ee036e67b8efe27f4fda07f6
-        
-        $ docker exec -it flask bash
-        
-        # 4. Dockerfile 파일만 없는 것을 확인할 수 있다. 
-        root@3a1fa88e605b:/app# ls
-        Dockerfile_2  app.py  requirements.txt
-{% endhighlight %}
+    {% highlight shell %}
+            # 1. .dockerignore 파일에 불필요한 이미지를 작성합니다.
+            $ vi .dockerignore
+            Dockerfile
+            
+            # 2. 해당 이미지를 빌드 합니다. 
+            $ docker build -t  myflask:0.3  .
+            
+            # 3. 이미지를 실행한 후, 컨테이너에 들어 갑니다. 
+            $ docker run --name flask -d -p 5000:5000 myflask:0.3
+            3a1fa88e605b34357cf8601e04b5c1f1b8a13010ee036e67b8efe27f4fda07f6
+            
+            $ docker exec -it flask bash
+            
+            # 4. Dockerfile 파일만 없는 것을 확인할 수 있다. 
+            root@3a1fa88e605b:/app# ls
+            Dockerfile_2  app.py  requirements.txt
+    {% endhighlight %}
 
-<br/>
 
-2.**RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
+2. **RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
     - 위에서 말했듯이 Dockerfile 한 줄은 한 이미지 레이어라고 하였습니다. 따라서 RUN 명령어는 한 줄로 묶는 것이 가능하다면 묶는 것이 좋습니다.
 
 <br/>
