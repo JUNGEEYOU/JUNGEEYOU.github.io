@@ -61,6 +61,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 결과적으로 가상머신 이미지로 배포하기에 어려움이 존재
 
 ![docker/Untitled%201.png](/assets/img/docker/basic_1/Untitled%201.png){: width="60%" height="60%"}
+[도커 문서](https://docs.docker.com/get-started/) Containers and virtual machines  참조 
 
 ### 🔹  도커 컨테이너
 
@@ -68,10 +69,11 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 한 서버에 여러 개의 컨테이너를 실행하며, 서로 영향을 미치지 않고, 독립적으로 실행 가능
 - **vm과 달리 guest OS 설치 필요 없음**
     - 자원을 host os와 공유하여 용량이 낮음
-    - Host OS와 컨테이너의 차이만 패키징하여 저장( Host OS와 컨터이너 간 공유)
+    - Host OS와 컨테이너의 차이만 패키징하여 저장( Host OS와 컨테이너 간 공유)
     - 결과적으로 vm과 다르게 배포하기에 수월
 
 ![docker/Untitled%202.png](/assets/img/docker/basic_1/Untitled%202.png){: width="60%" height="60%"}
+[도커 문서](https://docs.docker.com/get-started/) Containers and virtual machines 참조 
 
 <br/>
 
