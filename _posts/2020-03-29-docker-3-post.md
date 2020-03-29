@@ -88,8 +88,7 @@ excerpt: "docker 이미지 만들기"
 
 - 아래 명령어로 cenots 컨테이너에서 telnet를 설치합니다.
 {% highlight bash %}
-    [root@ade9f1da26d3 /]# **yum install -y telnet**
-    
+    [root@ade9f1da26d3 /]# yum install -y telnet
     Failed to set locale, defaulting to C.UTF-8
     CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
     CentOS-8 - Base                                                                                                              3.2 MB/s | 5.0 MB     00:01    
@@ -101,7 +100,7 @@ excerpt: "docker 이미지 만들기"
     Complete!
     
     
-    [root@ade9f1da26d3 /]# **telnet**
+    [root@ade9f1da26d3 /]# telnet
     telnet>
 {% endhighlight %}
 **3. 새 터미널에서 diff 명령어로 변경된 파일 확인하기**
@@ -158,8 +157,8 @@ excerpt: "docker 이미지 만들기"
 - **컨테이너 명**: commit_test
 - **원하는 이미지 명 & tag** : centos_telnet:01
 {% highlight bash %}
-    *(new terminal)*
-    $ **docker commit -m "install telnet" commit_test centos_telnet:01**
+    (new terminal)
+    $ docker commit -m "install telnet" commit_test centos_telnet:01
     sha256:257fc79abba712f2dbb4e35c1816321dd854989bfedbb07ed94e614b4a59fa89
     
     
@@ -280,11 +279,11 @@ excerpt: "docker 이미지 만들기"
 [OPTIONS](https://www.notion.so/7cb97f0705414131815ec7d967060a77)
 {% highlight bash %}
     # Dockerfile 위치에서 build 명령어 실행 
-    **$ docker build -t myflask:0.1 .**
+    $ docker build -t myflask:0.1 .
     
     
     # docker 이미지 생성 결과 확인 
-    **$ docker images** 
+    $ docker images
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
     myflask                0.1                 bfac980a3b49        6 seconds ago       421MB
 {% endhighlight %}
@@ -317,14 +316,14 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 - Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용하는 것을 알 수 있습니다.
 {% highlight bash %}
     # 1. Dockerfile를 복사한다. 
-    **$ cp Dockerfile Dockerfile_2**
+    $ cp Dockerfile Dockerfile_2
     
     
-    **$ ls**
+    $ ls
     Dockerfile		Dockerfile_2		app.py			requirements.txt
     
     # 2. 다시 같은 내용을 빌드해 봅니다. 
-    **$ docker build -t  myflask:0.2 -f Dockerfile_2 .**
+    $ docker build -t  myflask:0.2 -f Dockerfile_2 .
     Sending build context to Docker daemon   5.12kB
     Step 1/9 : FROM ubuntu:16.04
      ---> 77be327e4b63
@@ -353,18 +352,18 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
     - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
     - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
 {% highlight bash %}
-        # **1. .dockerignore 파일에 불필요한 이미지를 작성합니다.** 
-        **$ vi .dockerignore** 
+        # 1. .dockerignore 파일에 불필요한 이미지를 작성합니다.
+        $ vi .dockerignore
         Dockerfile
         
         # 2. 해당 이미지를 빌드 합니다. 
-        **$ docker build -t  myflask:0.3  .**
+        $ docker build -t  myflask:0.3  .
         
         # 3. 이미지를 실행한 후, 컨테이너에 들어 갑니다. 
-        **$ docker run --name flask -d -p 5000:5000 myflask:0.3**
+        $ docker run --name flask -d -p 5000:5000 myflask:0.3
         3a1fa88e605b34357cf8601e04b5c1f1b8a13010ee036e67b8efe27f4fda07f6
         
-        **$ docker exec -it flask bash**
+        $ docker exec -it flask bash
         
         # 4. Dockerfile 파일만 없는 것을 확인할 수 있다. 
         root@3a1fa88e605b:/app# ls
@@ -390,11 +389,11 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 
 - 방법 1. 터미널에서 docker login 명령어로 로그인 하기
 {% highlight bash %}
-    **$ sudo docker login**
+    $ sudo docker login
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: EOF
     Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
-    **Username: [내 hub ID]
-    Password:** 
+    Username: [내 hub ID]
+    Password: 
     Login Succeeded
 {% endhighlight %}
 - 방법 2. UI에서 로그인하기 (mac 환경)
@@ -414,19 +413,19 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도�
 
 docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
 {% highlight bash %}
-    **$ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest** 
-    
+    $ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest
     Password:
     
-    **$ docker images**
-    REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-    **junge2/centos_telnet**   latest              257fc79abba7        24 hours ago        274MB
+    $ docker images
+    REPOSITORY             TAG                 IMAGE ID            CREATED 
+                SIZE
+    junge2/centos_telnet  latest              257fc79abba7        24 hours ago        274MB
 {% endhighlight %}
 **4. docker hub에 push**
 
 docker push [허브_아이디]/이미지명:[태그]
 {% highlight bash %}
-    **$ docker push junge2/centos_telnet:latest**
+    $ docker push junge2/centos_telnet:latest
     
     WARNING: Error loading config file: /Users/jungee/.docker/config.json: open /Users/jungee/.docker/config.json: permission denied
     The push refers to repository [docker.io/junge2/centos_telnet]
@@ -447,17 +446,17 @@ docker push [허브_아이디]/이미지명:[태그]
 - **docker pull [자신의 docker hub ID]/이미지:버전** : 자신이 올린 이미지를 다운 받습니다.
 - **docker images:** 이미지 리스트 확인
 {% highlight bash %}
-    **$ sudo docker rmi junge2/centos_telnet**
+    $ sudo docker rmi junge2/centos_telnet
     Untagged: junge2/centos_telnet:latest
     Untagged: junge2/centos_telnet@sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
     
-    **$ sudo docker pull junge2/centos_telnet:latest**
+    $ sudo docker pull junge2/centos_telnet:latest
     latest: Pulling from junge2/centos_telnet
     Digest: sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
     Status: Image is up to date for junge2/centos_telnet:latest
     docker.io/junge2/centos_telnet:latest
     
-    **$ docker images**
+    $ docker images
     REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
     junge2/centos_telnet   latest              257fc79abba7        24 hours ago        274MB
 {% endhighlight %}
