@@ -1,14 +1,13 @@
 ---
 layout: post
 title: "docker를 사용해보자 (docker 기본 명령어 사용해보기)"
-date: 2020-03-15
-excerpt: ""
+date: 2020-03-28
+excerpt: "도커 기본 명령어 정리"
 tags: [docker , docker 기본 명령어 ]
 comments: true
 docker : true 
 feature: /assets/img/docker/basic_1/whale.jpeg
 image: /assets/img/docker/basic_1/Moby-logo.png
-excerpt: "도커 기본 명령어 정리  "
 ---
 
 
@@ -104,7 +103,7 @@ excerpt: "도커 기본 명령어 정리  "
       Experimental:     true
 {% endhighlight %}
 
-![docker%20docker/Untitled.png](docker%20docker/Untitled.png)
+![docker%20docker/Untitled.png](/assets/img/docker/basic_2/Untitled.png)
 
 docker Client-Server 구조 
 
@@ -335,7 +334,7 @@ docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
 {% endhighlight %}
 - **localhost:8080 접속하기**
 
-![docker%20docker/Untitled%201.png](docker%20docker/Untitled%201.png)
+![docker%20docker/Untitled%201.png](/assets/img/docker/basic_2/Untitled%201.png)
 
 ## 🔹 워드프레스 + mysql
 
@@ -374,7 +373,7 @@ docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
 {% endhighlight %}
 - **localhost:[해당포트] 에 접속**
 
-![docker%20docker/Untitled%202.png](docker%20docker/Untitled%202.png)
+![docker%20docker/Untitled%202.png](/assets/img/docker/basic_2/Untitled%202.png)
 
 워드프레스에 접속 결과 
 

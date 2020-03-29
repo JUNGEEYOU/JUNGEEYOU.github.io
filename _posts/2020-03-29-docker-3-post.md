@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "docker를 사용해보자 (docker 기본 명령어 사용해보기)"
-date: 2020-03-15
+date: 2020-03-29
 excerpt: ""
 tags: [docker , docker 기본 명령어 ]
 comments: true
@@ -12,512 +12,439 @@ excerpt: "도커 기본 명령어 정리  "
 ---
 
 
-# docker를 사용해보자 (docker 기본 명령어 사용해보기)
+# 도커 이미지 만들기
 
-> 이번 시간에는 이전에 배운 개념을 토대로 docker 를 직접 사용해 봅시다.
+> 이번 시간에는 docker 이미지를 커스터마이징하기 위해 Dockerfile로 이미지를 만들어 봅시다. 더 나아가 만든 도커 이미지를 hub에 올려 봅시다.
 
 # 💡 목차
 
-> 이번 시간에 학습할 부분은 아래와 같다.  전체적으로 무엇을 배울지 미리 확인하고 가자.
+> 이번 시간에 학습할 부분은 아래와 같습니다.  전체적으로 무엇을 배울지 미리 확인하고 갑시다.
 
-1. **도커 다운로드** 
-2. **도커 설치 확인 (docker version)**  
-    - docker version 명령어에 대한 의미를 살펴 보자.
-3.  **docker 이미지 다루기 - 자주 사용 하는 명령어 정리**
-    - docker 이미지를 다루는 명령어를 살펴 봅니다.
-4. **docker  컨테이너 다루기  - 자주 사용 하는 명령어 정리** 
-    - docker 컨테이너를 다루는 명령어를 살펴 봅니다.
-5. **docker 실습** 
-    - docker 명령어를 직접 사용해 봅시다.
-6. **docker 기타 명령어 정리** 
-    - 그 외 기다 명령어를 살펴 봅니다.
+1. **docker 이미지 생성 방법** 
+    - 이미지 생성 방법에 대해 정리해 봅시다.
+2. **docker commit** 
+    - docker commit 명령어를 통해 이미지를 생성해 봅니다.
+3. **Dockerfile 만들기** 
+    - Dockerfile를 만들어 이미지를 커스터마이징 해봅시다.
+4. **docker hub 올리기** 
+    - docker hub에 위에서 만든 이미지를 올려 봅시다.
 
 ---
 
-# 1. 도커 다운로드
+# 1. docker 이미지 생성 방법
 
-> 아래 주소를 통해 도커를 다운로드 해보자.
+> 이미지 생성 방법은 다음과 같은 3가지가 존재한다.
 
-- 맥 : [https://docs.docker.com/docker-for-mac/](https://docs.docker.com/docker-for-mac/)
-- 윈도우: [https://docs.docker.com/docker-for-windows/](https://docs.docker.com/docker-for-windows/)
-- 리눅스: [https://docs.docker.com/install/linux/docker-ce/centos/](https://docs.docker.com/install/linux/docker-ce/centos/)
-
-## 🔹 docker 설치 for centos7
-
-> centos7 에 docker 를 설치하는 방법입니다.
-
-{% highlight bash %}
-
-    # yum-config-manager 쓸 수 있도록 설치
-    $ sudo yum -y install yum-utils
-    
-    # 도커 repository 추가 
-    $  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    
-    # 최신 도커 설치
-    $ sudo yum -y install docker-ce
-    
-    # docker를 root 계정이 아닌 현재 계정으로도 사용하기 위해 docker 그룹에 현재 계정도 추가한다. 
-    $ sudo usermod -aG docker $(whoami)
-    
-    # reboot 시 도커 자동으로 재 실행 되도록 설정
-    $ sudo systemctl enable docker.service
-    
-    # 도커 서비스 시작 
-    $ sudo systemctl start docker.service
-    
-{% endhighlight %}
----
-
-# 2. 도커 설치 확인 (docker version)
-
-> 아래 명령어는 mac 에서 진행한 결과 입니다.
-
-## 🔹 docker version
-
- 설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
-
-    **$ docker version**
-
-## 🔹 docker version 결과
-
-> 이전에 설명한 Docker architecture 에서 도커의 구조는 **클라이언트-서버** 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
-
-{% highlight bash %}
-    Client: Docker Engine - Community
-     Version:           19.03.5
-     API version:       1.40
-     Go version:        go1.12.12
-     Git commit:        633a0ea
-     Built:             Wed Nov 13 07:22:34 2019
-     OS/Arch:           darwin/amd64
-     Experimental:      false
-    
-    Server: Docker Engine - Community
-     Engine:
-      Version:          19.03.5
-      API version:      1.40 (minimum version 1.12)
-      Go version:       go1.12.12
-      Git commit:       633a0ea
-      Built:            Wed Nov 13 07:29:19 2019
-      OS/Arch:          linux/amd64
-      Experimental:     true
-{% endhighlight %}
-
-![docker%20docker/Untitled.png](docker%20docker/Untitled.png)
-
-docker Client-Server 구조 
-
-- **client**:  현재 나의 컴퓨터. **OS/Arch** 를 보면 제 컴퓨터가 mac이라서 **darwin/amd64** 라고 확인할 수 있습니다.
-- **server**: 실제 컨테이너를 생성 및 실행하며 이미지를 관리합니다. Client가 명령어를 전달하면 Server가 명령어를 받아 실행합니다.
-
- 
+1. **기본 이미지(nginx, centos 등) 로 컨테이너 생성**
+    - 베이스 이미지를 pull 하여 이미지를 얻을 수 있습니다.
+2. **Dockerfile를 만들어 이미지 커스터마이징 하기** 
+    - Dockerfile는 컨테이너에 필요한 패키지, 소스코드 등을 기록해둔 파일로 빌드를 하면 도커 이미지가 생성됩니다.
+    - 장기적인 시점에서 본다면, 아래 commit 방식보단 Dockerfile 작성이 저 좋습니다. 이유는 이미지 생성 방법 기록 + 배포 측면에서 더 유리합니다.
+3. **commit를 이용해서 이미지 생성하기** 
+    - docker commit 명령어를 이용하면 컨테이너에서 설치 및 작업한 내용이 저장되는 방식입니다.
 
 ---
 
-# 3. docker 이미지 다루기 - 자주 사용 하는 명령어 정리
+# 2. docker commit
 
-- **기본 명령어 참고** : [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/)
+> 이미지 생성 방법 중 commit를 이용해서 이미지를 생성해 봅시다.
 
-## 🔹 docker search
+## 🔹 commit  명령어 설명
 
-> docker hub에 존재하는 이미지 리스트를 확인할 수 있다.
+> 아래 실습은 아래와 같이 진행하려고 합니다. 이 방법은 우선 기본 이미지를 실행 시킨 후, 컨테이너 안에서 원하는 패키지나 소스코드 등 작업(아래에서는 telnet를 설치) 을 진행합니다. 그 후, commit 명령어로 원하는 작업이 추가된 새로운 이미지를 얻습니다.
 
- docker search [검색할 이미지명]
+![Untitled/Untitled.png](Untitled/Untitled.png)
 
-### 예시
+### 🔸  commit  명령어
 
-{% highlight bash %}
-    **$ docker search ubuntu**
-    NAME                                                      DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-    ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   10605               [OK]                
-    dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   404                                     [OK]
-    rastasheep/ubuntu-sshd                                    Dockerized SSH service, built on top of offi…   243                                     [OK]
-    consol/ubuntu-xfce-vnc                                    Ubuntu container with "headless" VNC session…   211                                     [OK]
-    ubuntu-upstart                                            Upstart is an event-based replacement for th…   106                 [OK]                
-    ansible/ubuntu14.04-ansible                               Ubuntu 14.04 LTS with ansible                   98                                      [OK]
-    neurodebian                                               NeuroDebian provides neuroscience research s…   67                  [OK]
-{% endhighlight %}
+- 참고 : [https://docs.docker.com/engine/reference/commandline/commit/](https://docs.docker.com/engine/reference/commandline/commit/)
 
-## 🔹 docker pull
+docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]]
 
-> 이미지를 다운로드를 한다.
+### 🔸 OPTIONS
 
- docker pull  [저장소 이름]/[이미지 이름]:[태그]
+[OPTIONS](https://www.notion.so/3dff716338fd446cb946325acd1f17c3)
 
-[ ](https://www.notion.so/e4f8be1cd6a64b2584d4f7b5d9442516)
+## 🔹 실습하기  - telnet 설치된 이미지 만들기
 
-### 🔸 예시
+> commit 없이 진행한 것과 commit 명령어로 진행한 작업을 비교하고자 합니다.  아래 두 가지 작업 모두 실습해 봅시다.
 
-- ubuntu 라는 이미지 이름. 태그는 18.04 의 이미지를 다운로드 한다.
-- **저장소**: 도커 허브에 존재. [https://registry.hub.docker.com/_/ubuntu?tab=description](https://registry.hub.docker.com/_/ubuntu?tab=description) 에서 확인 가능
-{% highlight bash %}
-    **$ docker pull ubuntu:18.04**
-    18.04: Pulling from library/ubuntu
-    423ae2b273f4: Pull complete 
-    de83a2304fa1: Pull complete 
-    f9a83bce3af0: Pull complete 
-    b6b53be908de: Pull complete 
-    Digest: sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
-    Status: Downloaded newer image for ubuntu:18.04
-    docker.io/library/ubuntu:18.04
-{% endhighlight %}
+- **참고**
+    - **telnet 명령어**: 특정 포트(Port)가 접속 가능한지 확인 가능한 명령어 입니다.
 
-## 🔹 docker images
+### 🔸 commit 명령어 없이 이미지 확인하기
 
-> 이미지 목록 확인하기
+> 컨테이너에서 telnet를 설치해 보고 commit 없이 컨테이너를 내릴 경우 해당 이미지가 어떻게 되는지 확인해 봅시다.
 
-docker images 
+1. **docker run** 
+    - 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
 
-### 🔸 예시
+    $ docker run -it --name commit_test centos bash
 
-- 이전 예제에서 다운받은 이미지 리스트를 확인할 수 있다.
+**2. telnet 를 설치하기** 
 
-    $ docker images
+- 아래 명령어로 cenots 컨테이너에서 telnet를 설치합니다.
+
+    [root@ade9f1da26d3 /]# **yum install -y telnet**
+    
+    Failed to set locale, defaulting to C.UTF-8
+    CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
+    CentOS-8 - Base                                                                                                              3.2 MB/s | 5.0 MB     00:01    
+    CentOS-8 - Extras                                                                                                            2.8 kB/s | 4.2 kB     00:01    
+    Dependencies resolved.
+    
+    ------- 생략 -------                                                                                                                              
+    
+    Complete!
+    
+    
+    [root@ade9f1da26d3 /]# **telnet**
+    telnet>
+
+**3. 새 터미널에서 diff 명령어로 변경된 파일 확인하기**
+
+- 확인해 보면 telnet이 추가된 것을 확인할 수 있다.
+
+    *(new terminal)*
+    $ docker diff commit_test
+    
+    A /usr/bin/telnet
+
+**4. 해당 컨테이너 내리기** 
+
+    $ docker rm -f commit_test
+
+**5. 같은 이미지를 다시 실행 시켜  위에서 설치한  telnet 명령어가 되는지 확인**
+
+- 아래와 같이 저장이 안된 모습을 확인할 수 있다.
+
+    $ docker run -it --name commit_test centos bash
+    [root@82aa81723f45 /]# telnet
+    bash: telnet: command not found
+
+### 🔸  commit 명령어 후, 이미지 확인하기
+
+> 위와 같이 컨테이너에서 telnet를 설치해 보고, commit 를 진행하면 어떤 점이 다른지 확인해 봅시다.
+
+ **1. docker run** 
+
+- 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
+
+    $ docker run -it --name commit_test centos bash
+
+**2. telnet 를 설치하기** 
+
+    [root@82aa81723f45 /]# yum install -y telnet
+    Failed to set locale, defaulting to C.UTF-8
+    CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
+    CentOS-8 - Base                                                                                                              3.2 MB/s | 5.0 MB     00:01    
+    CentOS-8 - Extras                                                                                                            2.8 kB/s | 4.2 kB     00:01    
+    Dependencies resolved.
+    
+    ------- 생략 -------                                                                                                                              
+    
+    Complete!
+    
+    
+    [root@82aa81723f45 /]# telnet
+    telnet>
+
+**3. 새 터미널에서 commit 진행** 
+
+- **-m 옵션:**  변경된 로그를 입력해 줍니다. ("install telnet")
+- **컨테이너 명**: commit_test
+- **원하는 이미지 명 & tag** : centos_telnet:01
+
+    *(new terminal)*
+    $ **docker commit -m "install telnet" commit_test centos_telnet:01**
+    sha256:257fc79abba712f2dbb4e35c1816321dd854989bfedbb07ed94e614b4a59fa89
+    
+    
+    jungee-MacBook-Pro:~ jungee$ docker ps
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+    82aa81723f45        centos              "bash"              4 minutes ago       Up 4 minutes                            commit_test
+    jungee-MacBook-Pro:~ jungee$ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-    ubuntu              18.04               72300a873c2c        2 weeks ago         64.2MB
+    centos_telnet       01                  257fc79abba7        6 seconds ago       274MB
+    centos              latest              470671670cac        2 months ago        237MB
 
-## 🔹 docker rmi
+**4. commit 으로 생성한 이미지 실행하여 telnet 동작 확인** 
 
-> 이미지 제거하기
+- commit 명령어로 telnet이 설치된 이미지가 생성된 것을 확인할 수 있다.
 
-docker rmi 이미지1 [이미지2, 이미지3 ...]
+    $ docker run -it --name commit_test2 centos_telnet:01 bash
+    [root@863ac3be5d1c /]# telnet
+    telnet>
 
-### 🔸 예시
+---
 
-- 다운 받았던 이미지를 삭제하고, 다시 'docker images' 명령어로 목록을 확인하자
-- 제거 방식은 docker rmi  [도커이름:태그] 또는 [image id]
-{% highlight bash %}
-    **$ docker rmi ubuntu:18.04**
-    Untagged: ubuntu:18.04
-    Untagged: ubuntu@sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
-    Deleted: sha256:72300a873c2ca11c70d0c8642177ce76ff69ae04d61a5813ef58d40ff66e3e7c
-    Deleted: sha256:d3991ad41f89923dac46b632e2b9869067e94fcdffa3ef56cd2d35b26dd9bce7
-    Deleted: sha256:2e533c5c9cc8936671e2012d79fc6ec6a3c8ed432aa81164289056c71ed5f539
-    Deleted: sha256:282c79e973cf51d330b99d2a90e6d25863388f66b1433ae5163ded929ea7e64b
-    Deleted: sha256:cc4590d6a7187ce8879dd8ea931ffaa18bc52a1c1df702c9d538b2f0c927709d
+# 3. DockerFile
+
+## 🔹 기본 설명
+
+> 이전에 설명했던 부분으로 1 ) 베이스 이미지와 2) 도커파일(Dockerfile)로 생성하는 방식이 있다. 지금은 Dockerfile로 이미지를 커스터마이징하여 사용하고자 합니다.  아래 이미지와 같이 Dockerfile를 build를 하면, 커스터마이징된 이미지가 생성됩니다.
+
+![Untitled/Untitled%201.png](Untitled/Untitled%201.png)
+
+- **Dockerfile**: 컨테이너에 설치해야 하는 패키지, 추가해야하는 소스코드, 실행해야하는 명령어 등을 기록해 두는 파일
+- **Build**: Dockerfile를 읽어 이미지를 생성합니다.
+
+## 🔹 실습 1. python-Flask
+
+> app.py, requirements.txt 는 python-flask를 실행하기 위한 파일입니다. 우선 해당 파일을 생성 후, Dockerfile를 만들어 봅시다.
+
+1. **app.py** 
+- '/' 경로로 접근 시, hello_world() 라는 함수 실행합니다.
+
+    from flask import Flask
+    app = Flask(__name__)
+    
+    @app.route('/')
+    def hello_world():
+        return 'hello Flask'
+    
+    
+    if __name__ == '__main__':
+        app.run(debug=True, host='0.0.0.0')
+
+**2. requirements.txt**
+
+- Flask 라는 라이브러리 설치가 필요하여 버전과 함께 설치할 라이브러리를 명시해준 파일입니다.
+
+    Flask==0.10.1
+
+**3.  Dockerfile**
+
+- 패키지, 소스코드 등을 기록해둔 파일입니다. 위에서 말했듯이 이를 build하면 커스터마이징된 이미지가 생성됩니다.
+- RUN과 같은 명령어 의미에 대해서 파악 해봅니다.
+
+    # FROM: 베이스 이미지를 지정 (여기서는 ubuntu 16.04 버전 사용) 
+    FROM ubuntu:16.04
+    
+    # MAINTAINER: 개발자 정보를 나타냅니다. 
+    MAINTAINER "youremail@domain.com"
+    
+    # RUN : 해당 명령어 실행, 필요한 패키지를 설치 
+    RUN apt-get update -y && \
+        apt-get install -y python-pip python-dev
+    
+    # COPY: 현재 경로(.)에 존재하는 파일들을 이미지 /app 경로에 모두 추가 
+    COPY . /app
+    
+    # WORKDIR: 작업 디렉토리 변경. 셸 cd /app 과 같은 기능 
+    WORKDIR /app
+    
+    # RUN: 명령어 실행. 복사된 requirements.txt 파일로 pip로 필요 라이브러리 설치 
+    RUN pip install -r requirements.txt
+    
+    # EXPOSE: 컨테이너 실행 시 노출될 포트
+    EXPOSE 5000
+    
+    # ENTRYPOINT: 컨테이너 시작 시 기본으로 실행되는 명령어 
+    ENTRYPOINT [ "python" ]
+    
+    # CMD: 컨테이너 시작 시 실행되는 명령어로 위 ENTRYPOINT 명령어 뒤 인자로 실행하게 된다. 
+    # 결국 python app.py 명령어 실행 
+    CMD [ "app.py" ]
+
+### 🔸 Dockerfile 명령어
+
+- 참고: [https://docs.docker.com/engine/reference/builder/](https://docs.docker.com/engine/reference/builder/)
+
+[Dockerfile 명령어](https://www.notion.so/f2b1b590feb04960a05c3ae3fe3e621b)
+
+**4. docker build** 
+
+- 만든 Dockerfile를 build하여 이미지를 만들어 봅니다.
+
+docker build [OPTIONS] 도커파일경로 
+
+[OPTIONS](https://www.notion.so/7cb97f0705414131815ec7d967060a77)
+
+    # Dockerfile 위치에서 build 명령어 실행 
+    **$ docker build -t myflask:0.1 .**
+    
+    
+    # docker 이미지 생성 결과 확인 
+    **$ docker images** 
+    REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+    myflask                0.1                 bfac980a3b49        6 seconds ago       421MB
+
+**5. docker run** 
+
+- 커스터마이징된 이미지를 실행시켜 컨테이너 결과를 확인해 봅니다.
+
+    $ docker run --name flask -d -p 5000:5000 myflask:0.1
+
+6. 결과 확인 
+
+- [localhost:5000](http://localhost:5000) 에 접속해자.
+
+![Untitled/Untitled%202.png](Untitled/Untitled%202.png)
+
+## 🔹 Dockerfile build 자세히 살펴보기
+
+### 🔸 빌드 과정 알아보기
+
+> docker build 명령어 사용 시 빌드되는 과정을 알아봅시다.
+
+Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 도커파일 명령어가 실행될 때 새로운 컨테이너가 생성되며, 이를 이미지로 커밋하게 됩니다.  따라서 Dockerfile 작성 시, 줄 수을 최소화하는 것이 중요합니다. 
+
+![Untitled/Untitled%203.png](Untitled/Untitled%203.png)
+
+### 🔸 캐시 이미지 빌드
+
+> 한 번 이미지를 빌드하면, 다시 같은 빌드를 진행할 경우 이전 빌드에서 사용했던 캐시를 이용하게 됩니다. 아래 예제로 위에서 빌드한 내용 그대로 다시 빌드해 봅시다.
+
+- Using cache 부분을 보면 해당 명령어를 실행하지 않고 이전 캐시 내용을 사용하는 것을 알 수 있습니다.
+
+    # 1. Dockerfile를 복사한다. 
+    **$ cp Dockerfile Dockerfile_2**
+    
+    
+    **$ ls**
+    Dockerfile		Dockerfile_2		app.py			requirements.txt
+    
+    # 2. 다시 같은 내용을 빌드해 봅니다. 
+    **$ docker build -t  myflask:0.2 -f Dockerfile_2 .**
+    Sending build context to Docker daemon   5.12kB
+    Step 1/9 : FROM ubuntu:16.04
+     ---> 77be327e4b63
+    Step 2/9 : MAINTAINER "youremail@domain.tld"
+     ---> Using cache
+     ---> d528f6db2cad
+    Step 3/9 : RUN apt-get update -y &&     apt-get install -y python-pip python-dev
+     ---> Using cache
+     ---> 1073338a84e5
+    Step 4/9 : COPY . /app
+     ---> f0aec51b1467
+    
+    ------- 생략 ------- 
+
+그러나 항상 캐시 기능이 필요한 것은 아닙니다. 예를 들어 git clone 과 같은 명령어를 사용할 때 캐시가 적용되면 소스가 변경될 때 변경되지 않습니다. 따라서 --no-cache 옵션을 사용하면 됩니다. 
+
+    $ docker build --no-cache -t myflask:0.2 . 
+
+### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
+
+> 멀티 스테이지는 컨테이너 이미지 생성 시 최종 컨테이너 이미지에는 필요 없는 환경은 제거하도록 단계를 나누어 이미지를 생성하는 것이다. 이번 포스트에서는 다루지 않겠습니다.  해당 링크를 참조([https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)) 해서 실습을 진행해 보면 좋을 것 같습니다.
+
+### 🔸  Dockerfile 작성 시, 주의점
+
+1. **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
+    - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
+    - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
+
+        # **1. .dockerignore 파일에 불필요한 이미지를 작성합니다.** 
+        **$ vi .dockerignore** 
+        Dockerfile
+        
+        # 2. 해당 이미지를 빌드 합니다. 
+        **$ docker build -t  myflask:0.3  .**
+        
+        # 3. 이미지를 실행한 후, 컨테이너에 들어 갑니다. 
+        **$ docker run --name flask -d -p 5000:5000 myflask:0.3**
+        3a1fa88e605b34357cf8601e04b5c1f1b8a13010ee036e67b8efe27f4fda07f6
+        
+        **$ docker exec -it flask bash**
+        
+        # 4. Dockerfile 파일만 없는 것을 확인할 수 있다. 
+        root@3a1fa88e605b:/app# ls
+        Dockerfile_2  app.py  requirements.txt
+
+2. **RUN 명령어를 하나로 묶을 수 있다면 && 로 묶자.** 
+    - 위에서 말했듯이 Dockerfile 한 줄은 한 이미지 레이어라고 하였습니다. 따라서 RUN 명령어는 한 줄로 묶는 것이 가능하다면 묶는 것이 좋습니다.
+
+---
+
+# 4. docker hub
+
+> 이번엔 내가 만든 이미지를 docker Hub에 올려보자. docker Hub는 다른 사용자들과 도커 이미지를 공유하는 저장소입니다.
+
+- 참고 사이트 : [https://docs.docker.com/docker-hub/](https://docs.docker.com/docker-hub/)
+
+## 🔹 Docker hub 실습해 보기
+
+1. **docker hub 가입하기** 
+    - [https://hub.docker.com/signup](https://hub.docker.com/signup)
+
+**2.  docker 로그인하기** 
+
+- 방법 1. 터미널에서 docker login 명령어로 로그인 하기
+
+    **$ sudo docker login**
+    WARNING: Error loading config file: /Users/jungee/.docker/config.json: EOF
+    Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+    **Username: [내 hub ID]
+    Password:** 
+    Login Succeeded
+
+- 방법 2. UI에서 로그인하기 (mac 환경)
+    - 아래 이미지 순서로 빨간 테두리 부분을 클릭하여 로그인해 봅니다.
+
+![Untitled/Untitled%204.png](Untitled/Untitled%204.png)
+
+도커 로그인 진행 
+
+![Untitled/Untitled%205.png](Untitled/Untitled%205.png)
+
+자신의 도커 ID와 비밀번호를 입력
+
+**3.  이전에 build한 이미지를 계정에 맞게  tag 명령어로 새로 생성해 준다.** 
+
+- 이미지는 자신 계정 이름과 일치해야 Hub에 push가 가능합니다.
+
+docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
+
+    **$ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest** 
+    
+    Password:
     
     **$ docker images**
-    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-{% endhighlight %}
+    REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+    **junge2/centos_telnet**   latest              257fc79abba7        24 hours ago        274MB
 
----
+**4. docker hub에 push**
 
-# 4. docker  컨테이너 다루기  - 자주 사용 하는 명령어 정리
+docker push [허브_아이디]/이미지명:[태그]
 
-## 🔹 docker run
-
-> 컨테이너를 생성하고 실행하기
-
-- 사용할 이미지가 저장되어 있는지 확인하고 없다면 다운로드(pull)를 한 후 컨테이너를 생성(create)하고 시작(start)  한다.
-
-docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
-
-### 🔸 OPTIONS
-
-[   옵션](https://www.notion.so/3101aeccf8534396ae09bd9551157baa)
-
-### 🔸  예시 1
-
-- ubuntu:18.04  컨테이너를 실행하는 예시로 해당 이미지가 없어서 다운로드(pull)한 뒤, 컨테이너를 실행한다.
-
-    **$ docker run ubuntu:18.04**
-    Unable to find image 'ubuntu:18.04' locally
-    18.04: Pulling from library/ubuntu
-    423ae2b273f4: Pull complete 
-    de83a2304fa1: Pull complete 
-    f9a83bce3af0: Pull complete 
-    b6b53be908de: Pull complete 
-    Digest: sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
-    Status: Downloaded newer image for ubuntu:18.04
-
-## 🔸  예시 2
-
-- **- - name**: test라는 컨테이너 이름 설정
-- **-it:** 컨테이너 내부로 들어가 bash 입력이 가능
-- **- - rm:** 프로세스 종료되면 자동으로 도커 컨테이너 종료
-{% highlight bash %}
-    **$ docker run --name test -it --rm ubuntu:18.04
+    **$ docker push junge2/centos_telnet:latest**
     
-    # 아래는 docker bash 들어간 것** 
-    **root@de78d86be9c0:/# ls**
-    bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+    WARNING: Error loading config file: /Users/jungee/.docker/config.json: open /Users/jungee/.docker/config.json: permission denied
+    The push refers to repository [docker.io/junge2/centos_telnet]
+    648f89c4f2c4: Pushed 
+    0683de282177: Mounted from library/centos 
+    latest: digest: sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a size: 741
 
-## 🔹 docker ps
+**5. 사이트 docker hub에 들어가 확인해보자.** 
 
-> 컨테이너 목록 확인. 옵션 없이 사용하는 경우 실행중인 컨테이너만 출력.
+- [https://hub.docker.com/repositories](https://hub.docker.com/repositories)
+- 아래 이미지와 같이 위에서 push한 이미지가 있음을 확인할 수 있습니다.
 
-docker ps [OPTIONS]
+![Untitled/Untitled%206.png](Untitled/Untitled%206.png)
 
-### 🔸 OPTIONS
+**6. 이전 이미지를 지우고, hub에 올린 이미지를 다운받아 보자.**
 
-[ OPTIONS](https://www.notion.so/c7762f0699c0475dbf130c3c6e4130f7)
+- **docker rmi** :  이미지를 삭제
+- **docker pull [자신의 docker hub ID]/이미지:버전** : 자신이 올린 이미지를 다운 받습니다.
+- **docker images:** 이미지 리스트 확인
 
-### 🔸 **예시**
-
-- STATUS 를 통해 컨테이너의 상태를 확인 가능.
-- **Exited**: 정지된 상태 , **UP**: 실행 중인 상태
-{% highlight bash %}
-    $ docker ps -a
-    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
-    cd532bf89bbb        ubuntu:18.04        "/bin/bash"         4 minutes ago       Exited (0) 4 minutes ago                       test
-{% endhighlight %}
-## 🔹 docker rm
-
-> 컨테이너를 제거
-
- docker rm [OPTIONS] 컨테이너1 [컨테이너2...]
-
-### 🔸 OPTIONS
-
-[ OPTION](https://www.notion.so/7f12ca5b8d5b4639821f3ca47849d777)
-
-### 🔸 예시
-
-    $ docker rm -f test 
-
-## 🔹 docker start
-
-> stop된 컨테이너를 실행하기
-
-docker start [OPTIONS] 컨테이너1 [컨테이너2...]
-
-## 🔹 docker stop
-
-> 실행 중인 컨테이너를 stop 하기
-
-docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
-
-## 🔹 docker logs
-
-> 도커 컨테이너의 로그 확인하기
-
- docker logs [OPTIONS] CONTAINER
-
-### 🔸 OPTIONS
-
-[OPTIONS](https://www.notion.so/260f97e7794842b6b0818a09f35794c1)
-
-### 🔸 예시
-
-    $ docker logs -f <컨테이너 명> 
-
-## 🔹 docker exec
-
-> 실행 중인 컨테이너에 들어갈 때 사용
-
- docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
-
-### 🔸 예시
-
-    $ docker exec -it <컨테이너 명> /bin/bash 
-
----
-
-# 5. docker 실습
-
-## 🔹 컨테이너 외부 노출하기 (run -p 사용)  - nginx
-
-> nginx 를 띄워서 확인해보자
-
-- **-p 옵션 :** -p [호스트 포트]:[컨테이너 포트]
-{% highlight bash %}
-    **$ docker run --name nginx-server -d -p 8080:80 nginx**
+    **$ sudo docker rmi junge2/centos_telnet**
+    Untagged: junge2/centos_telnet:latest
+    Untagged: junge2/centos_telnet@sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
     
-    Unable to find image 'nginx:latest' locally
-    latest: Pulling from library/nginx
-    68ced04f60ab: Pull complete 
-    28252775b295: Pull complete 
-    a616aa3b0bf2: Pull complete 
-    Digest: sha256:2539d4344dd18e1df02be842ffc435f8e1f699cfc55516e2cf2cb16b7a9aea0b
-    Status: Downloaded newer image for nginx:latest
-    87781528d23655be1c12feb6a1f54a63f8e41696a370512e41462cd210288114
-{% endhighlight %}
-- **localhost:8080 접속하기**
-
-![docker%20docker/Untitled%201.png](docker%20docker/Untitled%201.png)
-
-## 🔹 워드프레스 + mysql
-
-### 🔸  mysql 컨테이너 생성
-
-- **환경 설정 확인  :** [https://registry.hub.docker.com/_/mysql](https://registry.hub.docker.com/_/mysql)
-{% highlight bash %}
-    $ docker run -d \
-     --name wordpressdb \
-     -e MYSQL_ROOT_PASSWORD=password \
-     -e MYSQL_DATABASE=wordpress \
-     mysql:5.7
-{% endhighlight %}
-### 🔸  워드프레스 컨테이너 생성
-
-- **환경 설정 확인:** [https://registry.hub.docker.com/_/wordpress](https://registry.hub.docker.com/_/wordpress)
-- **-p 80:** 호스트의 포트 하나와 컨테이너 80 포트 연결
-- **—link:** 다른 컨테이너 ip 대신 별명으로 접근하도록 설정. [컨테이너 명]:[호스트 별칭]
-{% highlight bash %}
-    $ docker run -d \
-     -e WORDPRESS_DB_PASSWORD=password \
-     --name wordpress \
-     --link wordpressdb:mysql \
-     -p 80 \
-    wordpress
-{% endhighlight %}
-
-### 🔸  사이트 접속
-
-- wordpress 호스트포트는 지정을 안해줘 자동으로 설정되었다. docker ps 명령어로 포트를 확인하자!
-{% highlight bash %}
-    $ docker ps
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                   NAMES
-    699c2553b0c6        wordpress           "docker-entrypoint.s…"   11 minutes ago      Up 10 minutes       0.0.0.0:32773->80/tcp   wordpress
-    e74707db71cc        mysql:5.7           "docker-entrypoint.s…"   11 minutes ago      Up 11 minutes       3306/tcp, 33060/tcp     wordpressdb
-{% endhighlight %}
-- **localhost:[해당포트] 에 접속**
-
-![docker%20docker/Untitled%202.png](docker%20docker/Untitled%202.png)
-
-워드프레스에 접속 결과 
-
-### 🔸  컨테이너 로그 보기
-
-> 접속이나 페이지 이동 시, 새로운 로그를 확인 할 수 있습니다.
-
-    $ docker logs -f wordpress
-
-## 🔹docker 볼륨 (run -v 사용)
-
-> 컨테이너는 삭제와 동시에 데이터도 같이 삭제 됩니다.  mysql 같은 db는 볼륨 생성을 해서 데이터 보존이 필요합니다. 이번에는 위 예제를 약간 변경하여 볼륨을 이용해 봅시다.
-
-### 🔸   mysql 컨테이너 생성
-
-- **환경 설정 확인  :** [https://registry.hub.docker.com/_/mysql](https://registry.hub.docker.com/_/mysql)
-- -v : 호스트와 컨테이너의 디렉토리를 연결. [호스트의 공유 디렉터리]:[컨테이너의 공유 디렉터리]
-    - **호스트의 공유 디렉터리**: 내 컴퓨터에 원하는 디렉터리로 변경해도 좋습니다.  - 아래 예제를 하기 위해 해당 디렉터리를 생성 후, 진행해 주세요.
-    - **컨테이너의 공유 디렉터리**: mysql 데이터 저장하는 기본 디렉터리가 /var/lib/mysql 입니다.
-{% highlight bash %}
-    $ docker run -d \
-     --name wordpressdb \
-     -e MYSQL_ROOT_PASSWORD=password \
-     -e MYSQL_DATABASE=wordpress \
-     -v /home/wordpress_db:/var/lib/mysql \
-     mysql:5.7
-{% endhighlight %}
-### 🔸   워드프레스 컨테이너 생성 (변경 없음)
-
-- **환경 설정 확인:** [https://registry.hub.docker.com/_/wordpress](https://registry.hub.docker.com/_/wordpress)
-{% highlight bash %}
-    $ docker run -d \
-     -e WORDPRESS_DB_PASSWORD=password \
-     --name wordpress \
-     --link wordpressdb:mysql \
-     -p 80 \
-    wordpress
-{% endhighlight %}
-### 🔸   볼륨 공유 확인하기
-
-- 내 컴퓨터 **호스트의 공유 디렉터리** 로 이동 후, 확인
-
-    $ ls
-    auto.cnf		client-cert.pem		ib_logfile0		ibtmp1			private_key.pem		server-key.pem
-    ca-key.pem		client-key.pem		ib_logfile1		mysql			public_key.pem		sys
-    ca.pem			ib_buffer_pool		ibdata1			performance_schema	server-cert.pem		wordpress
-
-- **컨테이너 공유 디렉터리에 파일 존재 확인**
-    - 호스트의 공유 디렉터리와 동일함을 알 수 있다.
-
-    **1.  컨테이너에 접속** 
-    $ docker exec -it wordpressdb bash
+    **$ sudo docker pull junge2/centos_telnet:latest**
+    latest: Pulling from junge2/centos_telnet
+    Digest: sha256:856ed620b2179be0d6bdbbb0c38ef41b558049642489e349e715f8526777768a
+    Status: Image is up to date for junge2/centos_telnet:latest
+    docker.io/junge2/centos_telnet:latest
     
-    **2. mysql 데이터 저장 위치로 이동** 
-    # cd /var/lib/mysql
-    
-    **3. 파일 확인** 
-    root@d27bb99cfa91:/var/lib/mysql# ls
-    auto.cnf    ca.pem	     client-key.pem  ib_logfile0  ibdata1  mysql	       private_key.pem	server-cert.pem  sys
-    ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1   performance_schema  public_key.pem	server-key.pem	 wordpress
+    **$ docker images**
+    REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+    junge2/centos_telnet   latest              257fc79abba7        24 hours ago        274MB
 
----
-
-# 6. docker 기타 명령어 정리
-
-> 위에서 배운 명령어 외 기타 명령어 입니다.
-
-## 🔹 docker history
-
-> 이미지의 히스토리를 확인할 수 있습니다.
-
-docker history [OPTIONS] [이미지 명:tag]
-
-### 🔸 OPTIONS
-
-[OPTIONS](https://www.notion.so/8638a3bb07d642ed8fe1d475523b13aa)
-
-### 🔸  예시
-
-> 베이스 이미지의 경우 아래와 같은 history 를 확인할 수 있다.
-{% highlight bash %}
-    $ docker history ubuntu:16.04
-    IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
-    77be327e4b63        4 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
-    <missing>           4 weeks ago         /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
-    <missing>           4 weeks ago         /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   745B                
-    <missing>           4 weeks ago         /bin/sh -c rm -rf /var/lib/apt/lists/*          0B                  
-    <missing>           4 weeks ago         /bin/sh -c #(nop) ADD file:1f70668251e2e58ce…   124MB
-{% endhighlight %}
-## 🔹 docker cp
-
-> 컨테이너 안에 있는 파일을 꺼낼 수 있습니다.
-
-docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
-
-### 🔸  예시
-
-> 위에서 진행한 컨테이너의 hosts 파일을 가져와 봅시다.
-{% highlight bash %}
-    $ docker cp wordpressdb:/etc/hosts ./
-    
-    $ ls
-    hosts
-{% endhighlight %}
-## 🔹 docker inspect
-
-> 이미지 또는  컨테이너의 세부 정보를 출력합니다.
-
-- 참고 : [https://docs.docker.com/engine/reference/commandline/inspect/#examples](https://docs.docker.com/engine/reference/commandline/inspect/#examples)
-
-docker inspect [이미지 또는 컨테이너 이름]
-
-### 🔸  예시
-{% highlight bash %}
-    **$ docker inspect wordpress**
-    [
-        {
-            "Id": "8f75f55337e0f9919f02446e25cfe1afd9c97eacce13483cbc62d020465c30ef",
-            "Created": "2020-03-22T01:51:36.2863858Z",
-            "Path": "docker-entrypoint.sh",
-            "Args": [
-                "apache2-foreground"
-            ],
-            "State": {
-                "Status": "running",
-                "Running": true,
-                "Paused": false,
-                "Restarting": false,
-                "OOMKilled": false,
-                "Dead": false,
-                "Pid": 16681,
-                "ExitCode": 0,
-                "Error": "",
-                "StartedAt": "2020-03-22T01:51:36.8741324Z",
-                "FinishedAt": "0001-01-01T00:00:00Z"
-            },
-    ...
-{% endhighlight %}
 ---
 
 # 마무리
 
-> 이번 시간에는 도커를 직접 사용해 봤습니다. 다음 시간에는 아래의 내용을 학습할 예정입니다. 😀
-
-- docker hub에 올려보기 Dockerfile 만들기
-
+> 이번 시간에는 도커 이미지 생성 방법에 대해서 알아 보았습니다. 다음 시간에는 컴포즈 사용 방법에 대해서 알아 보고 직접 실습해 봅시다~ 😁
