@@ -61,19 +61,17 @@ excerpt: "docker 이미지 만들기"
 💡 docker commit [OPTIONS] CONTAINER_명 [저장소이름]/이미지이름[:TAG]
 {% endhighlight %}
 ### 🔸 OPTIONS
-
- | 옵션 |  설명  |
+ | 옵션 |  설명  | 
  |----------|----------|
  | -a, --author | 생성자 정보를 입력합니다.   |
- | m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
+ | -m, --message | 변경 사항에 대한 메시지를 입력 합니다.    |
  | -p, --pause | 이미지를 생성하는 동안 컨테이너를 중단 시킵니다. default 값으로 true  |
  {:.inner-borders}
 
 ## 🔹 실습하기  - telnet 설치된 이미지 만들기
 
-> commit 없이 진행한 것과 commit 명령어로 진행한 작업을 비교하고자 합니다.  아래 두 가지 작업 모두 실습해 봅시다.
+> commit 없이 진행한 것과 commit 명령어로 진행한 작업을 비교하고자 합니다.  아래 두 가지 작업 모두 실습해 봅시다. 참고로 telnet은  특정 포트(Port)가 접속 가능한지 확인 가능한 명령어 입니다.
 
-- **telnet 명령어**: 특정 포트(Port)가 접속 가능한지 확인 가능한 명령어 입니다.
 
 ### 🔸 commit 명령어 없이 이미지 확인하기
 
@@ -81,7 +79,7 @@ excerpt: "docker 이미지 만들기"
 
 1. **docker run** 
     - 아래 명령어로 centos 도커 컨테이너를 실행 후, bash로 컨테이너에 들어가보자.
-{% highlight bash %}
+{% highlight shell %}
     $ docker run -it --name commit_test centos bash
 {% endhighlight %}
 **2. telnet 를 설치하기** 
@@ -89,12 +87,6 @@ excerpt: "docker 이미지 만들기"
 - 아래 명령어로 cenots 컨테이너에서 telnet를 설치합니다.
 {% highlight bash %}
     [root@ade9f1da26d3 /]# yum install -y telnet
-    Failed to set locale, defaulting to C.UTF-8
-    CentOS-8 - AppStream                                                                                                         3.1 MB/s | 6.5 MB     00:02    
-    CentOS-8 - Base                                                                                                              3.2 MB/s | 5.0 MB     00:01    
-    CentOS-8 - Extras                                                                                                            2.8 kB/s | 4.2 kB     00:01    
-    Dependencies resolved.
-    
     ------- 생략 -------                                                                                                                              
     
     Complete!
@@ -107,7 +99,7 @@ excerpt: "docker 이미지 만들기"
 
 - 확인해 보면 telnet이 추가된 것을 확인할 수 있다.
 {% highlight bash %}
-    *(new terminal)*
+    (new terminal)
     $ docker diff commit_test
     
     A /usr/bin/telnet
