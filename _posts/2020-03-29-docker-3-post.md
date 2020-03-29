@@ -424,8 +424,10 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 **3.  이전에 build한 이미지를 계정에 맞게  tag 명령어로 새로 생성해 준다.** 
 
 - 이미지는 자신 계정 이름과 일치해야 Hub에 push가 가능합니다.
+{% highlight shell %}
+💡  docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
+{% endhighlight %}
 
-docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
 {% highlight shell %}
     $ sudo docker tag centos_telnet:01 junge2/centos_telnet:latest
     Password:
@@ -436,8 +438,9 @@ docker tag 이미지명:[태그] 원하는_이미지_명:[태그]
     junge2/centos_telnet  latest              257fc79abba7        24 hours ago        274MB
 {% endhighlight %}
 **4. docker hub에 push**
-
-docker push [허브_아이디]/이미지명:[태그]
+{% highlight shell %}
+💡 docker push [허브_아이디]/이미지명:[태그]
+{% endhighlight %}
 {% highlight shell %}
     $ docker push junge2/centos_telnet:latest
     
