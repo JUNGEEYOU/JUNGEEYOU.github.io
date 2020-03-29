@@ -338,7 +338,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
     ------- 생략 ------- 
 {% endhighlight %}
 그러나 항상 캐시 기능이 필요한 것은 아닙니다. 예를 들어 git clone 과 같은 명령어를 사용할 때 캐시가 적용되면 소스가 변경될 때 변경되지 않습니다. 따라서 <span style="background-color: #e6e6ff; font-clolr: #000000">--no-cache </span> 옵션을 사용하면 됩니다. 
-{% highlight bash %}
+{% highlight shell %}
     $ docker build --no-cache -t myflask:0.2 . 
 {% endhighlight %}
 ### 🔸  멀티 스테이지 이용해서 Dockerfile 빌드하기
@@ -350,7 +350,7 @@ Dockerfile에서 줄 수는 레이어 수를 의미한다. 아래와 같이 <spa
 1. **.dockerignore 파일을 작성하여 불필요한 파일을 이미지에 포함 시키지 말자.** 
     - 참고 : [https://docs.docker.com/engine/reference/builder/#dockerignore-file](https://docs.docker.com/engine/reference/builder/#dockerignore-file)
     - 아래 예제는 Dockerfile은 포함 시키지 않고 빌드 하고자 합니다.
-{% highlight bash %}
+{% highlight shell %}
         # 1. .dockerignore 파일에 불필요한 이미지를 작성합니다.
         $ vi .dockerignore
         Dockerfile
