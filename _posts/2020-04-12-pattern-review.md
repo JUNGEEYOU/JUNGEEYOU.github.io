@@ -14,6 +14,8 @@ image: /assets/img/design_pattern/review/design.png
 <br/>
 
 # Head First design patterns 소개
+![headfirst.png](/assets/img/design_pattern/review/pattern_img.jpg){: width="80%" height="80%"}
+
 
 Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패턴에 대해 다룬 책입니다.  부록까지 포함하면 아래 리스트와 같이 총 14장으로 구성되어 있습니다.  아래의 목차를 보면 알 수 있듯이 1장 디자인 패턴 소개에서는 왜 디자인 패턴을 배워야 하는지에 대한 설명을 합니다.  그 외 장들은 각 패턴에 대해 소개와 예제를 실습해 보는 구성입니다. 
 
