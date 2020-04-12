@@ -2,7 +2,7 @@
 layout: post
 title: "Head First design patterns 책 리뷰"
 date: 2020-04-12
-excerpt: "Head First design patterns 책 리뷰입니다."
+excerpt: "Head First design patterns 책 리뷰 입니다."
 tags: [Head First design patterns, 리뷰, design pattern]
 comments: true
 design_patterns: true
@@ -10,6 +10,8 @@ feature: /assets/img/design_pattern/review/design.png
 image: /assets/img/design_pattern/review/design.png
 ---
 디자인 패턴 책으로 유명한 [Head First design patterns 책](http://www.yes24.com/Product/Goods/1778966)을 읽고 리뷰를 남기려고 합니다.  해당 책에 대해 간단히 소개하고 제가 읽고 느낀 부분을 말씀드리겠습니다. 
+
+<br/>
 
 # Head First design patterns 소개
 
@@ -36,7 +38,7 @@ Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패�
 
 ### 📌 1 장  디자인 패턴의 세계에 오신 것을 환영합니다: **디자인 패턴 소개**
 
-해당 장에서는 다른 개발자들이 해결한 문제를 왜 활용해야 하는지 알아봅니다.  사실 디자인 패턴을 왜 배워야 하는가 의문이 있었는데  <span style="background-color: #e6e6ff; font-clolr: #000000">유지 보수를 쉽게 할 수 있을 뿐만 아니라 개발자들과 의사소통이 쉬워졌으며 디자인에 집중할</span> 수 있다는 것을 배우게 되었습니다.
+해당 장에서는 다른 개발자들이 해결한 문제를 왜 활용해야 하는지 알아봅니다.  사실 디자인 패턴을 왜 배워야 하는가 의문이 있었는데  <span style="background-color: #e6e6ff; font-clolr: #000000">유지 보수를 쉽게 할 수 있을 뿐만 아니라 개발자들과 의사소통이 쉬워졌으며 디자인에 집중</span>할 수 있다는 것을 배우게 되었습니다.
 
 > 다른 개발자들과의 의사소통 가치를 극대화시킬 수 있는 전문 용어 역할을 합니다.
 
@@ -52,11 +54,18 @@ Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패�
 
   해당 책을 학습할 때 해당 컴파운드 패턴도 같이 보면 이해하기에 더 쉬울 것 같습니다. 
 
+<br/>
+
+---
+
 # 이 책으로 느낀 점은?
 
  디자인 패턴에 대해 간단한 지식만 있었는데 해당 책으로 학습하고 직접 적용하니 <span style="background-color: #e6e6ff; font-clolr: #000000">리팩토링</span>하기에도 좋았습니다. 그리고 위에서 말했듯이 개발자들과 의사소통 시에도 패턴으로 이야기하여 <span style="background-color: #e6e6ff; font-clolr: #000000">패턴에만 집중</span>할 수 있게 되었고요. 
 
  위에 기억에 남는 장들 외에도 팩토리 패턴이나 템플릿 패턴 등 도움 되는 패턴도 많이 있었습니다. 패턴을 적용해서 개발하니 유지 보수도 쉬워지고 다른 개발자가 소스를 볼 때도 이해하기 좋을 것 같습니다. 
+
+
+<br/>
 
 ---
 
@@ -72,13 +81,15 @@ Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패�
 
 이 책은 예제를 진행하다가 문제를 해결하고 나중에 결과가 나오는 구성이다.  예제가 너무 길 때는 그래서 결과가 뭐야? 하며 지루할 때가 종종 있었다.  그래서 패턴 정의부터 보고 예제를 읽을 때가 있었다. 
 
-**3. 가끔 이상한 유머?을 해서 흥미가 떨어진다.** 
+3. **가끔 이상한 유머?을 해서 흥미가 떨어진다.** 
 
  가끔 책에서 어이없는 농담을 할 때가 있어 흥미가 떨어진다. 예를 들어 가끔 패턴들끼리 싸울 때가 있다. 그중  스트래티지 패턴과 스테이트 패턴이 싸울 때 스트래티지 패턴이 
 
 > 나는 1장에 나와 있고, 너는 겨우 10장이나 되어서야 등장했잖아. 여기까지 읽는 사람이 몇 명이나 될까?
 
 이런 어이없는 유머가 나올 때가 있다. 가끔 어이없어서 웃기긴 하지만...🤣
+
+<br/>
 
 ---
 
