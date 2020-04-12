@@ -71,7 +71,7 @@ Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패�
 
 # 아쉬운 점은?
 
- 이 책이 읽으면서  저한테 아쉬운 점을 간단하게 세 가지만 말하고자 합니다. 
+ 이 책이 읽으면서 아쉬운 점을 간단하게 세 가지만 말하고자 합니다. 
 
 **1. 와닿지 않는 예제로 가끔 흥미가 떨어진다.** 
 
@@ -101,7 +101,7 @@ Head First design patterns 책은  이름에서 알 수 있듯이 디자인 패�
 
 # 같이 보면 좋은 사이트
 
-아래 사이트들은 패턴 설명과 예제 등 다양한 설명이 있다. 그리고 여러가지 언어로 패턴을 작성되어 있다. 
+아래 사이트들은 패턴 설명과 예제 등 다양한 설명이 있습니다. 그리고 여러가지 언어로 패턴을 작성되어 있습니다.
 
 - [https://refactoring.guru/design-patterns/catalog](https://refactoring.guru/design-patterns/catalog)
 - [https://sourcemaking.com/design_patterns](https://sourcemaking.com/design_patterns)
