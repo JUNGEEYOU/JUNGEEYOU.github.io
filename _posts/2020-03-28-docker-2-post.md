@@ -66,6 +66,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     $ sudo systemctl start docker.service
     
 {% endhighlight %}
+
 ---
 
 # 2. 도커 설치 확인 (docker version)
