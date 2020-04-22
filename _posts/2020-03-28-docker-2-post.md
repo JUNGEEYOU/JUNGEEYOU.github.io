@@ -46,7 +46,6 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 > centos7 에 docker 를 설치하는 방법입니다.
 
 {% highlight bash linenos %}
-
     # yum-config-manager 쓸 수 있도록 설치
     $ sudo yum -y install yum-utils
     
@@ -64,7 +63,6 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     
     # 도커 서비스 시작 
     $ sudo systemctl start docker.service
-    
 {% endhighlight %}
 
 ---
