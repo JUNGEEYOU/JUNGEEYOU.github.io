@@ -5,7 +5,7 @@ date: 2020-03-28
 excerpt: "도커 기본 명령어 정리"
 tags: [docker , docker 기본 명령어 ]
 comments: true
-docker : false 
+docker : true  
 feature: /assets/img/docker/basic_1/whale.jpeg
 image: /assets/img/docker/basic_1/Moby-logo.png
 ---
