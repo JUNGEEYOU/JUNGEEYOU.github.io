@@ -45,7 +45,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > centos7 에 docker 를 설치하는 방법입니다.
 
-{% highlight bash linenos%}
+{% highlight bash linenos %}
 
     # yum-config-manager 쓸 수 있도록 설치
     $ sudo yum -y install yum-utils
@@ -83,7 +83,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > 이전에 설명한 Docker architecture 에서 도커의 구조는 **클라이언트-서버** 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
 
-{% highlight bash %}
+{% highlight bash  linenos %}
     Client: Docker Engine - Community
      Version:           19.03.5
      API version:       1.40
@@ -126,8 +126,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔸 예시
 
-{% highlight bash %}
-    **$ docker search ubuntu**
+{% highlight bash linenos %}
+    $ docker search ubuntu
     NAME                                                      DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
     ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   10605               [OK]                
     dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   404                                     [OK]
@@ -149,8 +149,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ### 🔸 예시
 - ubuntu 라는 이미지 이름. 태그는 18.04 의 이미지를 다운로드 한다.
 - **저장소**: 도커 허브에 존재. [도커허브사이트](https://registry.hub.docker.com/_/ubuntu?tab=description) 에서 확인 가능
-{% highlight bash %}
-    **$ docker pull ubuntu:18.04**
+{% highlight bash linenos %}
+    $ docker pull ubuntu:18.04
     18.04: Pulling from library/ubuntu
     423ae2b273f4: Pull complete 
     de83a2304fa1: Pull complete 
