@@ -77,7 +77,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
  설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
 {% highlight bash %}
-    **$ docker version**
+    $ docker version
 {% endhighlight %}
 ## 🔹 docker version 결과
 
