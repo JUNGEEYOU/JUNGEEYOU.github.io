@@ -252,10 +252,10 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - **-it:** 컨테이너 내부로 들어가 bash 입력이 가능
 - **- - rm:** 프로세스 종료되면 자동으로 도커 컨테이너 종료
 {% highlight bash %}
-    **$ docker run --name test -it --rm ubuntu:18.04
+    $ docker run --name test -it --rm ubuntu:18.04
     
     # 아래는 docker bash 들어간 것** 
-    **root@de78d86be9c0:/# ls**
+    root@de78d86be9c0:/# ls
     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 {% endhighlight %}
 ## 🔹 docker ps
@@ -372,7 +372,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔸  mysql 컨테이너 생성
 
-- **환경 설정 확인  :** [https://registry.hub.docker.com/_/mysql](https://registry.hub.docker.com/_/mysql)
+- **환경 설정 확인  :** [mysql docker hub site](https://registry.hub.docker.com/_/mysql)
 {% highlight bash %}
     $ docker run -d \
      --name wordpressdb \
@@ -382,7 +382,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 {% endhighlight %}
 ### 🔸  워드프레스 컨테이너 생성
 
-- **환경 설정 확인:** [https://registry.hub.docker.com/_/wordpress](https://registry.hub.docker.com/_/wordpress)
+- **환경 설정 확인:** [wordpress docker hub site](https://registry.hub.docker.com/_/wordpress)
 - **-p 80:** 호스트의 포트 하나와 컨테이너 80 포트 연결
 - **—link:** 다른 컨테이너 ip 대신 별명으로 접근하도록 설정. [컨테이너 명]:[호스트 별칭]
 {% highlight bash %}
@@ -421,7 +421,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔸   mysql 컨테이너 생성
 
-- **환경 설정 확인  :** [https://registry.hub.docker.com/_/mysql](https://registry.hub.docker.com/_/mysql)
+- **환경 설정 확인  :** [mysql docker hub site](https://registry.hub.docker.com/_/mysql)
 - -v : 호스트와 컨테이너의 디렉토리를 연결. [호스트의 공유 디렉터리]:[컨테이너의 공유 디렉터리]
     - **호스트의 공유 디렉터리**: 내 컴퓨터에 원하는 디렉터리로 변경해도 좋습니다.  - 아래 예제를 하기 위해 해당 디렉터리를 생성 후, 진행해 주세요.
     - **컨테이너의 공유 디렉터리**: mysql 데이터 저장하는 기본 디렉터리가 /var/lib/mysql 입니다.
@@ -435,7 +435,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 {% endhighlight %}
 ### 🔸   워드프레스 컨테이너 생성 (변경 없음)
 
-- **환경 설정 확인:** [https://registry.hub.docker.com/_/wordpress](https://registry.hub.docker.com/_/wordpress)
+- **환경 설정 확인:** [wordpress docker hub site](https://registry.hub.docker.com/_/wordpress)
 {% highlight bash %}
     $ docker run -d \
      -e WORDPRESS_DB_PASSWORD=password \
