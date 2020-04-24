@@ -12,7 +12,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 
 # docker를 사용해보자 (docker 기본 명령어 사용해보기)
- 이번 시간에는 이전에 배운 개념을 토대로 docker 를 직접 사용해 봅시다.
+ > 이번 시간에는 이전에 배운 개념을 토대로 docker 를 직접 사용해 봅시다.
 
 # 💡 목차
 이번 시간에 학습할 부분은 아래와 같다.  전체적으로 무엇을 배울지 미리 확인하고 가자.
@@ -251,7 +251,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     Digest: sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
     Status: Downloaded newer image for ubuntu:18.04
 {% endhighlight %}
-## 🔸  예시 2
+
+### 🔸  예시 2
 
 - **- - name**: test라는 컨테이너 이름 설정
 - **-it:** 컨테이너 내부로 들어가 bash 입력이 가능
@@ -351,6 +352,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     $ docker exec -it <컨테이너 명> /bin/bash 
     
 <br/>
+
 ---
 
 # 5. docker 실습
