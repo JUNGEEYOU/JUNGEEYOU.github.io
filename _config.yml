@@ -75,9 +75,9 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - bootstrap
-  - autoprefixer-rails
-  - jekyll-assets
+#  - bootstrap
+#  - autoprefixer-rails
+#  - jekyll-assets
 
 jekyll-mentions:
     base_url: https://github.com
