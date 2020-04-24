@@ -84,6 +84,16 @@ pre.highlight {
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 //.highlight .linenos  { padding-right: 24px; color: lighten(#49483e,50);}
 
+.highlight {
+	pre.lineno {
+		border: none;
+		@include opacity(0.6);
+	}
+
+	.lineno {
+		@include unselectable();
+	}
+}
 
 
 
