@@ -75,7 +75,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
  
  <div class="callout callout-primary">
    <h4>$ docker version</h4>
-   설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
+   설치 완료 후 도커가 정상적으로 동작하는지 해당 명령어를 입력합니다. 
  </div>
 
 
