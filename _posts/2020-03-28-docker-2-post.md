@@ -45,10 +45,9 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > centos7 에 docker 를 설치하는 방법입니다.
 
-
 <div class="callout callout-primary">
-      <h4>Primary Callout</h4>
-      This is a primary callout.
+  <h4>Primary Callout</h4>
+  This is a primary callout.
 </div>
 
 
