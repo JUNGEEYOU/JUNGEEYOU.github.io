@@ -30,6 +30,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     - 그 외 기다 명령어를 살펴 봅니다.
 
 ---
+<br/>
 
 # 1. 도커 다운로드
 아래 주소를 통해 도커를 다운로드 해보자.
@@ -63,6 +64,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 {% endhighlight %}
 
 ---
+<br/>
 
 # 2. 도커 설치 확인 (docker version)
 
@@ -111,6 +113,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
  
 
 ---
+<br/>
 
 # 3. docker 이미지 다루기 - 자주 사용 하는 명령어 정리
 
@@ -204,6 +207,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 {% endhighlight %}
+
+<br/>
 
 ---
 
@@ -335,14 +340,17 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ## 🔹 docker exec
 
-> 실행 중인 컨테이너에 들어갈 때 사용
+<div class="callout callout-primary">
+    <h4>$ docker exec [OPTIONS] CONTAINER COMMAND [ARG...] </h4>
+   실행 중인 컨테이너에 들어갈 때 사용
+</div>
 
- docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
 
 ### 🔸 예시
 
     $ docker exec -it <컨테이너 명> /bin/bash 
-
+    
+<br/>
 ---
 
 # 5. docker 실습
@@ -422,7 +430,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ### 🔸   mysql 컨테이너 생성
 
 - **환경 설정 확인  :** [mysql docker hub site](https://registry.hub.docker.com/_/mysql)
-- -v : 호스트와 컨테이너의 디렉토리를 연결. [호스트의 공유 디렉터리]:[컨테이너의 공유 디렉터리]
+- **-v** : 호스트와 컨테이너의 디렉토리를 연결. [호스트의 공유 디렉터리]:[컨테이너의 공유 디렉터리]
     - **호스트의 공유 디렉터리**: 내 컴퓨터에 원하는 디렉터리로 변경해도 좋습니다.  - 아래 예제를 하기 위해 해당 디렉터리를 생성 후, 진행해 주세요.
     - **컨테이너의 공유 디렉터리**: mysql 데이터 저장하는 기본 디렉터리가 /var/lib/mysql 입니다.
 {% highlight bash %}
@@ -469,6 +477,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     auto.cnf    ca.pem	     client-key.pem  ib_logfile0  ibdata1  mysql	       private_key.pem	server-cert.pem  sys
     ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1   performance_schema  public_key.pem	server-key.pem	 wordpress
 {% endhighlight %}
+
+<br/>
 ---
 
 # 6. docker 기타 명령어 정리
@@ -561,6 +571,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 {% endhighlight %}
 
 ---
+<br/>
 
 # 마무리
 
