@@ -1,14 +1,14 @@
 
-<link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+//<link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 
 pre.highlight {
 	padding: 1em;
 }
 
-.highlight,pre.highlight {
+.highlight, pre.highlight {
 	background-color: #222222;
-	//font-family: $font2;
-	font-family: 'D2 coding', "Consolas", monospace;
+	font-family: $font2;
+	//font-family: 'D2 coding', "Consolas", monospace;
 	@include font-size(14);
 	color: #aab1bf;
 	border-radius: 4px;
