@@ -45,8 +45,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > centos7 에 docker 를 설치하는 방법입니다.
 
-{% include callout.html content="This is my callout. It has a border on the left whose color you define by passing a type parameter. I typically use this style of callout when I have more information that I want to share, often spanning multiple paragraphs. " type="primary" %}
-
+<div class="alert alert-primary" role="alert"> test </div>
 
 
 {% highlight bash %}

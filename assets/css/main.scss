@@ -25,3 +25,9 @@ sitemap: false
 @import "vendor/animate";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print"
+
+
+@import "bootstrap";
+@import "_custom"; // before 'main', variables for bootstrap
+@import "main";
+@import "blog";
