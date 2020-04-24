@@ -120,10 +120,10 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - **기본 명령어 참고** : [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/)
 
 ## 🔹 docker search
-
-> docker hub에 존재하는 이미지 리스트를 확인할 수 있다.
-
- docker search [검색할 이미지명]
+<div class="callout callout-primary">
+    <h4>$ docker search [검색할 이미지명] </h4>
+    docker hub에 존재하는 이미지 리스트를 확인할 수 있다.
+</div>
 
 ### 🔸 예시
 
@@ -141,9 +141,11 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ## 🔹 docker pull
 
-> 이미지를 다운로드를 한다.
+<div class="callout callout-primary">
+    <h4>$ docker pull  [저장소 이름]/[이미지 이름]:[태그] </h4>
+    이미지를 다운로드를 한다.
+</div>
 
- docker pull  [저장소 이름]/[이미지 이름]:[태그]
 
 [ ](https://www.notion.so/e4f8be1cd6a64b2584d4f7b5d9442516)
 
@@ -164,9 +166,10 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ## 🔹 docker images
 
-> 이미지 목록 확인하기
-
-docker images 
+<div class="callout callout-primary">
+    <h4>$ docker images </h4>
+    이미지 목록 확인하기
+</div>
 
 ### 🔸 예시
 
@@ -178,9 +181,10 @@ docker images
 {% endhighlight %}
 ## 🔹 docker rmi
 
-> 이미지 제거하기
-
-docker rmi 이미지1 [이미지2, 이미지3 ...]
+<div class="callout callout-primary">
+    <h4>$ 이미지 제거하기</h4>
+    docker rmi 이미지1 [이미지2, 이미지3 ...]
+</div>
 
 ### 🔸 예시
 
@@ -205,12 +209,11 @@ docker rmi 이미지1 [이미지2, 이미지3 ...]
 # 4. docker  컨테이너 다루기  - 자주 사용 하는 명령어 정리
 
 ## 🔹 docker run
+<div class="callout callout-primary">
+    <h4>$ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</h4>
+    사용할 이미지가 저장되어 있는지 확인하고 없다면 다운로드(pull)를 한 후 컨테이너를 생성(create)하고 시작(start)한다.
+</div>
 
-> 컨테이너를 생성하고 실행하기
-
-- 사용할 이미지가 저장되어 있는지 확인하고 없다면 다운로드(pull)를 한 후 컨테이너를 생성(create)하고 시작(start)  한다.
-
-docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
 
 ### 🔸 OPTIONS
 
@@ -243,10 +246,11 @@ docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]
     bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 {% endhighlight %}
 ## 🔹 docker ps
+<div class="callout callout-primary">
+    <h4>$ docker ps [OPTIONS]</h4>
+    컨테이너 목록 확인. 옵션 없이 사용하는 경우 실행중인 컨테이너만 출력.
+</div>
 
-> 컨테이너 목록 확인. 옵션 없이 사용하는 경우 실행중인 컨테이너만 출력.
-
-docker ps [OPTIONS]
 
 ### 🔸 OPTIONS
 
@@ -262,10 +266,10 @@ docker ps [OPTIONS]
     cd532bf89bbb        ubuntu:18.04        "/bin/bash"         4 minutes ago       Exited (0) 4 minutes ago                       test
 {% endhighlight %}
 ## 🔹 docker rm
-
-> 컨테이너를 제거
-
- docker rm [OPTIONS] 컨테이너1 [컨테이너2...]
+<div class="callout callout-primary">
+    <h4>$ docker rm [OPTIONS] 컨테이너1 [컨테이너2...]</h4>
+    컨테이너를 제거
+</div>
 
 ### 🔸 OPTIONS
 
@@ -276,22 +280,26 @@ docker ps [OPTIONS]
     $ docker rm -f test 
 
 ## 🔹 docker start
+<div class="callout callout-primary">
+    <h4>$ docker start [OPTIONS] 컨테이너1 [컨테이너2...]</h4>
+    stop된 컨테이너를 실행하기
+</div>
 
-> stop된 컨테이너를 실행하기
-
-docker start [OPTIONS] 컨테이너1 [컨테이너2...]
 
 ## 🔹 docker stop
 
-> 실행 중인 컨테이너를 stop 하기
+<div class="callout callout-primary">
+    <h4>$ docker stop [OPTIONS] 컨테이너1 [컨테이너2...]</h4>
+   실행 중인 컨테이너를 stop 하기
+</div>
 
-docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
 
 ## 🔹 docker logs
 
-> 도커 컨테이너의 로그 확인하기
-
- docker logs [OPTIONS] CONTAINER
+<div class="callout callout-primary">
+    <h4>$ docker logs [OPTIONS] CONTAINER</h4>
+   도커 컨테이너의 로그 확인하기
+</div>
 
 ### 🔸 OPTIONS
 
@@ -443,10 +451,11 @@ docker stop [OPTIONS] 컨테이너1 [컨테이너2...]
 > 위에서 배운 명령어 외 기타 명령어 입니다.
 
 ## 🔹 docker history
+<div class="callout callout-primary">
+    <h4>$ docker history [OPTIONS] [이미지 명:tag]</h4>
+   이미지의 히스토리를 확인할 수 있습니다.
+</div>
 
-> 이미지의 히스토리를 확인할 수 있습니다.
-
-docker history [OPTIONS] [이미지 명:tag]
 
 ### 🔸 OPTIONS
 
@@ -484,12 +493,15 @@ docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
 {% endhighlight %}
 
 ## 🔹 docker inspect
+<div class="callout callout-primary">
+    <h4>$ docker inspect [이미지 또는 컨테이너 이름]</h4>
+   이미지 또는  컨테이너의 세부 정보를 출력합니다.
+</div>
 
-> 이미지 또는  컨테이너의 세부 정보를 출력합니다.
 
 - 참고 : [https://docs.docker.com/engine/reference/commandline/inspect/#examples](https://docs.docker.com/engine/reference/commandline/inspect/#examples)
 
-docker inspect [이미지 또는 컨테이너 이름]
+
 
 ### 🔸  예시
 {% highlight bash %}
