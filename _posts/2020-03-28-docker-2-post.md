@@ -448,15 +448,16 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ### 🔸   볼륨 공유 확인하기
 
 - 내 컴퓨터 **호스트의 공유 디렉터리** 로 이동 후, 확인
-
+{% highlight bash %}
     $ ls
     auto.cnf		client-cert.pem		ib_logfile0		ibtmp1			private_key.pem		server-key.pem
     ca-key.pem		client-key.pem		ib_logfile1		mysql			public_key.pem		sys
     ca.pem			ib_buffer_pool		ibdata1			performance_schema	server-cert.pem		wordpress
+{% endhighlight %}
 
 - **컨테이너 공유 디렉터리에 파일 존재 확인**
     - 호스트의 공유 디렉터리와 동일함을 알 수 있다.
-
+{% highlight bash %}
     **1.  컨테이너에 접속** 
     $ docker exec -it wordpressdb bash
     
@@ -467,7 +468,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     root@d27bb99cfa91:/var/lib/mysql# ls
     auto.cnf    ca.pem	     client-key.pem  ib_logfile0  ibdata1  mysql	       private_key.pem	server-cert.pem  sys
     ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1   performance_schema  public_key.pem	server-key.pem	 wordpress
-
+{% endhighlight %}
 ---
 
 # 6. docker 기타 명령어 정리
@@ -483,7 +484,10 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ### 🔸 OPTIONS
 
-[OPTIONS](https://www.notion.so/8638a3bb07d642ed8fe1d475523b13aa)
+ | <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ |----------|----------|
+ | --no-trunc  |  출력을 자르지 않고, 히스토리 명령어를 끝까지 보여준다.    |     
+ {:.inner-borders}
 
 ### 🔸  예시
 
@@ -500,10 +504,11 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 {% endhighlight %}
 
 ## 🔹 docker cp
+<div class="callout callout-primary">
+    <h4>$ docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]</h4>
+   컨테이너 안에 있는 파일을 꺼낼 수 있습니다.
+</div>
 
-> 컨테이너 안에 있는 파일을 꺼낼 수 있습니다.
-
-docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
 
 ### 🔸  예시
 
@@ -562,4 +567,5 @@ docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
 > 이번 시간에는 도커를 직접 사용해 봤습니다. 다음 시간에는 아래의 내용을 학습할 예정입니다. 😀
 
 - docker hub에 올려보기 Dockerfile 만들기
+- docker hub에 이미지 올려보기 
 
