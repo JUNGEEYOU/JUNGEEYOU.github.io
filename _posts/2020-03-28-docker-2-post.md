@@ -79,7 +79,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ## 🔹 docker version 결과
 
-> 이전에 설명한 Docker architecture 에서 도커의 구조는 **클라이언트-서버** 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
+> 이전에 설명한 Docker architecture 에서 도커의 구조는 <span style="background-color: #e6e6ff; font-clolr: #000000">클라이언트-서버</span> 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
 
 {% highlight bash %}
     Client: Docker Engine - Community
@@ -179,8 +179,8 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 ## 🔹 docker rmi
 
 <div class="callout callout-primary">
-    <h4>$ 이미지 제거하기</h4>
-    docker rmi 이미지1 [이미지2, 이미지3 ...]
+    <h4>$ docker rmi 이미지1 [이미지2, 이미지3 ...]</h4>
+    이미지 제거하기
 </div>
 
 ### 🔸 예시
@@ -188,7 +188,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - 다운 받았던 이미지를 삭제하고, 다시 'docker images' 명령어로 목록을 확인하자
 - 제거 방식은 docker rmi  [도커이름:태그] 또는 [image id]
 {% highlight bash %}
-    **$ docker rmi ubuntu:18.04**
+    $ docker rmi ubuntu:18.04
     Untagged: ubuntu:18.04
     Untagged: ubuntu@sha256:04d48df82c938587820d7b6006f5071dbbffceb7ca01d2814f81857c631d44df
     Deleted: sha256:72300a873c2ca11c70d0c8642177ce76ff69ae04d61a5813ef58d40ff66e3e7c
@@ -197,7 +197,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     Deleted: sha256:282c79e973cf51d330b99d2a90e6d25863388f66b1433ae5163ded929ea7e64b
     Deleted: sha256:cc4590d6a7187ce8879dd8ea931ffaa18bc52a1c1df702c9d538b2f0c927709d
     
-    **$ docker images**
+    $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 {% endhighlight %}
 
@@ -220,7 +220,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 - ubuntu:18.04  컨테이너를 실행하는 예시로 해당 이미지가 없어서 다운로드(pull)한 뒤, 컨테이너를 실행한다.
 {% highlight bash %}
-    **$ docker run ubuntu:18.04**
+    $ docker run ubuntu:18.04
     Unable to find image 'ubuntu:18.04' locally
     18.04: Pulling from library/ubuntu
     423ae2b273f4: Pull complete 
@@ -326,7 +326,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 - **-p 옵션 :** -p [호스트 포트]:[컨테이너 포트]
 {% highlight bash %}
-    **$ docker run --name nginx-server -d -p 8080:80 nginx**
+    $ docker run --name nginx-server -d -p 8080:80 nginx
     
     Unable to find image 'nginx:latest' locally
     latest: Pulling from library/nginx
@@ -502,7 +502,7 @@ docker cp [컨테이너 이름]:[가져올 파일의 경로] [호스트 경로]
 
 ### 🔸  예시
 {% highlight bash %}
-    **$ docker inspect wordpress**
+    $ docker inspect wordpress
     [
         {
             "Id": "8f75f55337e0f9919f02446e25cfe1afd9c97eacce13483cbc62d020465c30ef",
