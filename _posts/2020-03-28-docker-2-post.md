@@ -42,7 +42,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > centos7 에 docker 를 설치하는 방법입니다.
 
-{% highlight bash %}
+{% highlight bash linenos %}
     # yum-config-manager 쓸 수 있도록 설치
     $ sudo yum -y install yum-utils
     
@@ -81,7 +81,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > 이전에 설명한 Docker architecture 에서 도커의 구조는 <span style="background-color: #e6e6ff; font-clolr: #000000">클라이언트-서버</span> 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
 
-{% highlight bash %}
+{% highlight shell %}
     Client: Docker Engine - Community
      Version:           19.03.5
      API version:       1.40
