@@ -217,7 +217,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 
 ### 🔸 OPTIONS
-| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ | <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
  |----------|----------|
  | -d |  detached mode로  백그라운드 모드 |  
  | -p  |  호스트와 컨테이너의 포트를 연결 (포워딩)   | 
@@ -265,7 +265,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 
 ### 🔸 OPTIONS
-| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ | <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
  |----------|----------|
  | --all , -a |  모든 컨테이너를 보여준다. (컨테이너가 실행중이지 않는 것이라도, stop된 컨테이너도 보여줌 )  |   
  {:.inner-borders}
@@ -287,7 +287,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 </div>
 
 ### 🔸 OPTIONS
-| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ | <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
  |----------|----------|
  | --force , -f |  실행중인 컨테이너를 강제로 제거한다.  (uses SIGKILL)  |   
  {:.inner-borders}
@@ -319,7 +319,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 </div>
 
 ### 🔸 OPTIONS
-| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ | <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
  |----------|----------|
  | --follow , -f |  실시간 로그 생성   |   
  | --tail <number>  |  마지막 number 숫자 줄 만큼만 출력  |  
