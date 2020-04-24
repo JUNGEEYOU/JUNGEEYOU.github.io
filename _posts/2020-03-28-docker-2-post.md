@@ -458,13 +458,13 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 - **컨테이너 공유 디렉터리에 파일 존재 확인**
     - 호스트의 공유 디렉터리와 동일함을 알 수 있다.
 {% highlight bash %}
-    **1.  컨테이너에 접속** 
+    1.  컨테이너에 접속
     $ docker exec -it wordpressdb bash
     
-    **2. mysql 데이터 저장 위치로 이동** 
+    2. mysql 데이터 저장 위치로 이동
     # cd /var/lib/mysql
     
-    **3. 파일 확인** 
+    3. 파일 확인
     root@d27bb99cfa91:/var/lib/mysql# ls
     auto.cnf    ca.pem	     client-key.pem  ib_logfile0  ibdata1  mysql	       private_key.pem	server-cert.pem  sys
     ca-key.pem  client-cert.pem  ib_buffer_pool  ib_logfile1  ibtmp1   performance_schema  public_key.pem	server-key.pem	 wordpress
