@@ -45,11 +45,6 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 > centos7 에 docker 를 설치하는 방법입니다.
 
-<div class="callout callout-primary">
-  <h4>Primary Callout</h4>
-  This is a primary callout.
-</div>
-
 {% highlight bash %}
     # yum-config-manager 쓸 수 있도록 설치
     $ sudo yum -y install yum-utils
@@ -78,10 +73,13 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 ## 🔹 docker version
 
- 설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
-{% highlight bash %}
-    $ docker version
-{% endhighlight %}
+ 
+ <div class="callout callout-primary">
+   <h4>$ docker version</h4>
+   설치 완료 후 도커가 정상적으로 동작하는지 아래 명령어를 입력합니다. 
+ </div>
+
+
 ## 🔹 docker version 결과
 
 > 이전에 설명한 Docker architecture 에서 도커의 구조는 **클라이언트-서버** 가 존재한다고 하였습니다. 여기 결과에  Client/Server가 존재하는 이유도 이와 같습니다. 이 명령어 결과의 의미는 다시 정리해보면 아래와 같습니다.
@@ -93,7 +91,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
      Go version:        go1.12.12
      Git commit:        633a0ea
      Built:             Wed Nov 13 07:22:34 2019
-   <span style="background-color: #e6e6ff; font-clolr: #000000">  OS/Arch:           darwin/amd64 </span>
+     OS/Arch:           darwin/amd64 
      Experimental:      false
     
     Server: Docker Engine - Community
@@ -103,7 +101,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
       Go version:       go1.12.12
       Git commit:       633a0ea
       Built:            Wed Nov 13 07:29:19 2019
-    <span style="background-color: #e6e6ff; font-clolr: #000000">  OS/Arch:          linux/amd64 </span>
+      OS/Arch:          linux/amd64
       Experimental:     true
 {% endhighlight %}
 
