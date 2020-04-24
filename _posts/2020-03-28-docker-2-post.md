@@ -143,7 +143,7 @@ image: /assets/img/docker/basic_1/Moby-logo.png
     이미지를 다운로드를 한다.
 </div>
 
- | 키 |  의미  |
+ | <span>&nbsp;</span> 키 |  <span>&nbsp;</span> 의미  |
  |----------|----------|
  | 저장소 이름 |  이미지가 저장된 장소. 없는 경우는 기본 이미지로 도커 허브의 공식 이미지  |  
  | 이미지 이름  |  다운 받을 이미지 이름. 예를 들어 ubuntu, nginx   | 
@@ -217,8 +217,19 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 
 ### 🔸 OPTIONS
+| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ |----------|----------|
+ | -d |  detached mode로  백그라운드 모드 |  
+ | -p  |  호스트와 컨테이너의 포트를 연결 (포워딩)   | 
+ | -v   |  호스트와 컨테이너의 디렉토리를 연결 (마운트)   | 
+ | -e |  컨테이너 내에서 사용할 환경변수 설정  |  
+ | —name  |  컨테이너 이름 설정  | 
+ | -it   |  -i와 -t를 동시에 사용한 것으로 터미널 입력을 위한 옵션   | 
+ | —rm |  프로세스 종료시 컨테이너 자동 제거  |  
+ | —link  |  컨테이너 연결 [컨테이너 명:별칭]   | 
+ {:.inner-borders}
 
-[   옵션](https://www.notion.so/3101aeccf8534396ae09bd9551157baa)
+ 
 
 ### 🔸  예시 1
 
@@ -254,8 +265,11 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 
 
 ### 🔸 OPTIONS
+| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ |----------|----------|
+ | --all , -a |  모든 컨테이너를 보여준다. (컨테이너가 실행중이지 않는 것이라도, stop된 컨테이너도 보여줌 )  |   
+ {:.inner-borders}
 
-[ OPTIONS](https://www.notion.so/c7762f0699c0475dbf130c3c6e4130f7)
 
 ### 🔸 **예시**
 
@@ -273,8 +287,10 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 </div>
 
 ### 🔸 OPTIONS
-
-[ OPTION](https://www.notion.so/7f12ca5b8d5b4639821f3ca47849d777)
+| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ |----------|----------|
+ | --force , -f |  실행중인 컨테이너를 강제로 제거한다.  (uses SIGKILL)  |   
+ {:.inner-borders}
 
 ### 🔸 예시
 
@@ -303,8 +319,11 @@ image: /assets/img/docker/basic_1/Moby-logo.png
 </div>
 
 ### 🔸 OPTIONS
-
-[OPTIONS](https://www.notion.so/260f97e7794842b6b0818a09f35794c1)
+| <span>&nbsp;</span> 옵션  |  <span>&nbsp;</span> 의미  |
+ |----------|----------|
+ | --follow , -f |  실시간 로그 생성   |   
+ | --tail <number>  |  마지막 number 숫자 줄 만큼만 출력  |  
+ {:.inner-borders}
 
 ### 🔸 예시
 
