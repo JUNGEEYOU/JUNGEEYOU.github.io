@@ -93,7 +93,7 @@ my_wordpress $ vi docker-compose.yml
 version: '3'
 services:
   wordpress:
-		depends_on:
+    depends_on:
        - db
     image: wordpress
     restart: always
@@ -108,7 +108,7 @@ services:
       - wordpress:/var/www/html
   db:
     image: mysql:5.7
- **   restart: always
+    restart: always
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
@@ -160,7 +160,7 @@ version: '3'
 {% highlight yaml %}
 services:
   wordpress:
-		depends_on:
+    depends_on:
        - db
     image: wordpress
     ------------ 생략 --------------------
