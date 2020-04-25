@@ -133,7 +133,7 @@ my_wordpress $ docker-compose up -d
 
 [localhost](http://localhost):80 에 접속해보면 아래와 같이 워드프레스 화면이 나타납니다. 
 
-![Untitled/Untitled.png](Untitled/Untitled.png)
+![Untitled/Untitled.png](/assets/img/docker/basic_4//Untitled.png)
 
 ## docker-compose.yml 파일 의미 살펴보기
 
