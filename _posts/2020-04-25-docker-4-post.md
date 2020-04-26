@@ -89,6 +89,7 @@ $ cd my_wordpress
 my_wordpress $ vi docker-compose.yml
 {% endhighlight %}
 
+- docker-compose.yml 파일 
 {% highlight yaml %}
 version: '3'
 services:
@@ -124,8 +125,6 @@ volumes:
 ## 🔹 docker compose  실행하기
 
 > 해당 경로에 존재하는 docker-compose.yml 파일을 실행해 준다. -d 옵션은 백그라운드 모드에서 실행됩니다.
-
- $ docker-compose up -d  
 
 {% highlight bash %}
 my_wordpress $ docker-compose up -d  
@@ -252,7 +251,7 @@ Creating wordpress_wordpress_1 ... done
 
 ### 🔸 docker-compose down
 
-> docker-compose 로 생성된 컨테이너 정지 후 삭제합니다.
+ docker-compose 로 생성된 컨테이너 정지 후 삭제합니다.
 
 {% highlight bash %}
 $ docker-compose down 
@@ -266,7 +265,7 @@ Removing network wordpress_default
 
 ### 🔸 docker-compose ps
 
-> docker-compose 로 생성된 컨테이너 목록을 확인할 수 있습니다.
+ docker-compose 로 생성된 컨테이너 목록을 확인할 수 있습니다.
 
 {% highlight bash %}
 $ docker-compose ps
