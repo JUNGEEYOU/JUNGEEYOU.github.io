@@ -76,7 +76,7 @@ $ docker-compose --version
 
  도커 컴포즈는 도커 실행 시 <span style="background-color: #e6e6ff; font-clolr: #000000">복잡한 설정을 쉽게 관리하기 위해 YAML 파일에 정의</span>하는 툴입니다.  위에서 복잡하게 설정해서 실행한 애플리케이션을 docker-compose.yml 파일에 정의해서 간편하게 실행해 봅시다. [도커 문서에 있는 예제](https://docs.docker.com/compose/wordpress/)를 살펴봅시다. 
 
-## docker-compose.yml 파일 작성하기
+## 🔹 docker-compose.yml 파일 작성하기
 
 [wordpress 허브](https://hub.docker.com/_/wordpress/?tab=description)에 있는 설명을 보며 작성해 봅시다. 우선 위에서 작성한 도커 실행을 docker-compose.yml 파일을 작성해서 간편하게 실행시켜 보자. 
 
@@ -121,7 +121,7 @@ volumes:
   db:
 {% endhighlight %}
 
-## docker compose  실행하기
+## 🔹 docker compose  실행하기
 
 > 해당 경로에 존재하는 docker-compose.yml 파일을 실행해 준다. -d 옵션은 백그라운드 모드에서 실행됩니다.
 
@@ -135,13 +135,13 @@ my_wordpress $ docker-compose up -d
 
 ![Untitled/Untitled.png](/assets/img/docker/basic_4//Untitled.png)
 
-## docker-compose.yml 파일 의미 살펴보기
+## 🔹 docker-compose.yml 파일 의미 살펴보기
 
 그럼 docker-compose.yml  파일의 의미를 살펴봅시다. 그리고 YAML 파일을 작성하는 방법을 알아봅니다. 도커 컴포즈를 사용하기 위해 <span style="background-color: #e6e6ff; font-clolr: #000000">기존에 사용하던 run 명령어를 YAML 파일로 변환</span>해야 합니다. 
 
 YAML 파일은 <span style="background-color: #e6e6ff; font-clolr: #000000">1. 버전 정의 2. 서비스 정의 3. 볼륨 정의 4 네트워크 정의</span> 로 구성됩니다. 이 중 서비스 정의를 가장 많이 사용하며, 볼륨 정의와 네트워크 정의는 선택적으로 사용됩니다. 해당 파일은 2개의 공백으로 들여 쓰기를 하여 상위 항목과 구분합니다. 
 
-### version
+### 🔸 version
 
 YAML 파일 포맷 버전을 나타냅니다. 도커 컴포즈 버전은 도커 엔진 버전에 의존성이 있으므로 가능하면 최신 버전을 사용하는 것이 좋습니다. 도커 엔진과 도커 컴포즈의 호환성에 대한 내용은 [도커 문서](https://docs.docker.com/compose/compose-file/)를 참고해 주세요. 
 
@@ -151,7 +151,7 @@ YAML 파일 포맷 버전을 나타냅니다. 도커 컴포즈 버전은 도커 
 version: '3' 
 {% endhighlight %}
 
-### service
+### 🔸 service
 
 생성될 컨터이너를 묶어놓은 단위입니다. 여기서는 wordpress와 db 컨테이너를 생성하였습니다. 
 
@@ -167,7 +167,7 @@ services:
   db:
 {% endhighlight %}
 
-### image
+### 🔸 image
 
 서비스의 컨테이너를 생성할 때 쓰일 이미지의 이름을 설정합니다. docker run과 같이 이미지가 존재하지 않는  경우 저장소에서 자동으로 내려받습니다. 
 
@@ -177,7 +177,7 @@ services:
     image: wordpress
 {% endhighlight %}
 
-### environment
+### 🔸 environment
 
  docker run 명령어에서 -e 옵션과 동일합니다. 서비스의 컨테이너 내부에서 사용할 환경 변수를 지정합니다. 
 
@@ -189,7 +189,7 @@ services:
       WORDPRESS_DB_NAME: exampledb
 {% endhighlight %}
 
-### port
+### 🔸 port
 
 docker run 명령어의 -p 옵션과 같으며 서비스의 컨테이너를 개방할 포트를 설정합니다. 
 
@@ -198,7 +198,7 @@ ports:
       - 80:80
 {% endhighlight %}
 
-### volumes
+### 🔸 volumes
 
  run 명령어에서 -v 옵션과 동일합니다. 
 
@@ -207,11 +207,11 @@ volumes:
       - wordpress:/var/www/html
 {% endhighlight %}
 
-### command
+### 🔸 command
 
 컨테이너가 실행될 때 수행할 명령어를 설정합니다. docker run 명령어의 마지막 붙는 커맨드와 같습니다. 
 
-### depends_on
+### 🔸 depends_on
 
 특정 컨테이너에 대한 의존 관계를 나타내며, 이 항목에 명시된 컨테이너가 먼저 생성되고 실행됩니다. 
 
@@ -223,7 +223,7 @@ wordpress:
        - db
 {% endhighlight %}
 
-### build
+### 🔸 build
 
 도커파일에서 이미지를 빌드해 서비스의 컨테이너를 생성하도록 설정합니다. 
 
@@ -236,9 +236,9 @@ services:
     image: my_web:latest
 {% endhighlight %}
 
-## docker-compose 명령어
+## 🔹 docker-compose 명령어
 
-### docker-compose up
+### 🔸 docker-compose up
 
 > docker-compose 로 docker-compose.yml 파일에 정의된 컨테이너를 생성합니다. -d옵션으로  백그라운 모드로 실행 가능합니다.
 
@@ -250,7 +250,7 @@ Creating wordpress_db_1 ... done
 Creating wordpress_wordpress_1 ... done
 {% endhighlight %}
 
-### docker-compose down
+### 🔸 docker-compose down
 
 > docker-compose 로 생성된 컨테이너 정지 후 삭제합니다.
 
@@ -264,7 +264,7 @@ Removing wordpress_db_1        ... done
 Removing network wordpress_default
 {% endhighlight %}
 
-### docker-compose ps
+### 🔸 docker-compose ps
 
 > docker-compose 로 생성된 컨테이너 목록을 확인할 수 있습니다.
 
