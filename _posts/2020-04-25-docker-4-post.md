@@ -122,6 +122,8 @@ volumes:
   db:
 {% endhighlight %}
 
+<br/>
+
 ## 🔹 docker compose  실행하기
 
 > 해당 경로에 존재하는 docker-compose.yml 파일을 실행해 준다. -d 옵션은 백그라운드 모드에서 실행됩니다.
@@ -133,6 +135,8 @@ my_wordpress $ docker-compose up -d
 [localhost](http://localhost):80 에 접속해보면 아래와 같이 워드프레스 화면이 나타납니다. 
 
 ![Untitled/Untitled.png](/assets/img/docker/basic_4//Untitled.png)
+
+<br/>
 
 ## 🔹 docker-compose.yml 파일 의미 살펴보기
 
@@ -234,6 +238,8 @@ services:
     build: ./composetest 
     image: my_web:latest
 {% endhighlight %}
+
+<br/>
 
 ## 🔹 docker-compose 명령어
 
