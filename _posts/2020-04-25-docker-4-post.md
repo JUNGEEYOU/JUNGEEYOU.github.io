@@ -51,7 +51,7 @@ $ docker run -d \
 wordpress
 {% endhighlight %}
 
- 이와 같이 여러 개의 컨테이너를 하나의 서비스인 [도커 컴포즈](https://docs.docker.com/compose/)를 사용해서 한 파일로 정의한다면 번거롭지 않고 편리할 것 입니다. 그뿐만 아니라 실행에 필요한 옵션을 파일에 작성 가능하며,  컨테이너 간 실행 순서나 의존성도 관리할 수 있습니다.
+ 이와 같이 여러 개의 컨테이너를 하나의 서비스인 [도커 컴포즈](https://docs.docker.com/compose/)를 사용해서 <span style="background-color: #e6e6ff; font-clolr: #000000">한 파일로 정의한다면 번거롭지 않고 편리</span>할 것 입니다. 그뿐만 아니라 <span style="background-color: #e6e6ff; font-clolr: #000000">실행에 필요한 옵션을 파일에 작성</span> 가능하며, 컨테이너 간 <span style="background-color: #e6e6ff; font-clolr: #000000">실행 순서나 의존성도 관리</span>할 수 있습니다.
 
 ---
 
@@ -74,7 +74,7 @@ $ docker-compose --version
 
 # 3. 도커 컴포즈 사용하기
 
- 도커 컴포즈는 도커 실행 시 복잡한 설정을 쉽게 관리하기 위해 YAML 파일에 정의하는 툴입니다.  위에서 복잡하게 설정해서 실행한 애플리케이션을 docker-compose.yml 파일에 정의해서 간편하게 실행해 봅시다. [도커 문서에 있는 예제](https://docs.docker.com/compose/wordpress/)를 살펴봅시다. 
+ 도커 컴포즈는 도커 실행 시 <span style="background-color: #e6e6ff; font-clolr: #000000">복잡한 설정을 쉽게 관리하기 위해 YAML 파일에 정의</span>하는 툴입니다.  위에서 복잡하게 설정해서 실행한 애플리케이션을 docker-compose.yml 파일에 정의해서 간편하게 실행해 봅시다. [도커 문서에 있는 예제](https://docs.docker.com/compose/wordpress/)를 살펴봅시다. 
 
 ## docker-compose.yml 파일 작성하기
 
@@ -137,9 +137,9 @@ my_wordpress $ docker-compose up -d
 
 ## docker-compose.yml 파일 의미 살펴보기
 
-그럼 docker-compose.yml  파일의 의미를 살펴봅시다. 그리고 YAML 파일을 작성하는 방법을 알아봅니다. 도커 컴포즈를 사용하기 위해 기존에 사용하던 run 명령어를 YAML 파일로 변환해야 합니다. 
+그럼 docker-compose.yml  파일의 의미를 살펴봅시다. 그리고 YAML 파일을 작성하는 방법을 알아봅니다. 도커 컴포즈를 사용하기 위해 <span style="background-color: #e6e6ff; font-clolr: #000000">기존에 사용하던 run 명령어를 YAML 파일로 변환</span>해야 합니다. 
 
-YAML 파일은 1. 버전 정의 2. 서비스 정의 3. 볼륨 정의 4 네트워크 정의 로 구성됩니다. 이 중 서비스 정의를 가장 많이 사용하며, 볼륨 정의와 네트워크 정의는 선택적으로 사용됩니다. 해당 파일은 2개의 공백으로 들여 쓰기를 하여 상위 항목과 구분합니다. 
+YAML 파일은 <span style="background-color: #e6e6ff; font-clolr: #000000">1. 버전 정의 2. 서비스 정의 3. 볼륨 정의 4 네트워크 정의</span> 로 구성됩니다. 이 중 서비스 정의를 가장 많이 사용하며, 볼륨 정의와 네트워크 정의는 선택적으로 사용됩니다. 해당 파일은 2개의 공백으로 들여 쓰기를 하여 상위 항목과 구분합니다. 
 
 ### version
 
