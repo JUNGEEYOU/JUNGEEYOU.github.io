@@ -143,27 +143,31 @@ services:
 1. **해당 프로젝트 docker build 하기** 
  
  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
- {% highlight bash %}
- $ docker-compose build app
- {% endhighlight %}
+ 
+{% highlight bash %}
+$ docker-compose build app
+{% endhighlight %}
 
 2.**docker hub 로그인** 
- {% highlight bash %}
- $ sudo docker login
- {% endhighlight %}
+ 
+{% highlight bash %}
+$ sudo docker login
+{% endhighlight %}
 
 3.**이미지 tag** 
  
  - **{빌드로 생성된 이미지명}**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
  - **{docker_hub_id} :** 자신의 docker hub id를 입력해줍니다.
- {% highlight bash %}
- $ sudo docker tag {빌드로 생성된 이미지명}:latest  {docker_hub_id}/flask:latest
- {% endhighlight %}
+ 
+{% highlight bash %}
+$ sudo docker tag {빌드로 생성된 이미지명}:latest  {docker_hub_id}/flask:latest
+{% endhighlight %}
 
-4.** docker hub 에 push**
- {% highlight bash %}
- $ sudo docker push {docker_hub_id}/flask:latest
- {% endhighlight %}
+4.**docker hub 에 push**
+ 
+{% highlight bash %}
+$ sudo docker push {docker_hub_id}/flask:latest
+{% endhighlight %}
 
 5.**doker hub에서 이미지 확인**   
  [https://hub.docker.com](https://hub.docker.com/) 에서 확인 가능합니다. 
