@@ -141,21 +141,19 @@ services:
 ## 🔹 dockerhub에 올리기
 
 1. **해당 프로젝트 docker build 하기** 
+  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
+  {% highlight bash %}
+  $ docker-compose build app
+  {% endhighlight %}
 
- 위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
-
-    {% highlight bash %}
-    $ docker-compose build app
-    {% endhighlight %}
-
-2. **docker hub  로그인**  
-    {% highlight bash %}
-    $ sudo docker login
-    {% endhighlight %}
+2. **docker hub 로그인**  
+   {% highlight bash %}
+   $ sudo docker login
+   {% endhighlight %}
 
 3. **이미지 tag**
-- **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
-- **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
+    - **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
+    - **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
     {% highlight bash %}
     $ sudo docker tag <빌드로 생성된 이미지명>:latest  <docker_hub_id>/flask:latest
     {% endhighlight %}
@@ -256,65 +254,56 @@ b39b7b29425b4883952ae4bd9f3bde11
 pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에서 말했듯이  소스 다운로드부터 docker 실행까지 pipeline으로 각 스테이지를 생성하겠습니다. 
 
 1. **새작업 클릭** 
-
  ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%206.png](/assets/img/docker/basic_5/Untitled%206.png)
 
 2. **작업 이름 입력 후, pipeline 선택** 
-
  ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%207.png](/assets/img/docker/basic_5/Untitled%207.png)
 
 3. **새 작업 테스트** 
-
     - **Do not allow concurrent builds 체크:** 한 빌드가 진행 중이면 연속적인 빌드를 진행하지 않도록 합니다.
     - **GitHub project:** 자동화하고자 하는 프로젝트 git url를 입력합니다.
-
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%208.png](/assets/img/docker/basic_5/Untitled%208.png)
 
 4. **Pipeline Script 작성** 
-
  스테이지는 총 6단계로 되어있다.  1. Pull 2. Unit Test(pass) 3. Build 4. Tag 5. Push 6. Deploy로 구성되어 있다. git poll에 있는 url에 자신의 git repository url을 넣어줍니다.  withCredentials**는** 위에서 docker hub 접속을 위해 Credentials를 연결하기 위해 생성한 것과 연결하기 위해 필요합니다. 이 데이터는 Push 작업 시 필요합니다.  이제 각 스테이지에 대한 의미를 알아봅시다. 
-
-1. **Pull:** git 소스를 다운로드 받습니다.  위에서 만든 자신의 프로젝트 git url를 넣어줍니다. 
-2.  **Unit Test:** 빈 값으로 넣어 진행하지 않겠습니다. 
-3. **Build:** docker-compose를 이용해 build를 진행합니다. 
-4. **Tag:** docker image tag 를 진행합니다. 
-5. **Push:** docker hub에 push를 합니다. 
-6. **Deploy:** docker-compose 명령어로 이미지를 실행합니다.
-
-{% highlight groovy %}
-node {
-  git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
-  withCredentials([[$class: 'UsernamePasswordMultiBinding',
-     credentialsId: 'docker-hub',
-     usernameVariable: 'DOCKER_USER_ID', 
-     passwordVariable: 'DOCKER_USER_PASSWORD']]) { 
-     stage('Pull') {
-            git 'https://github.com/JUNGEEYOU/jenkins_flask.git' 
-     }
-      stage('Unit Test') {
-      }
-      stage('Build') {
-            sh(script: 'docker-compose build app')
-      }
-      stage('Tag') {
-            sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
-            ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
-      stage('Push') {
-            sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}') 
-            sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}') 
-            sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
-      }
-      stage('Deploy') {
-          sh(script: 'docker-compose up -d production') 
-      }
-    } 
-}
-{% endhighlight %}
+    1. **Pull:** git 소스를 다운로드 받습니다.  위에서 만든 자신의 프로젝트 git url를 넣어줍니다. 
+    2.  **Unit Test:** 빈 값으로 넣어 진행하지 않겠습니다. 
+    3. **Build:** docker-compose를 이용해 build를 진행합니다. 
+    4. **Tag:** docker image tag 를 진행합니다. 
+    5. **Push:** docker hub에 push를 합니다. 
+    6. **Deploy:** docker-compose 명령어로 이미지를 실행합니다.
+    {% highlight groovy %}
+    node {
+      git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
+      withCredentials([[$class: 'UsernamePasswordMultiBinding',
+         credentialsId: 'docker-hub',
+         usernameVariable: 'DOCKER_USER_ID', 
+         passwordVariable: 'DOCKER_USER_PASSWORD']]) { 
+         stage('Pull') {
+                git 'https://github.com/JUNGEEYOU/jenkins_flask.git' 
+         }
+          stage('Unit Test') {
+          }
+          stage('Build') {
+                sh(script: 'docker-compose build app')
+          }
+          stage('Tag') {
+                sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
+                ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
+          stage('Push') {
+                sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}') 
+                sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}') 
+                sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
+          }
+          stage('Deploy') {
+              sh(script: 'docker-compose up -d production') 
+          }
+        } 
+    }
+    {% endhighlight %}
 
 5. **파이프 라인 실행 전  docker-compose.yml  를 수정**
-
  빌드 시 생성될 이미지 명을 수정하여 ${DOCKER_USER_ID}로 이미지가 생성되도록 변경합니다. 그리고 production 부분을 추가하여 docker 실행을 docker-compose로 실행할 수 있도록 추가해 줍니다. 
-
 {% highlight yaml %}
 version: '3'
 services:
@@ -331,15 +320,11 @@ services:
 {% endhighlight %}
 
 6. **build now 실행하기** 
-
 "build now"를 클릭하여 배포가 자동으로 되는지 확인합니다. 오른쪽 stage view를 보며 문제가 없는지 log도 확인합니다. 
-
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%209.png](/assets/img/docker/basic_5/Untitled%209.png)
 
 7. **Build Triggers 설정하고 자동으로 배포되는지 확인하기** 
-
   직접 "build now" 클릭해서 배포하는 것이 아닌 build trigger을 이용해 소스가 변경되면 자동으로 배포되도록 변경해 줍니다. 
-
  "구성"에 들어가 build trigger 부분으로 이동한 뒤 "poll scm" 을 클릭한 후, H/2 * * * *를 입력하여 2분마다 소스가 변경되었는지 확인하도록 합니다. 그 후 저장합니다. 
 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%2010.png](/assets/img/docker/basic_5/Untitled%2010.png)
@@ -363,9 +348,7 @@ def hello_world():
  Pipeline Script의 변경 사항을 확인하거나 해당 스크립트를 보관하기 위해 git으로 저장해서 관리해 봅니다. 
 
 1. **Jenkinsfile 파일을 추가** 
-
 Jenkinsfile 이름으로 파일을 추가하고 위에서 만든 파이프라인 스크립트를 복사해서 넣어준다. 해당 파일은 git에 push 해 줍니다. 
-
 {% highlight groovy %}
 node {
   git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
