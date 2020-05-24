@@ -154,15 +154,15 @@ services:
 
 3.이미지 tag
  
- - **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
- - **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
+ - **{빌드로 생성된 이미지명}**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
+ - **{docker_hub_id} :** 자신의 docker hub id를 입력해줍니다.
  {% highlight bash %}
- $ sudo docker tag <빌드로 생성된 이미지명>:latest  <docker_hub_id>/flask:latest
+ $ sudo docker tag {빌드로 생성된 이미지명}:latest  {docker_hub_id}/flask:latest
  {% endhighlight %}
 
 4.docker hub 에 push
  {% highlight bash %}
- $ sudo docker push <docker_hub_id>/flask:latest
+ $ sudo docker push {docker_hub_id}/flask:latest
  {% endhighlight %}
 
 5.doker hub에서 이미지 확인  
