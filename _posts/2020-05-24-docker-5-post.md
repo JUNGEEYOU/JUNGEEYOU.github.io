@@ -82,7 +82,8 @@ jenkins_flask
 {% endhighlight %}
 
 - app.py
- / 으로 접속 시 "Hello World!"로 리턴합니다. 그리고 포트도 80으로 설정해 줍니다. 
+
+"/" 으로 접속 시 "Hello World!"로 리턴합니다. 그리고 포트도 80으로 설정해 줍니다. 
 
 {% highlight python %}
 from flask import Flask
@@ -98,6 +99,7 @@ if __name__ == '__main__':
 {% endhighlight %}
 
 - requirements.txt
+ 
  pip 설치 시 Flask 가 필요하기 때문에 Flask를 넣어줍니다. 
 
 {% highlight text %}
@@ -105,7 +107,6 @@ Flask
 {% endhighlight %}
 
 ## 🔹 Dockerfile, docker-compose 파일 생성
-
 ### 🔸 Dockerfile
 
  위에서 만든 파일 같은 경로에 해당 파일을 추가해 줍니다. 이전 시간에 배운 [Dockerfile 만들기](https://jungeeyou.github.io/docker-3-post/)를 참고하여 프로젝트에 맞는 Dockerfile를 만들어 줍니다. 
@@ -124,7 +125,6 @@ CMD [ "python", "app.py" ]
 
 
 ### 🔸 docker-compose.yml
-
  위에서 만든 파일 같은 경로에 해당 파일을 추가해 줍니다. 이전 시간에 배운 [docker-compose를 참고](https://jungeeyou.github.io/docker-4-post/)하여 프로젝트에 맞는 docker-compose.yml 를 만들어 줍니다. 
 {% highlight yaml %}
 version: '3'
@@ -142,33 +142,31 @@ services:
 
 1. **해당 프로젝트 docker build 하기** 
 
-위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
+ 위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
 
-{% highlight bash %}
-$ docker-compose build app
-{% endhighlight %}
+    {% highlight bash %}
+    $ docker-compose build app
+    {% endhighlight %}
 
 2. **docker hub  로그인**  
-{% highlight bash %}
-$ sudo docker login
-{% endhighlight %}
+    {% highlight bash %}
+    $ sudo docker login
+    {% endhighlight %}
 
 3. **이미지 tag**
 - **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
 - **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
-
-{% highlight bash %}
-$ sudo docker tag <빌드로 생성된 이미지명>:latest  <docker_hub_id>/flask:latest
-{% endhighlight %}
+    {% highlight bash %}
+    $ sudo docker tag <빌드로 생성된 이미지명>:latest  <docker_hub_id>/flask:latest
+    {% endhighlight %}
 
 4. **docker hub 에 push** 
-{% highlight bash %}
-$ sudo docker push <docker_hub_id>/flask:latest
-{% endhighlight %}
+    {% highlight bash %}
+    $ sudo docker push <docker_hub_id>/flask:latest
+    {% endhighlight %}
 
-5. **doker hub에서 이미지 확인** 
-
-[https://hub.docker.com](https://hub.docker.com/) 에서 확인 가능합니다. 
+5. **doker hub에서 이미지 확인**  
+ [https://hub.docker.com](https://hub.docker.com/) 에서 확인 가능합니다. 
 
 ---
 
@@ -206,7 +204,7 @@ Please use the following password to proceed to installation:
 b39b7b29425b4883952ae4bd9f3bde11
 {% endhighlight %}
 
-- **방법 2.  도커 컨테이너에서 해당 경로(/var/jenkins_home/secrets/initialAdminPassword)에서 확인**
+- **방법 2. 도커 컨테이너에서 해당 경로(/var/jenkins_home/secrets/initialAdminPassword)에서 확인**
 
 {% highlight bash %}
 $ docker exec -it my_jenkins bash
@@ -259,16 +257,16 @@ pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에�
 
 1. **새작업 클릭** 
 
-![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%206.png](/assets/img/docker/basic_5/Untitled%206.png)
+ ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%206.png](/assets/img/docker/basic_5/Untitled%206.png)
 
 2. **작업 이름 입력 후, pipeline 선택** 
 
-![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%207.png](/assets/img/docker/basic_5/Untitled%207.png)
+ ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%207.png](/assets/img/docker/basic_5/Untitled%207.png)
 
 3. **새 작업 테스트** 
 
-- **Do not allow concurrent builds 체크:** 한 빌드가 진행 중이면 연속적인 빌드를 진행하지 않도록 합니다.
-- **GitHub project:** 자동화하고자 하는 프로젝트 git url를 입력합니다.
+    - **Do not allow concurrent builds 체크:** 한 빌드가 진행 중이면 연속적인 빌드를 진행하지 않도록 합니다.
+    - **GitHub project:** 자동화하고자 하는 프로젝트 git url를 입력합니다.
 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%208.png](/assets/img/docker/basic_5/Untitled%208.png)
 
