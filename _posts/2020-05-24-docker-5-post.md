@@ -140,19 +140,19 @@ services:
 
 ## 🔹 dockerhub에 올리기
 
-1.해당 프로젝트 docker build 하기
+1. **해당 프로젝트 docker build 하기** 
  
  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
  {% highlight bash %}
  $ docker-compose build app
  {% endhighlight %}
 
-2.docker hub 로그인
+2.**docker hub 로그인** 
  {% highlight bash %}
  $ sudo docker login
  {% endhighlight %}
 
-3.이미지 tag
+3.**이미지 tag** 
  
  - **{빌드로 생성된 이미지명}**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
  - **{docker_hub_id} :** 자신의 docker hub id를 입력해줍니다.
@@ -160,12 +160,12 @@ services:
  $ sudo docker tag {빌드로 생성된 이미지명}:latest  {docker_hub_id}/flask:latest
  {% endhighlight %}
 
-4.docker hub 에 push
+4.** docker hub 에 push**
  {% highlight bash %}
  $ sudo docker push {docker_hub_id}/flask:latest
  {% endhighlight %}
 
-5.doker hub에서 이미지 확인  
+5.**doker hub에서 이미지 확인**   
  [https://hub.docker.com](https://hub.docker.com/) 에서 확인 가능합니다. 
 
 ---
@@ -327,7 +327,7 @@ services:
 "build now"를 클릭하여 배포가 자동으로 되는지 확인합니다. 오른쪽 stage view를 보며 문제가 없는지 log도 확인합니다. 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%209.png](/assets/img/docker/basic_5/Untitled%209.png)
 
-7. **Build Triggers 설정하고 자동으로 배포되는지 확인하기** 
+7.**Build Triggers 설정하고 자동으로 배포되는지 확인하기** 
   
   직접 "build now" 클릭해서 배포하는 것이 아닌 build trigger을 이용해 소스가 변경되면 자동으로 배포되도록 변경해 줍니다. 
  "구성"에 들어가 build trigger 부분으로 이동한 뒤 "poll scm" 을 클릭한 후, H/2 * * * *를 입력하여 2분마다 소스가 변경되었는지 확인하도록 합니다. 그 후 저장합니다. 
