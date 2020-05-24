@@ -31,7 +31,7 @@ excerpt: "도커 자동 배포하기 - jenkins "
 
 # 1. jenkins
 
- 코드 배포를 자동화하기 위해서 자동화 도구 중 하나인 [jenkins](https://www.jenkins.io/doc/)를 도커로 띄우려고 합니다. 그전에 jenkins에 대해 간단히 알아보고 갑시다.  jenkins를 설명하려는 포스트가 아니라서 간단하게만 설명하고 넘어가겠습니다. 
+ <span style="background-color: #e6e6ff; font-clolr: #000000">코드 배포를 자동화하기 위해서 자동화 도구 중 하나인 [jenkins](https://www.jenkins.io/doc/)를 도커로 띄우려고</span> 합니다. 그전에 jenkins에 대해 간단히 알아보고 갑시다.  jenkins를 설명하려는 포스트가 아니라서 간단하게만 설명하고 넘어가겠습니다. 
 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled.png](/assets/img/docker/basic_5/Untitled.png)
 
@@ -46,7 +46,7 @@ excerpt: "도커 자동 배포하기 - jenkins "
 
 ## 🔹 이번 시간에 자동화할 것은?
 
- 이번 시간에는 git으로 소스를 저장하면 자동으로 아래의 작업이 진행되도록 할 것입니다. 
+ 이번 시간에는 <span style="background-color: #e6e6ff; font-clolr: #000000">git으로 소스를 저장하면 자동으로 아래의 작업이 진행</span>되도록 할 것입니다. 
 
  1. 소스 다운로드(git pull) 
 
@@ -171,9 +171,9 @@ services:
 # 3. jenkins 도커 실행
 
 ## 🔹 도커 실행하기
-아래의 명령어를 입력하여 jenkin를 실행합니다. 이미지 "jenkins"를 사용하려고 했지만 [플러그인 설치 이슈](https://www.jenkins.io/blog/2018/12/10/the-official-Docker-image/)가 있어 jenkins/jenkins 로 설치합니다. 
+아래의 명령어를 입력하여 jenkin를 실행합니다. 이미지 "jenkins"를 사용하려고 했지만 [플러그인 설치 이슈](https://www.jenkins.io/blog/2018/12/10/the-official-Docker-image/)가 있어 <span style="background-color: #e6e6ff; font-clolr: #000000">jenkins/jenkins</span> 로 설치합니다. 
 
- 추가로 젠킨스에서 docker 관련 명령어를 사용합니다. 따라서 현재 서버에서 있는 docker를 볼륨으로 연결해서 젠킨스에 docker를 설치하지 않고 사용하도록 합니다. docker 관련 볼륨을 설정하지 않으면 젠킨스에서 docker 명령어 사용 시 [문제가 발생](https://forums.docker.com/t/docker-not-found-in-jenkins-pipeline/31683/24)합니다. 
+ 추가로 젠킨스에서 docker 관련 명령어를 사용합니다. 따라서 현재 서버에서 있는 <span style="background-color: #e6e6ff; font-clolr: #000000">docker를 볼륨으로 연결</span>해서 젠킨스에 docker를 설치하지 않고 사용하도록 합니다. docker 관련 볼륨을 설정하지 않으면 젠킨스에서 docker 명령어 사용 시 [문제가 발생](https://forums.docker.com/t/docker-not-found-in-jenkins-pipeline/31683/24)합니다. 
 {% highlight bash %}
 $ docker run -d \
 --name my_jenkins \
@@ -187,7 +187,7 @@ $ docker run -d \
 
 ## 🔹 jenkins 도커 초기 설정
 ### 🔸 비밀번호 입력
-[http://localhost:8080](http://localhost:8080/) 에 접속한 뒤, 아래와 같이 초기 어드민 패스워스 입력 화면이 나오면 방법 1. docker log에 나온 비번이나 혹은 방법 2. 컨테이너 해당 경로(/var/jenkins_home/secrets/initialAdminPassword)에 들어가서 확인합니다. 
+[http://localhost:8080](http://localhost:8080/) 에 접속한 뒤, 아래와 같이 초기 어드민 패스워스 입력 화면이 나오면 <span style="background-color: #e6e6ff; font-clolr: #000000">방법 1. docker log에 나온 비번이나 혹은 방법 2. 컨테이너 해당 경로(/var/jenkins_home/secrets/initialAdminPassword)에</span> 들어가서 확인합니다. 
 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%201.png](/assets/img/docker/basic_5/Untitled%201.png)
 
@@ -229,7 +229,7 @@ b39b7b29425b4883952ae4bd9f3bde11
 
 # 4. jenkins 작업 생성하기
 
- 우선 docker hub 접속을 위해 Credentials 생성을 진행하고,  pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 
+ 우선 docker hub 접속을 위해 <span style="background-color: #e6e6ff; font-clolr: #000000">Credentials 생성을 진행하고, pipeline를 이용해서 스테이지 별 작업을 생성</span>해 봅시다. 
 
 ## 🔹  Credentials 생성
 
@@ -265,7 +265,7 @@ pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에�
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%208.png](/assets/img/docker/basic_5/Untitled%208.png)
 
 4. **Pipeline Script 작성** 
- 스테이지는 총 6단계로 되어있다.  1. Pull 2. Unit Test(pass) 3. Build 4. Tag 5. Push 6. Deploy로 구성되어 있다. git poll에 있는 url에 자신의 git repository url을 넣어줍니다.  withCredentials**는** 위에서 docker hub 접속을 위해 Credentials를 연결하기 위해 생성한 것과 연결하기 위해 필요합니다. 이 데이터는 Push 작업 시 필요합니다.  이제 각 스테이지에 대한 의미를 알아봅시다. 
+ 스테이지는 총 6단계로 되어있다. <span style="background-color: #e6e6ff; font-clolr: #000000">1. Pull 2. Unit Test(pass) 3. Build 4. Tag 5. Push 6. Deploy로 구성</span>되어 있다. git poll에 있는 url에 자신의 git repository url을 넣어줍니다. <span style="background-color: #e6e6ff; font-clolr: #000000">withCredentials</span>는 위에서 docker hub 접속을 위해 Credentials를 연결하기 위해 생성한 것과 연결하기 위해 필요합니다. 이 데이터는 Push 작업 시 필요합니다.  이제 각 스테이지에 대한 의미를 알아봅시다. 
     1. **Pull:** git 소스를 다운로드 받습니다.  위에서 만든 자신의 프로젝트 git url를 넣어줍니다. 
     2.  **Unit Test:** 빈 값으로 넣어 진행하지 않겠습니다. 
     3. **Build:** docker-compose를 이용해 build를 진행합니다. 
