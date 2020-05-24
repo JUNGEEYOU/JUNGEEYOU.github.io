@@ -272,35 +272,35 @@ pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에�
     4. **Tag:** docker image tag 를 진행합니다. 
     5. **Push:** docker hub에 push를 합니다. 
     6. **Deploy:** docker-compose 명령어로 이미지를 실행합니다.
-    {% highlight groovy %}
-    node {
-      git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
-      withCredentials([[$class: 'UsernamePasswordMultiBinding',
-         credentialsId: 'docker-hub',
-         usernameVariable: 'DOCKER_USER_ID', 
-         passwordVariable: 'DOCKER_USER_PASSWORD']]) { 
-         stage('Pull') {
-                git 'https://github.com/JUNGEEYOU/jenkins_flask.git' 
-         }
-          stage('Unit Test') {
-          }
-          stage('Build') {
-                sh(script: 'docker-compose build app')
-          }
-          stage('Tag') {
-                sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
-                ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
-          stage('Push') {
-                sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}') 
-                sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}') 
-                sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
-          }
-          stage('Deploy') {
-              sh(script: 'docker-compose up -d production') 
-          }
-        } 
-    }
-    {% endhighlight %}
+        {% highlight groovy %}
+        node {
+          git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
+          withCredentials([[$class: 'UsernamePasswordMultiBinding',
+             credentialsId: 'docker-hub',
+             usernameVariable: 'DOCKER_USER_ID', 
+             passwordVariable: 'DOCKER_USER_PASSWORD']]) { 
+             stage('Pull') {
+                    git 'https://github.com/JUNGEEYOU/jenkins_flask.git' 
+             }
+              stage('Unit Test') {
+              }
+              stage('Build') {
+                    sh(script: 'docker-compose build app')
+              }
+              stage('Tag') {
+                    sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
+                    ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
+              stage('Push') {
+                    sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}') 
+                    sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}') 
+                    sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
+              }
+              stage('Deploy') {
+                  sh(script: 'docker-compose up -d production') 
+              }
+            } 
+        }
+        {% endhighlight %}
 
 5. **파이프 라인 실행 전  docker-compose.yml  를 수정**
  빌드 시 생성될 이미지 명을 수정하여 ${DOCKER_USER_ID}로 이미지가 생성되도록 변경합니다. 그리고 production 부분을 추가하여 docker 실행을 docker-compose로 실행할 수 있도록 추가해 줍니다. 
