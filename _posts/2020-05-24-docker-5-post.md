@@ -6,8 +6,8 @@ excerpt: ""
 tags: [docker ,jenkins , docker 자동화   ]
 comments: true
 docker : true 
-feature: /assets/img/docker/basic_5/Untitled.png
-image: /assets/img/docker/basic_5/Untitled.png
+feature: /assets/img/docker/basic_5/jenkins.jpg
+image: /assets/img/docker/basic_5/jenkins.jpg
 excerpt: "도커 자동 배포하기 - jenkins " 
 ---
 
