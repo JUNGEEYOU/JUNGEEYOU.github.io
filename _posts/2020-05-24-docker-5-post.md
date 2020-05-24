@@ -140,30 +140,30 @@ services:
 
 ## 🔹 dockerhub에 올리기
 
-1. 해당 프로젝트 docker build 하기
+1.해당 프로젝트 docker build 하기
  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
  {% highlight bash %}
  $ docker-compose build app
  {% endhighlight %}
 
-2. docker hub 로그인
+2.docker hub 로그인
  {% highlight bash %}
  $ sudo docker login
  {% endhighlight %}
 
-3. 이미지 tag
+3.이미지 tag
  - **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
  - **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
  {% highlight bash %}
  $ sudo docker tag <빌드로 생성된 이미지명>:latest  <docker_hub_id>/flask:latest
  {% endhighlight %}
 
-4. docker hub 에 push
+4.docker hub 에 push
  {% highlight bash %}
  $ sudo docker push <docker_hub_id>/flask:latest
  {% endhighlight %}
 
-5. doker hub에서 이미지 확인  
+5.doker hub에서 이미지 확인  
  [https://hub.docker.com](https://hub.docker.com/) 에서 확인 가능합니다. 
 
 ---
@@ -302,7 +302,7 @@ pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에�
         }
         {% endhighlight %}
 
-5. **파이프 라인 실행 전  docker-compose.yml  를 수정**
+5.**파이프 라인 실행 전  docker-compose.yml  를 수정**
  빌드 시 생성될 이미지 명을 수정하여 ${DOCKER_USER_ID}로 이미지가 생성되도록 변경합니다. 그리고 production 부분을 추가하여 docker 실행을 docker-compose로 실행할 수 있도록 추가해 줍니다. 
 {% highlight yaml %}
 version: '3'
@@ -319,7 +319,7 @@ services:
       - "80:80"
 {% endhighlight %}
 
-6. **build now 실행하기** 
+6.**build now 실행하기** 
 "build now"를 클릭하여 배포가 자동으로 되는지 확인합니다. 오른쪽 stage view를 보며 문제가 없는지 log도 확인합니다. 
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%209.png](/assets/img/docker/basic_5/Untitled%209.png)
 
@@ -347,8 +347,9 @@ def hello_world():
 
  Pipeline Script의 변경 사항을 확인하거나 해당 스크립트를 보관하기 위해 git으로 저장해서 관리해 봅니다. 
 
-1. **Jenkinsfile 파일을 추가** 
-Jenkinsfile 이름으로 파일을 추가하고 위에서 만든 파이프라인 스크립트를 복사해서 넣어준다. 해당 파일은 git에 push 해 줍니다. 
+1.**Jenkinsfile 파일을 추가** 
+ 
+  Jenkinsfile 이름으로 파일을 추가하고 위에서 만든 파이프라인 스크립트를 복사해서 넣어준다. 해당 파일은 git에 push 해 줍니다. 
     {% highlight groovy %}
     node {
       git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
@@ -379,15 +380,14 @@ Jenkinsfile 이름으로 파일을 추가하고 위에서 만든 파이프라인
     }
     {% endhighlight %}
 
-2. **"구성"에 들어가 Pipline 부분으로 이동**
-이동한 뒤 아래와 같이 설정해줍니다. 
-
-- **Definition:** Pipline script from SCM 으로 변경
-- **SCM:** git 선택
-- **Repository URL:** 자신의 Repository url 입력해 줍니다.
-- **Script Path:** 위에서 추가한 파일명을 입력해 줍니다. > Jenkinsfile
-
-![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%2011.png](/assets/img/docker/basic_5/Untitled%2011.png)
+2.**"구성"에 들어가 Pipline 부분으로 이동**
+  
+  이동한 뒤 아래와 같이 설정해줍니다. 
+    - **Definition:** Pipline script from SCM 으로 변경
+    - **SCM:** git 선택
+    - **Repository URL:** 자신의 Repository url 입력해 줍니다.
+    - **Script Path:** 위에서 추가한 파일명을 입력해 줍니다. > Jenkinsfile
+ ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%2011.png](/assets/img/docker/basic_5/Untitled%2011.png)
 
 ---
 
