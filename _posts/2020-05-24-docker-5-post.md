@@ -140,7 +140,7 @@ services:
 
 ## 🔹 dockerhub에 올리기
 
-1. **해당 프로젝트 docker build 하기** 
+1.**해당 프로젝트 docker build 하기** 
  
  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
  
