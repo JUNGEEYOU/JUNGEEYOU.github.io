@@ -141,6 +141,7 @@ services:
 ## 🔹 dockerhub에 올리기
 
 1.해당 프로젝트 docker build 하기
+ 
  위에서 만든 dockerfile과 docker-compose.yml으로 간단히 "docker-compose build app"으로 빌드가 가능합니다. 
  {% highlight bash %}
  $ docker-compose build app
@@ -152,6 +153,7 @@ services:
  {% endhighlight %}
 
 3.이미지 tag
+ 
  - **<빌드로 생성된 이미지명>**: docker-compose build 명령어로 생성된 이미지 이름을 입력합니다.
  - **<docker_hub_id> :** 자신의 docker hub id를 입력해줍니다.
  {% highlight bash %}
