@@ -349,35 +349,35 @@ def hello_world():
 
 1. **Jenkinsfile 파일을 추가** 
 Jenkinsfile 이름으로 파일을 추가하고 위에서 만든 파이프라인 스크립트를 복사해서 넣어준다. 해당 파일은 git에 push 해 줍니다. 
-{% highlight groovy %}
-node {
-  git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
-  withCredentials([[$class: 'UsernamePasswordMultiBinding',
-     credentialsId: 'docker-hub',
-     usernameVariable: 'DOCKER_USER_ID',
-     passwordVariable: 'DOCKER_USER_PASSWORD']]) {
-     stage('Pull') {
-            git 'https://github.com/JUNGEEYOU/jenkins_flask.git'
-     }
-      stage('Unit Test') {
-      }
-      stage('Build') {
-            sh(script: 'docker-compose build app')
-      }
-      stage('Tag') {
-            sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
-            ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
-      stage('Push') {
-            sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}')
-            sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}')
-            sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
-      }
-      stage('Deploy') {
-          sh(script: 'docker-compose up -d production')
-      }
+    {% highlight groovy %}
+    node {
+      git poll: true, url:'https://github.com/JUNGEEYOU/jenkins_flask.git'
+      withCredentials([[$class: 'UsernamePasswordMultiBinding',
+         credentialsId: 'docker-hub',
+         usernameVariable: 'DOCKER_USER_ID',
+         passwordVariable: 'DOCKER_USER_PASSWORD']]) {
+         stage('Pull') {
+                git 'https://github.com/JUNGEEYOU/jenkins_flask.git'
+         }
+          stage('Unit Test') {
+          }
+          stage('Build') {
+                sh(script: 'docker-compose build app')
+          }
+          stage('Tag') {
+                sh(script: '''docker tag ${DOCKER_USER_ID}/flask \
+                ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}''') }
+          stage('Push') {
+                sh(script: 'docker login -u ${DOCKER_USER_ID} -p ${DOCKER_USER_PASSWORD}')
+                sh(script: 'docker push ${DOCKER_USER_ID}/flask:${BUILD_NUMBER}')
+                sh(script: 'docker push ${DOCKER_USER_ID}/flask:latest')
+          }
+          stage('Deploy') {
+              sh(script: 'docker-compose up -d production')
+          }
+        }
     }
-}
-{% endhighlight %}
+    {% endhighlight %}
 
 2. **"구성"에 들어가 Pipline 부분으로 이동**
 이동한 뒤 아래와 같이 설정해줍니다. 
