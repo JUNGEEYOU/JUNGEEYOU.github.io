@@ -255,15 +255,15 @@ pipeline를 이용해서 스테이지 별 작업을 생성해 봅시다. 위에�
 
 1. **새작업 클릭** 
  ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%206.png](/assets/img/docker/basic_5/Untitled%206.png)
-
+<br/>
 2. **작업 이름 입력 후, pipeline 선택** 
  ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%207.png](/assets/img/docker/basic_5/Untitled%207.png)
-
+<br/>
 3. **새 작업 테스트** 
     - **Do not allow concurrent builds 체크:** 한 빌드가 진행 중이면 연속적인 빌드를 진행하지 않도록 합니다.
     - **GitHub project:** 자동화하고자 하는 프로젝트 git url를 입력합니다.
 ![Untitled%209938b766b4e1422e83c19fa97da8d02e/Untitled%208.png](/assets/img/docker/basic_5/Untitled%208.png)
-
+<br/>
 4. **Pipeline Script 작성** 
  스테이지는 총 6단계로 되어있다. <span style="background-color: #e6e6ff; font-clolr: #000000">1. Pull 2. Unit Test(pass) 3. Build 4. Tag 5. Push 6. Deploy로 구성</span>되어 있다. git poll에 있는 url에 자신의 git repository url을 넣어줍니다. <span style="background-color: #e6e6ff; font-clolr: #000000">withCredentials</span>는 위에서 docker hub 접속을 위해 Credentials를 연결하기 위해 생성한 것과 연결하기 위해 필요합니다. 이 데이터는 Push 작업 시 필요합니다.  이제 각 스테이지에 대한 의미를 알아봅시다. 
     1. **Pull:** git 소스를 다운로드 받습니다.  위에서 만든 자신의 프로젝트 git url를 넣어줍니다. 
